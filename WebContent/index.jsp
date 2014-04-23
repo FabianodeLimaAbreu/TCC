@@ -36,7 +36,40 @@
 
 </head>
 <body>
-	TESTE Gabriel
+	<div id="wrap">
+        <header>
+            
+        </header>
+        <nav>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </nav>
+        <div id="container">
+            
+        </div>
+        <footer>
+            <p>Copyright © 2014 - Software Of ContrOl - Todos os direitos reservados</p>
+        </footer>  
+         <div id="modal" class="hide">
+            <div class="modal-content">
+                <a href="#close" class="button s-third"></a>
+                <div class="modal-text">
+                    <span class="big-icon"></span>
+                    <div class="aviso">
+                        <h2></h2>
+                        <p></p>
+                        <div class="dialog">
+                            <a href="home.jsp">Sim</a>
+                            <a href="#no">Não</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
     <!--[if !IE]>-->
         <script src="js/lib/jquery.min.js"></script>
         <script src="js/lib/spine/min.js"></script>
