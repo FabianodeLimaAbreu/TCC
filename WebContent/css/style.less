@@ -1,0 +1,70 @@
+.bug(@pixels: 1px){
+	//Debug
+	border: @pixels solid red;
+}
+
+/*Codigo utilizados no sistema abaixo:*/
+
+/*Variaveis less*/
+
+
+//Texto e links
+@color:#0f0712;
+@font:14pt;
+@font-h1:24pt;
+@min-font:10pt;
+
+@line:#6792c4;
+@white:#fff;
+
+//link hover ,h1, calendario e projetos
+@link-hover:#062c5a;
+
+/*sizes*/
+.neat{margin:0;}
+.topten{margin-top: 10px}
+.no-border, li.no-border{border:none; outline:none;}
+.off{color: #CCC}
+
+//Sizes
+@ten:10px;
+@twelve:20px;
+@s-third:30px;
+@s-third-five:35px;
+@s-four:40px;
+@s-five:50px;
+@one-ten:110px;
+
+.w-all{
+	width: 100%;
+}
+.h-all{
+	height: 100%;
+}
+.allpage{
+	left: 0;
+	top:0;
+	width: 100%;
+	height: 100%;
+}
+
+.relative(@direction: left){
+	//Position relative padrao
+	position: relative;
+	float: @direction;
+}
+
+/*Css*/
+//Demais configurações de css, são realizadas via bootstrap
+
+@charset "utf-8";
+html, body{.h-all; overflow-y:auto; overflow-x:hidden;}
+body, body.login{font-family: 'Open Sans',Arial, sans-serif; color:#454a4d; font-weight: 300}
+body.noscroll{position: fixed; overflow: hidden; width: 100%;}
+
+#wrap{position:absolute;left:0;top:0;width: 100%;height:100%;}
+
+//Button
+.button{height:@s-third; font-weight:300; min-width: @s-third; float:left; background: url(../images/gui.png) no-repeat; text-align:left; color:#FFF; cursor:pointer; outline: none; border: none;box-shadow:none}
+.hide{display:none}
+span.bold{font-weight: 700;}
