@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -38,20 +37,83 @@
 <body>
 	<div id="wrap">
         <header>
-            
+            <div class="holder">
+                <a href="" class="logo"></a>
+                <p id="current-date">
+                    São Paulo, 24 de Outubro de 2014.
+                </p>
+                <div class="user-box">
+                    <span class="user-icon s-quart"></span><span class="user-name">Nome do Usuário</span>
+                    <br/>
+                    <a href="#logout" class="logout s-quart"></a>
+                </div>
+            </div>
         </header>
         <nav>
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
+            <ul class="holder">
+                <li class="dropdown">
+                    <a id="gerais" role="button" data-toggle="dropdown" href="#">Gerais <b class="caret"></b></a>
+                    <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Perfil</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Departamento</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Feriados</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Usuários</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Operadores</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Empresas</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a id="acesso" role="button" data-toggle="dropdown" href="#">Acesso <b class="caret"></b></a>
+                    <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Faixas de Acesso</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Zonas de Acesso</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a id="visitantes" role="button" data-toggle="dropdown" href="#">Visitantes <b class="caret"></b></a>
+                    <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Status </a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Especial</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Controle de Visitantes</a></li>
+                    </ul>
+                  </li>
             </ul>
         </nav>
         <div id="container">
-            
+            <div class="content holder">
+                <div id="tab-perfil">
+                    <h1>Usuários</h1>
+                    <div class="options">
+                        <a href="#delete" class="print s-third"></a>
+                        <a href="#editar" class="create s-third"></a>
+                        <!--<p class="count">
+                            Total:<span></span>
+                        </div>-->
+                    </div>
+                    <table class="table table-striped">
+                        <thead class="adminHeader tnine">
+                          <tr>
+                            <th>Código</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Administrador</td>
+                                <td>Administrador do sistema</td>
+                                <td class="actions">
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <footer>
-            <p>Copyright © 2014 - Software Of ContrOl - Todos os direitos reservados</p>
+            <p>Copyright © 2014 - Software of control - Todos os direitos reservados</p>
         </footer>  
          <div id="modal" class="hide">
             <div class="modal-content">
@@ -72,8 +134,9 @@
     </div>
     <!--[if !IE]>-->
         <script src="js/lib/jquery.min.js"></script>
-        <script src="js/lib/spine/min.js"></script>
-        <script data-main="js/app" src="js/lib/require-jquery.js"></script>
+        <!--<script src="js/lib/spine/min.js"></script>
+        <script data-main="js/app" src="js/lib/require-jquery.js"></script>-->
+        <script type="text/javascript" src="js/bootstrap.js"></script>
     <!--<![endif]-->
 </body>
 </html>

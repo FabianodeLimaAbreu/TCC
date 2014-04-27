@@ -21,6 +21,9 @@
 @link-hover:#062c5a;
 
 /*sizes*/
+.s-quart{width: 20px;height: 20px}
+.s-third{width: 30px;height: 30px}
+.s-quad{width: 40px;height: 40px;}
 .neat{margin:0;}
 .topten{margin-top: 10px}
 .no-border, li.no-border{border:none; outline:none;}
@@ -58,13 +61,176 @@
 //Demais configurações de css, são realizadas via bootstrap
 
 @charset "utf-8";
+
 html, body{.h-all; overflow-y:auto; overflow-x:hidden;}
-body, body.login{font-family: 'Open Sans',Arial, sans-serif; color:#454a4d; font-weight: 300}
+body, body.login{font-family: 'Open Sans',Arial, sans-serif; color:#454a4d; font-weight: 300;background-color: @white}
 body.noscroll{position: fixed; overflow: hidden; width: 100%;}
+.holder{
+	position: relative;width: 940px;padding: 0 @ten;margin: 0 auto;height: 70px;
+}
 
 #wrap{position:absolute;left:0;top:0;width: 100%;height:100%;}
+header {
+	.relative;.w-all;height: 70px;background: url(../images/header_bkg.png);color: #1b171b;
+	a.logo{
+		.relative;width: 130px;height: @s-five;background: url(../images/logo.png)
+	}
+	p#current-date{
+		position: absolute;top: 22px;height: auto;width: 350px;left: 50%;margin-left: -175px;font-size: 11pt;text-align: center;
+	}
+	.user-box{
+		.relative(right);min-width:165px;height:45px;font-size:10pt;color:#0f0712;margin:15px 0 0;line-height: 20pt;
+		span{
+			float: left;
+		}
+		.user-icon{
+			background:url(../images/gui.png) -115px -70px;
+			height: 20px;
+			margin-left:2px
+		}
+		.logout{
+			background:url(../images/gui.png) -130px -115px;
+			.relative(right);
+			&:hover{
+				background-position: -130px -90px;
+			}
+		}
+	}
+}
+nav{
+	.relative;.w-all;height: 50px;background: url(../images/nav_bkg.png);
+	ul.holder{
+		height: @s-five !important;
+		.dropdown{
+			display: block;
+			.relative;
+			margin-left: 60px;
+			text-align: left;
+			height: 47px;
+			border-bottom: 3px solid #fff;
+			padding: 10px 0;
+			&.open{
+				border-bottom: 3px solid #062c5a;
+			}
+			&>a{
+				&::after{
+					content: "";
+					position: relative;
+					float: left;
+					display: block;
+					width: @s-third;
+					height: @s-third;
+					margin-right: 20px;
+					background: url(../images/gui.png) 0 0 no-repeat;
+				}
+				&:hover,&:active,&:focus{
+					text-decoration: none;
+					color: #062c5a;
+					&::after{
+						background-position: 0 -35px;
+					}
+				}
+				&#acesso{
+					&::after{
+						width: @twelve;
+						background-position: -35px -0;
+					}
+					&:hover,&:active,&:focus{
+						&::after{
+							background-position: -35px -35px;
+						}
+					}
+				}
+				&#visitantes{
+					&::after{
+						width: @s-four;
+						background-position: -60px -0;
+					}
+					&:hover,&:active,&:focus{
+						&::after{
+							background-position: -60px -35px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+#container{
+	.w-all;.relative;
+	.content{
+		height: auto;min-height: 480px;
+		h1{
+			text-align: center;
+		}
+	}
+	.options{
+		a{
+			display: block;
+			background: url(../images/gui.png) no-repeat;
+			.relative(right);
+			margin-right: 10px;
+			&.create{
+				background-position: 0 -115px;
+				&:hover{
+					background-position: -35px -115px;
+				}
+			}
+			&.print{
+				background-position: -115px 0;
+				width: 45px;
+				&:hover{
+					background-position: -115px -35px;
+				}
+			}
+		}
+		p{
+			display: block;
+		}
+	}
+	table{
+		.actions{
+			width: @s-five;
+			a{
+				
+				
+			}
+		}
+	}
+}
+
+footer{
+	.relative;.w-all;height: 30px;background: url(../images/footer_bkg.png);
+	p{
+		font-size: 9pt;.w-all;.relative;text-align: center;line-height: 23pt;color: @white;
+	}
+}
 
 //Button
 .button{height:@s-third; font-weight:300; min-width: @s-third; float:left; background: url(../images/gui.png) no-repeat; text-align:left; color:#FFF; cursor:pointer; outline: none; border: none;box-shadow:none}
 .hide{display:none}
 span.bold{font-weight: 700;}
+
+/*MODAL*/
+#modal{position: fixed; left: 0; top:0; z-index:9999; width: 100%; height: 1000px; background: url(../images/mask.png);}
+#modal .modal-content{position:absolute; z-index:999; background-color:#fafafa; border:1px solid #e5e3e3; width: 360px; min-height: 100px; left: 50%; margin-left: -200px; top:240px; padding: 40px;}
+#modal .modal-buttons{width: 360px; position: relative; float: left; display:none;}
+#modal .confirm{margin-left: 90px;}
+#modal .bclose{position:absolute; right: -1px; top: -1px;}
+#modal .big-icon{float: left; width: 100px; height: 100px; background:url(../images/gui_ebook.png) no-repeat; background-color: #217fa5;  background-position: 11px -627px;border-radius:5px}
+#modal .modal-text{float: left; margin-left: 10px; width: 250px;}
+#modal h1, #modal .tut-view, #modal .contact-view{display:none;}
+#modal h2{font-size: 12pt; font-weight: 400; line-height: 17pt; color: #217fa5;}
+#modal p{float:left; position:relative; font-size: 9.5pt; margin-top: 5px; line-height: 12pt;color:#535353}
+#wrap br{clear:both; line-height:20px;}
+#modal .topaj{margin-top:40px;}
+#modal .bad h2{color: #b21e1e;}
+#modal .bad .big-icon{background-color: #b21e1e; background-position: 10px -720px;}
+#modal .bad .bclose{ background:url(../images/gui_ebook_.png) -140px -830px;}
+#modal .bad .bclose:hover{ background:url(../images/gui_ebook_.png) -170px -830px;}
+/*#modal .bad .button, #modal .cancel{background-color: #ad1410; border-color: #cf282e;}*/
+
+#modal.question .modal-content{}
+#modal.question .modal-buttons{display: block}
+#modal.question .modal-text{float: left; margin-left: 10px; width: 360px; height: 80px;}
+#modal.question .big-icon{display: none;}
