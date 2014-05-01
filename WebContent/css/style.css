@@ -87,6 +87,7 @@ header a.logo {
   width: 130px;
   height: 50px;
   background: url(../images/logo.png);
+  margin-top: 10px;
 }
 header p#current-date {
   position: absolute;
@@ -198,6 +199,12 @@ nav ul.holder .dropdown > a#visitantes:focus::after {
 #container .content h1 {
   text-align: center;
 }
+#container .options {
+  position: relative;
+  float: right;
+  width: 200px;
+  height: auto;
+}
 #container .options a {
   display: block;
   background: url(../images/gui.png) no-repeat;
@@ -219,10 +226,50 @@ nav ul.holder .dropdown > a#visitantes:focus::after {
   background-position: -115px -35px;
 }
 #container .options p {
-  display: block;
+  position: relative;
+  float: right;
+  margin: 0;
+}
+#container .options p span {
+  color: #6792c4;
+}
+#container table thead {
+  font-size: 10pt;
+}
+#container table tbody {
+  font-size: 9pt;
+  max-height: 100px;
+  overflow-y: scroll;
 }
 #container table .actions {
-  width: 50px;
+  width: 75px;
+}
+#container table .actions a {
+  display: block;
+  background: url(../images/gui.png) no-repeat;
+  position: relative;
+  float: right;
+  width: 25px;
+  height: 30px;
+}
+#container table .actions a.edit {
+  margin-right: 5px;
+  background-position: -70px -115px;
+}
+#container table .actions a.edit:hover {
+  background-position: -100px -115px;
+}
+#container table .actions a.delete {
+  background-position: -135px -150px;
+}
+#container table .actions a.delete:hover {
+  background-position: -135px -185px;
+}
+#container .nav-tabs li a {
+  color: #fff;
+}
+#container .nav-tabs li.active a {
+  color: #13498a;
 }
 footer {
   position: relative;
@@ -239,6 +286,105 @@ footer p {
   text-align: center;
   line-height: 23pt;
   color: #ffffff;
+}
+/*Login page*/
+.login #container .content {
+  min-height: 560px;
+}
+.box {
+  width: 296px;
+  height: 190px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -95px;
+  margin-left: -148px;
+  font-size: 12pt;
+}
+.box form {
+  padding: 20px;
+  background: #6792c4;
+}
+.box form input {
+  font-size: 10pt;
+  color: #d1d1d1;
+}
+.box form .input-group.first {
+  margin-bottom: 10px;
+}
+.box form .submit-arrow {
+  background: url(../images/gui.png) -135px -70px no-repeat;
+  width: 10px;
+  height: 10px;
+  display: block;
+  position: absolute;
+  z-index: 99;
+  right: 15px;
+  top: 18px;
+}
+.box form a.signin {
+  z-index: 9;
+  width: 44px;
+  display: table-cell;
+  height: 43px;
+  background: #13498a;
+}
+.box form a.signin::after {
+  content: "";
+  background: url(../images/gui.png) no-repeat;
+  background-position: -135px -70px;
+  width: 10px;
+  height: 10px;
+  display: block;
+  margin-left: 15px;
+  margin-top: 17px;
+}
+.box form span.submit {
+  padding: 0;
+}
+.box form span.ico::after {
+  content: "";
+  background: url(../images/gui.png) no-repeat;
+  width: 20px;
+  display: block;
+  height: 15px;
+}
+.box form span.ico.numbermat::after {
+  background-position: -90px -70px;
+}
+.box form span.ico.key::after {
+  background-position: -90px -90px;
+}
+.box .arrow-down {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 10px;
+}
+.box .arrow-down span {
+  width: 20px;
+  height: 10px;
+  margin-left: 20px;
+  background: url(../images/gui.png) 0 -300px;
+  display: block;
+}
+.box p {
+  color: #13498a;
+  font-size: 11pt;
+}
+.box p span {
+  position: relative;
+  float: left;
+  text-transform: uppercase;
+  font-size: 20pt;
+}
+.box p a {
+  position: relative;
+  float: right;
+  text-transform: lowercase;
+  color: #13498a;
+  line-height: 30pt;
+  font-size: 10pt;
 }
 .button {
   height: 30px;

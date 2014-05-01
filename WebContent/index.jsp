@@ -82,29 +82,64 @@
         <div id="container">
             <div class="content holder">
                 <div id="tab-perfil">
+                    <!--<h1>Cadastro de usuário</h1>
+                    <ul class="nav nav-tabs" id="cad-user">
+                        <li class="active"><a href="#maintab" data-toggle="tab">Principal</a></li>
+                        <li><a href="#personal" data-toggle="tab">Pessoal</a></li>
+                        <li><a href="#professional" data-toggle="tab">Profissional</a></li>
+                    </ul>
+                    <div class="tab-content" id="user">
+                        <div class="tab-pane fade" id="maintab">
+                            <p>Teste</p>
+                        </div>
+                        <div class="tab-pane fade" id="personal">
+                            <p>Teste2</p>
+                        </div>
+                        <div class="tab-pane fade" id="professional">
+                            <p>Teste3</p>
+                        </div>
+                    </div>-->
+                    <!--Listagem de usuarios-->
                     <h1>Usuários</h1>
                     <div class="options">
-                        <a href="#delete" class="print s-third"></a>
-                        <a href="#editar" class="create s-third"></a>
-                        <!--<p class="count">
-                            Total:<span></span>
-                        </div>-->
+                        <p class="count">
+                            Total:<span>10</span>
+                        </p>
+                        <a href="#print" class="print s-third"></a>
+                        <a href="#create" class="create s-third"></a>
                     </div>
                     <table class="table table-striped">
                         <thead class="adminHeader tnine">
                           <tr>
-                            <th>Código</th>
-                            <th>Nome</th>
-                            <th>Descrição</th>
+                            <th>Matrícula</th>
+                            <th>Nome completo</th>
+                            <th>Empresa</th>
+                            <th>Data de admissão</th>
+                            <th>Departamento</th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>Administrador</td>
-                                <td>Administrador do sistema</td>
+                                <td>10359</td>
+                                <td>Fabiano de Lima Abreu</td>
+                                <td>Faculdade Carlos Drummond de Andrade</td>
+                                <td>12/12/2012</td>
+                                <td>Tecnologia da Informação</td>
                                 <td class="actions">
-                                    
+                                    <a href="#delete" class="delete"></a>
+                                    <a href="#edit" class="edit"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10359</td>
+                                <td>Fabiano de Lima Abreu</td>
+                                <td>Faculdade Carlos Drummond de Andrade</td>
+                                <td>12/12/2012</td>
+                                <td>Tecnologia da Informação</td>
+                                <td class="actions">
+                                    <a href="#delete" class="delete"></a>
+                                    <a href="#edit" class="edit"></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -137,6 +172,13 @@
         <!--<script src="js/lib/spine/min.js"></script>
         <script data-main="js/app" src="js/lib/require-jquery.js"></script>-->
         <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript">
+            //Tabshow
+            $('#user a').click(function (e) {
+              e.preventDefault()
+              $(this).tab('show')
+            });
+        </script>
     <!--<![endif]-->
 </body>
 </html>

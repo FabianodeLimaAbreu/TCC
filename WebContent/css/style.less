@@ -73,7 +73,7 @@ body.noscroll{position: fixed; overflow: hidden; width: 100%;}
 header {
 	.relative;.w-all;height: 70px;background: url(../images/header_bkg.png);color: #1b171b;
 	a.logo{
-		.relative;width: 130px;height: @s-five;background: url(../images/logo.png)
+		.relative;width: 130px;height: @s-five;background: url(../images/logo.png);margin-top: 10px;
 	}
 	p#current-date{
 		position: absolute;top: 22px;height: auto;width: 350px;left: 50%;margin-left: -175px;font-size: 11pt;text-align: center;
@@ -165,6 +165,9 @@ nav{
 		}
 	}
 	.options{
+		.relative(right);
+		width: 200px;
+		height: auto;
 		a{
 			display: block;
 			background: url(../images/gui.png) no-repeat;
@@ -185,15 +188,55 @@ nav{
 			}
 		}
 		p{
-			display: block;
+			.relative(right);
+			margin: 0;
+			span{
+				color: @line;
+			}
 		}
 	}
 	table{
+		thead{
+			font-size: 10pt;
+		}
+		tbody{
+			font-size: 9pt;
+			max-height: 100px;
+			overflow-y: scroll;
+		}
 		.actions{
-			width: @s-five;
+			width: 75px;
 			a{
-				
-				
+				display: block;
+				background: url(../images/gui.png) no-repeat;
+				.relative(right);
+				width: 25px;
+				height: @s-third;
+				&.edit{
+					margin-right: 5px;
+					background-position: -70px -115px;
+					&:hover{
+						background-position: -100px -115px;
+					}
+				}
+				&.delete{
+					background-position: -135px -150px;
+					&:hover{
+						background-position: -135px -185px;
+					}
+				}	
+			}
+		}
+	}
+	.nav-tabs{
+		li{
+			a{
+				color: #fff;
+			}
+			&.active{
+				a{
+					color: #13498a;
+				}
 			}
 		}
 	}
@@ -203,6 +246,116 @@ footer{
 	.relative;.w-all;height: 30px;background: url(../images/footer_bkg.png);
 	p{
 		font-size: 9pt;.w-all;.relative;text-align: center;line-height: 23pt;color: @white;
+	}
+}
+
+/*Login page*/
+.login{
+	#container{
+		.content{
+			min-height: 560px;
+		}
+	}
+}
+
+.box{
+	width: 296px;
+	height: 190px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -95px;
+	margin-left: -148px;
+	font-size: 12pt;
+	form{
+		padding: 20px;
+		background: #6792c4;
+		input{
+			font-size: 10pt;
+			color: #d1d1d1;	
+		}
+		.input-group.first{
+			margin-bottom: 10px;
+		}
+		.submit-arrow{
+			background: url(../images/gui.png) -135px -70px no-repeat;
+			width: @ten;
+			height: @ten;
+			display: block;
+			position: absolute;
+			z-index: 99;
+			right: 15px;
+			top: 18px;
+		}
+		a.signin{
+			z-index: 9;
+			width: 44px;
+			display: table-cell;
+			height: 43px;
+			background: #13498a;
+			&::after{
+				content: "";
+				background: url(../images/gui.png) no-repeat;
+				background-position:-135px -70px;
+				width: @ten;
+				height: @ten;
+				display: block;
+				margin-left: 15px;
+				margin-top: 17px;
+			}
+		}
+		span{
+			&.submit{
+				padding: 0;
+			}
+			&.ico{
+				&::after{
+					content: "";
+					background: url(../images/gui.png) no-repeat;
+					width: @twelve;
+					display: block;
+					height: 15px;
+				}
+				&.numbermat{
+					&::after{
+						background-position: -90px -70px;
+					}
+				}
+				&.key{
+					&::after{
+						background-position: -90px -90px;
+					}	
+				}
+			}	
+		}
+	}
+	.arrow-down{
+		.relative;
+		width: 100%;
+		height: 10px;
+		span{
+			width: 20px;
+			height: 10px;
+			margin-left: 20px;
+			background: url(../images/gui.png) 0 -300px;
+			display: block;
+		}
+	}
+	p{
+		color: #13498a;
+		font-size: 11pt;
+		span{
+			.relative;
+			text-transform:uppercase;
+			font-size: 20pt;
+		}
+		a{
+			.relative(right);
+			text-transform: lowercase;
+			color: #13498a;
+			line-height: 30pt;
+			font-size: 10pt;
+		}
 	}
 }
 
