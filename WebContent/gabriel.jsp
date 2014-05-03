@@ -124,7 +124,7 @@
         <script data-main="js/app" src="js/lib/require-jquery.js"></script>-->
         <script type="text/javascript" src="js/bootstrap.js"></script>
         <script type="text/javascript">
-            var usuario={
+            var contato={
                 //Padrao de objeto
                 nome:"",
                 email:"",
@@ -134,12 +134,12 @@
                 a.preventDefault();
                 
                 //Seta valores no objeto
-                usuario.nome=$("input[name='nome'").val();
-                usuario.email=$("input[name='email'").val();
-                usuario.endereco=$("input[name='endereco'").val();
+                contato.nome=$("input[name='nome'").val();
+                contato.email=$("input[name='email'").val();
+                contato.endereco=$("input[name='endereco'").val();
 
                 //Chamando o serviço para cadastro do usuario
-                $.get("./adicionar",{'nome':usuario.nome,'email':usuario.email,'endereco':usuario.endereco});
+                $.get("./adicionar",{'nome':contato.nome,'email':contato.email,'endereco':contato.endereco});
             });
         </script>
     <!--<![endif]-->
