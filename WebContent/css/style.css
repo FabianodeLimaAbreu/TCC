@@ -271,6 +271,23 @@ nav ul.holder .dropdown > a#visitantes:focus::after {
 #container .nav-tabs li.active a {
   color: #13498a;
 }
+.tab-pane canvas {
+  position: relative;
+  float: left;
+  width: 378px;
+  height: 278px;
+  border: 1px solid #6792c4;
+}
+.tab-pane form {
+  position: relative;
+  float: right;
+  width: 520px;
+  height: auto;
+  border: 1px solid #ff0000;
+}
+.tab-pane form label {
+  font-size: 11pt;
+}
 footer {
   position: relative;
   float: left;
@@ -288,8 +305,29 @@ footer p {
   color: #ffffff;
 }
 /*Login page*/
+.login {
+  display: none;
+}
 .login #container .content {
   min-height: 560px;
+}
+.login .question-buttons {
+  margin-top: 35px;
+  width: 100%;
+}
+.login .question-buttons .bquestion {
+  background: #13498a;
+  color: #fff;
+  display: block;
+  position: relative;
+  float: right;
+  padding: 10px 20px;
+  font-size: 10pt;
+  margin-left: 10px;
+}
+.login .question-buttons .bquestion:hover {
+  text-decoration: none;
+  background: #062c5a;
 }
 .box {
   width: 296px;
@@ -329,6 +367,9 @@ footer p {
   height: 43px;
   background: #13498a;
 }
+.box form a.signin:hover {
+  background: #062c5a;
+}
 .box form a.signin::after {
   content: "";
   background: url(../images/gui.png) no-repeat;
@@ -348,12 +389,16 @@ footer p {
   width: 20px;
   display: block;
   height: 15px;
+  margin-top: 2px;
 }
 .box form span.ico.numbermat::after {
   background-position: -90px -70px;
 }
 .box form span.ico.key::after {
   background-position: -90px -90px;
+}
+.box form span.ico.email::after {
+  background-position: -130px -280px;
 }
 .box .arrow-down {
   position: relative;
@@ -376,15 +421,27 @@ footer p {
   position: relative;
   float: left;
   text-transform: uppercase;
-  font-size: 20pt;
+  font-size: 18pt;
 }
 .box p a {
   position: relative;
   float: right;
-  text-transform: lowercase;
+  text-transform: capitalize;
   color: #13498a;
-  line-height: 30pt;
+  line-height: 27pt;
   font-size: 10pt;
+}
+.box.loginop {
+  /*Caso esteja no formulario de login*/
+}
+.box.loginop .forgotform {
+  display: none;
+}
+.box.forgotop {
+  /*Caso esteja no formulario de esqueci a senha*/
+}
+.box.forgotop .loginform {
+  display: none;
 }
 .button {
   height: 30px;

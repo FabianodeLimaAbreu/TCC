@@ -242,6 +242,26 @@ nav{
 	}
 }
 
+.tab-pane{
+	canvas{
+		.relative;
+		width: 378px;
+		height: 278px;
+		border: 1px solid #6792c4;
+	}
+	form{
+		position: relative;
+		float: right;
+		width: 520px;
+		height: auto;
+		.bug;
+		label{
+			font-size: 11pt;
+		}
+	}
+}
+
+
 footer{
 	.relative;.w-all;height: 30px;background: url(../images/footer_bkg.png);
 	p{
@@ -251,9 +271,21 @@ footer{
 
 /*Login page*/
 .login{
+	display: none;
 	#container{
 		.content{
 			min-height: 560px;
+		}
+	}
+	.question-buttons{
+		margin-top: 35px;
+		width: 100%;
+		.bquestion{
+			background: #13498a;color: #fff;display: block;position: relative;float: right;padding: 10px 20px;font-size: 10pt;margin-left: 10px;
+			&:hover{
+				text-decoration: none;
+				background: #062c5a;
+			}
 		}
 	}
 }
@@ -293,6 +325,9 @@ footer{
 			display: table-cell;
 			height: 43px;
 			background: #13498a;
+			&:hover{
+				background: #062c5a;
+			}
 			&::after{
 				content: "";
 				background: url(../images/gui.png) no-repeat;
@@ -315,6 +350,7 @@ footer{
 					width: @twelve;
 					display: block;
 					height: 15px;
+					margin-top: 2px;
 				}
 				&.numbermat{
 					&::after{
@@ -325,6 +361,11 @@ footer{
 					&::after{
 						background-position: -90px -90px;
 					}	
+				}
+				&.email{
+					&::after{
+						background-position: -130px -280px;
+					}
 				}
 			}	
 		}
@@ -347,17 +388,30 @@ footer{
 		span{
 			.relative;
 			text-transform:uppercase;
-			font-size: 20pt;
+			font-size: 18pt;
 		}
 		a{
 			.relative(right);
-			text-transform: lowercase;
+			text-transform: capitalize;
 			color: #13498a;
-			line-height: 30pt;
+			line-height: 27pt;
 			font-size: 10pt;
 		}
 	}
+	&.loginop{
+		/*Caso esteja no formulario de login*/
+		.forgotform{
+			display: none;
+		}
+	}
+	&.forgotop{
+		/*Caso esteja no formulario de esqueci a senha*/
+		.loginform{
+			display: none;
+		}
+	}
 }
+
 
 //Button
 .button{height:@s-third; font-weight:300; min-width: @s-third; float:left; background: url(../images/gui.png) no-repeat; text-align:left; color:#FFF; cursor:pointer; outline: none; border: none;box-shadow:none}

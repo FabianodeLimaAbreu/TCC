@@ -46,35 +46,55 @@
         </header>
         <div id="container">
             <div class="content holder">
-                <!--Logar
+                <!--Logar-->
 
                 <div class="box">
-                    <form action="" role="form">
+                    <form action="" role="form" class="loginform">
+                        <!--Login-->
                         <div class="input-group first">
                           <span class="input-group-addon  ico numbermat"></span>
-                          <input type="number" class="form-control" placeholder="Número da matricula" name="numbermat">
+                          <input type="number" class="form-control" placeholder="Número da matricula" name="numbermat" required>
                         </div>
                         <div class="input-group">
                           <span class="input-group-addon ico key"></span>
-                          <input type="password" class="form-control" name="password" placeholder="Senha">
+                          <input type="password" class="form-control" name="password" placeholder="Senha" required>
                           <span class="input-group-addon submit"><a href="#submit" class="signin"></a></span>
+                        </div>
+                    </form>
+                    <form action="" role="form" class="forgotform">
+                        <!--esqueceu a senha-->
+                        <div class="input-group">
+                          <span class="input-group-addon  ico email"></span>
+                          <input type="email" class="form-control" placeholder="Email" name="email" required>
+                        </div>
+                        <div class="input-group question-buttons">
+                            <a href="#forgot" class="bquestion forgot">Continuar</a>
+                            <a href="#back" class="bquestion back">Voltar</a>
                         </div>
                     </form>
                     <div class="arrow-down">
                         <span></span>
                     </div>
-                    <p>
-                        <span>logar</span><a href="#forget">esqueceu a senha?</a>
+                    <p class="loginform">
+                        <span>logar</span><a href="#forget" class="bforgot">esqueceu a senha?</a>
                     </p>
-                </div>-->
+                    <p class="forgotform">
+                        <span>Esqueci a senha</span><a href="#login" class="blogin">Logar</a>
+                    </p>
+                </div>
 
+                <!--Esqueci a senha
+                    
                 <div class="box">
                     <form action="" role="form">
                         <div class="input-group">
-                          <span class="input-group-addon  ico numbermat"></span>
-                          <input type="email" class="form-control" placeholder="Email" name="email">
+                          <span class="input-group-addon  ico email"></span>
+                          <input type="email" class="form-control" placeholder="Email" name="email" required>
                         </div>
-                        
+                        <div class="input-group question-buttons">
+                            <a href="#forgot" class="bquestion forgot">Continuar</a>
+                            <a href="#back" class="bquestion back">Voltar</a>
+                        </div>
                     </form>
                     <div class="arrow-down">
                         <span></span>
@@ -82,42 +102,32 @@
                     <p>
                         <span>Esqueci a senha</span><a href="#login">Logar</a>
                     </p>
-                </div>
+                </div>-->
 
             </div>
         </div>
         <footer>
             <p>Copyright © 2014 - Software of control - Todos os direitos reservados</p>
         </footer>  
-         <div id="modal" class="hide">
+        <div id="modal" class="hide">
             <div class="modal-content">
-                <a href="#close" class="button s-third"></a>
+                <a href="#close" class="bclose s-third neat"></a><span class="big-icon"></span>
                 <div class="modal-text">
-                    <span class="big-icon"></span>
-                    <div class="aviso">
-                        <h2></h2>
-                        <p></p>
-                        <div class="dialog">
-                            <a href="home.jsp">Sim</a>
-                            <a href="#no">Não</a>
-                        </div>
-                    </div>
+                    <h2>Tem certeza que deseja remover este artigo da promoção?</h2>
+                    <p></p>
+                </div>
+                <div class="modal-buttons">
+                    <a href="#yes" class="bquestion yes">Sim</a>
+                    <a href="#no" class="bquestion">Não</a>
                 </div>
             </div>
-        </div> 
+      </div> 
     </div>
     <!--[if !IE]>-->
         <script src="js/lib/jquery.min.js"></script>
-        <!--<script src="js/lib/spine/min.js"></script>
-        <script data-main="js/app" src="js/lib/require-jquery.js"></script>-->
+        <script src="js/lib/spine/min.js"></script>
+        <script data-main="js/login" src="js/lib/require-jquery.js"></script>-->
         <script type="text/javascript" src="js/bootstrap.js"></script>
-        <script type="text/javascript">
-            //Tabshow
-            $('#user a').click(function (e) {
-              e.preventDefault()
-              $(this).tab('show')
-            });
-        </script>
     <!--<![endif]-->
 </body>
 </html>

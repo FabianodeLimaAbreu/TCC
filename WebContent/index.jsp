@@ -82,7 +82,7 @@
         <div id="container">
             <div class="content holder">
                 <div id="tab-perfil">
-                    <!--<h1>Cadastro de usuário</h1>
+                    <!----><h1>Cadastro de usuário</h1>
                     <ul class="nav nav-tabs" id="cad-user">
                         <li class="active"><a href="#maintab" data-toggle="tab">Principal</a></li>
                         <li><a href="#personal" data-toggle="tab">Pessoal</a></li>
@@ -90,16 +90,35 @@
                     </ul>
                     <div class="tab-content" id="user">
                         <div class="tab-pane fade" id="maintab">
-                            <p>Teste</p>
+                            <canvas></canvas>
+                            <form action="" role="form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Nome completo" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Nome abreviado" name="abrname" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="So cobrir espaço por enquanto" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="datecard" class="col-sm-2 control-label">Data de validade do cartão:</label>
+                                    <div class="col-sm-10">
+                                      <input type="date" class="form-control" name="datecard" placeholder="Data de validade do cartão">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="password" placeholder="Senha">
+                                </div>
                         </div>
                         <div class="tab-pane fade" id="personal">
                             <p>Teste2</p>
                         </div>
                         <div class="tab-pane fade" id="professional">
-                            <p>Teste3</p>
-                        </div>
-                    </div>-->
-                    <!--Listagem de usuarios-->
+                            </form>
+                        </div>  
+                    </div>
+                    <!--Listagem de usuarios
                     <h1>Usuários</h1>
                     <div class="options">
                         <p class="count">
@@ -143,7 +162,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table>-->
                 </div>
             </div>
         </div>
