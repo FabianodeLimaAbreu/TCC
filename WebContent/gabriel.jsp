@@ -139,7 +139,7 @@
                 usuario.endereco=$("input[name='endereco'").val();
 
                 //Chamando o serviço para cadastro do usuario
-                $.get("./send",{'nome':usuario.nome,'email':usuario.email,'endereco':usuario.endereco});
+                $.get("./adicionar",{'nome':usuario.nome,'email':usuario.email,'endereco':usuario.endereco});
             });
         </script>
     <!--<![endif]-->
