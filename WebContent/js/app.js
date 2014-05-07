@@ -16,29 +16,94 @@ require(["methods", "sp/min", "app/content"], function() {
 	window.App = Spine.Controller.sub({
 		el: $("body"),
 		elements: {
-			
+			"#container .content":"contentEl"
 		},
 		events: {
-			
+			"click .print":"print",
 		},
 		init: function() {
-			mobilecheck() && $(document.body).addClass("mobile");
+			this.xml="";
 			this.loading = !1;
-			this.page = "home";
-			this.usr = jQuery.parseJSON($.cookie("portal"));
+			this.page = "Home";
+			this.getxml();
+			window.location="#"
+			/*this.usr = jQuery.parseJSON($.cookie("portal"));
 			if (!this.usr) {
 				return this.logout(), !1;
-			}
+			}*/
 			//this.userTx.text(this.usr.Nome.capitalize());
+			
 			this.el.find("#wrap").removeClass("hide");
 			this.content = new Content({
 				
 			});
 			this.routes({
-				"": function() {
-					
-				}
+				"Usuarios/*func": function(a) {
+					//Listagem de usuarios
+					this.page="Usuarios";
+					this.loaddata(a.func);
+				},
+				"Usuario/*mat":function(a){
+					//Edições do usuario
+					this.page="Usuarios";
+					this.loaddata(a.func);
+					if(-1 !== a.mat.indexOf("edit")){
+						this.edit(a.mat.replace("edit",""));
+					}
+					else{
+						this.del(a.mat.replace("del",""));
+					}
+				},
+				"Perfil/*func": function(a) {
+					//Listagem de usuarios
+					this.page="Perfil";
+					this.loaddata(a.func);
+				},
 			});
+		},
+		callservice:function(obj,logic){
+			obj.logica=logic; //Oque sera feito com a tabela
+            obj.table=this.page; //tabela que sera afetada, a mesma que a pagina atual
+            $.get("./mvc",obj)
+            .error(function(){
+            	alert("Não foi realizar a operação");
+            })
+            .success(function(){
+            	alert("Operação realizada com sucesso");
+            });
+		},
+		getxml:function(){
+			var context=this;
+			$.ajax({
+	            //verifica se existe o xml para load das paginas
+	             type:"GET",
+	             url:"load.xml",
+	             dataType:"xml",
+	             success:function(e){
+	                 context.xml=$(e).find("entry");
+	             }
+		    });
+		},
+		loaddata:function(load){
+			var context=this;
+			this.xml.each(function(){
+	            if($(this).attr("name")===context.page){
+	               context.contentEl.html($(this).find(load).text());
+	            }
+	        });
+			this.contentEl.fadeIn();
+		},
+		print:function(a){
+			a.preventDefault();
+			window.print();
+		},
+		edit:function(mat){
+			var mat=parseInt(mat);
+			this.callservice({"matricula":mat},"editar");
+		},
+		del:function(mat){
+			var mat=parseInt(mat);
+			this.callservice({"matricula":mat},"deletar");
 		},
 
 		/**
@@ -55,9 +120,4 @@ require(["methods", "sp/min", "app/content"], function() {
 	});
 	new App; //Creates application
 	Spine.Route.setup(); //Enables @route
-	$(window).bind("orientationchange", function(a, c) {
-		var d = null != navigator.userAgent.match(/iPad/i);
-		d && c && 90 != Math.abs(window.orientation) || d && 90 != Math.abs(window.orientation) ? $(document.body).addClass("portrait") : $(document.body).removeClass("portrait");
-	});
-	$(window).trigger("orientationchange", !0);
 });

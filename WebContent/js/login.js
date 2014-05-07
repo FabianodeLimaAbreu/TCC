@@ -5,7 +5,7 @@ require(["methods", "sp/min", "app/content"], function() {
    , elements:{
        "#modal":"modalEl", ".login input":"inputs",".box":"box"
   }, events:{
-      "click .signin":"submit", "click .login .back":"getout","click .blogin":"getout","click .bforgot":"goforgot"
+      "click .signin":"submit", "click .login .back":"getout","click .blogin":"getout","click .bforgot":"goforgot","click .forgot":"submitforgot"
   }, init:function() {
     this.hash = window.location.hash.split('#')[1];
     //this.usr = jQuery.parseJSON($.cookie("portal"));
@@ -24,25 +24,52 @@ require(["methods", "sp/min", "app/content"], function() {
     a.preventDefault();
     this.box.removeClass("loginop").addClass("forgotop");
   },
+  submitforgot:function(a){
+    a.preventDefault();
+    var complet,inputs, e = this;
+    inputs = $("form.forgotform").find(".form-control");
+    $(inputs).each(function(index,val){
+      complet = !1;
+      if("email" === $(val).attr("name")  && (!val.value || val.value==="Email")) {
+        return alert("Campo de email vazio");
+        //return e.modal.open("Campo obrigat\u00f3rio n\u00e3o preenchido", "E-Mail inv\u00e1lido!", !0), !1;
+      }
+      complet = !0;
+    });
+    complet && $.get("./mvc",{'matricula':$("form input[name='numbermat']").val(),'password':$("form input[name='password']").val()})
+    .error(function(){
+      alert("Não foi possivel enviar senha");
+    })
+    .success(function(){
+      alert("Senha enviada por email");
+    });
+  },
   submit:function(a) {
     a.preventDefault();
-    var b,a, f = [], g, e = this;
-    a = $("form.loginop").find(".form-control");
-    console.log(a.length);
-    /*$.each(a, function(a, c) {
-      b = !1;
-      if("login" === a  && !c) {
-        return e.modal.open("Campo obrigat\u00f3rio n\u00e3o preenchido", "E-Mail inv\u00e1lido!", !0), !1;
+    var complet,inputs, e = this;
+    inputs = $("form.loginform").find(".form-control");
+    $(inputs).each(function(index,val){
+      complet = !1;
+      if("numbermat" === $(val).attr("name")  && (!val.value || val.value==="Número da matricula")) {
+        return alert("Campo de matricula vazio");
+        //return e.modal.open("Campo obrigat\u00f3rio n\u00e3o preenchido", "E-Mail inv\u00e1lido!", !0), !1;
       }
-      if("password" === a && !c) {
-         return e.modal.open("Campo obrigat\u00f3rio n\u00e3o preenchido", "Senha inv\u00e1lida!", !0), !1;
+      if("password" === $(val).attr("name") && (!val.value || val.value==="Senha")) {
+        return alert("Campo de senha vazio");
+         //return e.modal.open("Campo obrigat\u00f3rio n\u00e3o preenchido", "Senha inv\u00e1lida!", !0), !1;
       }
-      f.push(c);
-      b = !0;
+      complet = !0;
+    })
+    complet && $.get("./mvc",{'matricula':$("form input[name='numbermat']").val(),'password':$("form input[name='password']").val()})
+    .error(function(){
+      alert("Não foi possivel efetuar o login");
+    })
+    .success(function(){
+      alert("Usuario cadastrado com sucesso");
     });
-    f = f.join("/");
-    b && $.getJSON(this.url + f + "?callback=?", this.proxy(function(a) {
-        if(a.TIPO && null !== a.TIPO) {
+        
+
+        /*if(a.TIPO && null !== a.TIPO) {
             $.cookie.json = true;
             $.cookie('portal',a,{expires: 7, path: '/'});
             window.location.href = './' + window.location.hash;

@@ -126,8 +126,8 @@
     <!--[if !IE]>-->
         <script src="js/lib/jquery.min.js"></script>
         <script src="js/lib/spine/min.js"></script>
-        <script data-main="js/login" src="js/lib/require-jquery.js"></script>-->
         <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script data-main="js/login" src="js/lib/require-jquery.js"></script>   
     <!--<![endif]-->
 </body>
 </html>
