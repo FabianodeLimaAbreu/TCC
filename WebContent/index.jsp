@@ -62,7 +62,7 @@
                     <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="#Perfil/list">Perfil</a></li>
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Departamento</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Usuarios/cad">Feriados</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Feriados/list">Feriados</a></li>
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="#Usuarios/list">Usuários</a></li>
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Operadores</a></li>
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Empresas</a></li>
@@ -87,51 +87,7 @@
         </nav>
         <div id="container" class="imprimir">
             <div class="content holder">
-                <h1>Feriados</h1>
-                <div class="options">
-                    <p class="count">
-                        Total:<span>10</span>
-                    </p>
-                    <a href="#print" class="print s-third"></a>
-                    <a href="#create" class="create s-third"></a>
-                </div>
-                <table class="table table-striped">
-                    <thead class="adminHeader tnine">
-                      <tr>
-                        <th>Matrícula</th>
-                        <th>Nome completo</th>
-                        <th>Empresa</th>
-                        <th>Data de admissão</th>
-                        <th>Departamento</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>10359</td>
-                            <td>Fabiano de Lima Abreu</td>
-                            <td>Faculdade Carlos Drummond de Andrade</td>
-                            <td>12/12/2012</td>
-                            <td>Tecnologia da Informação</td>
-                            <td class="actions">
-                                <a href="#delete" class="delete"></a>
-                                <a href="#edit" class="edit"></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>10359</td>
-                            <td>Fabiano de Lima Abreu</td>
-                            <td>Faculdade Carlos Drummond de Andrade</td>
-                            <td>12/12/2012</td>
-                            <td>Tecnologia da Informação</td>
-                            <td class="actions">
-                                <a href="#delete" class="delete"></a>
-                                <a href="#edit" class="edit"></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
+                
             </div>
         </div>
         <footer class="notprint">

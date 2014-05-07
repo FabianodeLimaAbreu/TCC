@@ -199,6 +199,35 @@ nav ul.holder .dropdown > a#visitantes:focus::after {
 #container .content h1 {
   text-align: center;
 }
+#container .content form .date {
+  width: 195px;
+}
+#container .content form .finishform {
+  position: relative;
+  float: left;
+  width: 100%;
+  margin-top: 70px;
+  height: 40px;
+}
+#container .content form .finishform a {
+  display: block;
+  background: url(../images/gui.png) no-repeat;
+  position: relative;
+  float: right;
+}
+#container .content form .finishform a.cancel {
+  margin-right: 5px;
+  background-position: 0 -150px;
+}
+#container .content form .finishform a.cancel:hover {
+  background-position: -45px -150px;
+}
+#container .content form .finishform a.submit {
+  background-position: 0 -70px;
+}
+#container .content form .finishform a.submit:hover {
+  background-position: -45px -70px;
+}
 #container .options {
   position: relative;
   float: right;

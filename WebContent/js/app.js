@@ -20,6 +20,8 @@ require(["methods", "sp/min", "app/content"], function() {
 		},
 		events: {
 			"click .print":"print",
+			"click .delete":"del",
+			"click .edit":"edit"
 		},
 		init: function() {
 			this.xml="";
@@ -43,17 +45,13 @@ require(["methods", "sp/min", "app/content"], function() {
 					this.page="Usuarios";
 					this.loaddata(a.func);
 				},
-				"Usuario/*mat":function(a){
-					//Edições do usuario
-					this.page="Usuarios";
+
+				"Feriados/*func": function(a) {
+					//Listagem de usuarios
+					this.page="Feriados";
 					this.loaddata(a.func);
-					if(-1 !== a.mat.indexOf("edit")){
-						this.edit(a.mat.replace("edit",""));
-					}
-					else{
-						this.del(a.mat.replace("del",""));
-					}
-				},
+				},	
+
 				"Perfil/*func": function(a) {
 					//Listagem de usuarios
 					this.page="Perfil";
@@ -97,13 +95,15 @@ require(["methods", "sp/min", "app/content"], function() {
 			a.preventDefault();
 			window.print();
 		},
-		edit:function(mat){
-			var mat=parseInt(mat);
-			this.callservice({"matricula":mat},"editar");
+		edit:function(a){
+			a.preventDefault();
+			var cod=parseInt($(a.target).attr("href").replace("#",""));
+			this.callservice({"codigo":cod},"editar");
 		},
-		del:function(mat){
-			var mat=parseInt(mat);
-			this.callservice({"matricula":mat},"deletar");
+		del:function(a){
+			a.preventDefault();
+			var cod=parseInt($(a.target).attr("href").replace("#",""));
+			this.callservice({"codigo":cod},"deletar");
 		},
 
 		/**

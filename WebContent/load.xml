@@ -30,8 +30,8 @@
                             <td>12/12/2012</td>
                             <td>Tecnologia da Informação</td>
                             <td class="actions">
-                                <a href="#Usuario/del10359" class="delete"></a>
-                                <a href="#Usuario/edit10359" class="edit"></a>
+                                <a href="#10359" class="delete"></a>
+                                <a href="#10359" class="edit"></a>
                             </td>
                         </tr>
                         <tr>
@@ -41,8 +41,8 @@
                             <td>12/12/2012</td>
                             <td>Tecnologia da Informação</td>
                             <td class="actions">
-                                <a href="#delete" class="delete"></a>
-                                <a href="#edit" class="edit"></a>
+                                <a href="#10359" class="delete"></a>
+                                <a href="#10359" class="edit"></a>
                             </td>
                         </tr>
                     </tbody>
@@ -91,4 +91,67 @@
 			]]>
 		</cadastro>
 	</entry>
+    <entry name="Feriados">
+        <list>
+            <![CDATA[
+                <h1>Feriados</h1>
+                <div class="options">
+                    <p class="count">
+                        Total:<span>10</span>
+                    </p>
+                    <a href="#print" class="print s-third"></a>
+                    <a href="#Feriados/cadastro" class="create s-third"></a>
+                </div>
+                <table class="table table-striped imprimir">
+                    <thead class="adminHeader tnine">
+                      <tr>
+                        <th>Código</th>
+                        <th>Descrição</th>
+                        <th>Data</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Confraternização Universal</td>
+                            <td>01/01/2014</td>
+                            <td class="actions">
+                                <a href="#1" class="delete"></a>
+                                <a href="#1" class="edit"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Carnaval</td>
+                            <td>04/02/2014</td>
+                            <td class="actions">
+                                <a href="#2" class="delete"></a>
+                                <a href="#2" class="edit"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            ]]>
+        </list>
+        <cadastro>
+            <![CDATA[
+                <h1>Cadastro de Feriados</h1>
+                <form role="form" action="">
+                  <div class="form-group">
+                    <label for="date">Data</label>
+                    <input type="text" class="form-control date" name="date">
+                  </div>
+                  <div class="form-group">
+                    <label for="descr">Descrição</label>
+                    <input type="text" class="form-control" name="descr">
+                  </div>
+                  <div class="finishform">
+                        <a href="#submit" class="submit s-quad"></a>
+                        <a href="#cancel" class="cancel s-quad"></a>
+                  </div>
+                <form>
+            ]]>
+        </cadastro>    
+    </entry>
 </main>
