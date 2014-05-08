@@ -60,32 +60,27 @@
                 <li class="dropdown">
                     <a id="gerais" role="button" data-toggle="dropdown" href="#">Gerais <b class="caret"></b></a>
                     <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-<<<<<<< HEAD
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Perfil/list">Perfil</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Departamento</a></li>
-=======
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Perfis/list">Perfil</a></li> <!--Falta-->
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Perfis/list">Perfil</a></li>
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="#Departamentos/list">Departamento</a></li>
->>>>>>> 8b110025bc555557e5d8381f62ed06446df919f5
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="#Feriados/list">Feriados</a></li>
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="#Usuarios/list">Usuários</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Operadores/list">Operadores</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Empresas/list">Empresas</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Operadores</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Empresas</a></li>
                     </ul>
                   </li>
                   <li class="dropdown">
                     <a id="acesso" role="button" data-toggle="dropdown" href="#">Acesso <b class="caret"></b></a>
                     <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Faixas/list">Faixas de Acesso</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Zonas/list">Zonas de Acesso</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Faixas de Acesso</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Zonas de Acesso</a></li>
                     </ul>
                   </li>
                   <li class="dropdown">
                     <a id="visitantes" role="button" data-toggle="dropdown" href="#">Visitantes <b class="caret"></b></a>
                     <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Status/list">Status</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Especiais/list">Especial</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Visitantes/list">Controle de Visitantes</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Status </a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Especial</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Controle de Visitantes</a></li>
                     </ul>
                   </li>
             </ul>

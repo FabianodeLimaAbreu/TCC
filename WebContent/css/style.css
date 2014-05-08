@@ -195,9 +195,13 @@ nav ul.holder .dropdown > a#visitantes:focus::after {
 #container .content {
   height: auto;
   min-height: 480px;
+  display: none;
 }
 #container .content h1 {
   text-align: center;
+}
+#container .content .biglogo {
+  margin: 130px 245px;
 }
 #container .content form .date {
   width: 195px;
@@ -206,7 +210,7 @@ nav ul.holder .dropdown > a#visitantes:focus::after {
   position: relative;
   float: left;
   width: 100%;
-  margin-top: 70px;
+  margin-top: 20px;
   height: 40px;
 }
 #container .content form .finishform a {

@@ -57,6 +57,26 @@ require(["methods", "sp/min", "app/content"], function() {
 					this.page="Perfil";
 					this.loaddata(a.func);
 				},
+				"": function() {
+					this.page = "Home";
+					var context=this;
+					$.ajax({
+			            //verifica se existe o xml para load das paginas
+			             type:"GET",
+			             url:"load.xml",
+			             dataType:"xml",
+			             success:function(e){
+			                context.xml=$(e).find("entry");
+			                context.xml.each(function(){
+					            if($(this).attr("name")==="Home"){
+					               context.contentEl.html($(this).find("list").text());
+					            }
+					        });
+							context.contentEl.fadeIn();
+			             }
+				    });
+					this
+				}
 			});
 		},
 		callservice:function(obj,logic){
@@ -115,7 +135,6 @@ require(["methods", "sp/min", "app/content"], function() {
 		*/
 
 		reset: function(nothome) {
-			
 		}
 	});
 	new App; //Creates application
