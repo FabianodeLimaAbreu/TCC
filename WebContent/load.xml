@@ -1,11 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"  standalone="yes"?>
 <main>
+
+    <!--Dropdown 1-->
     <entry name="Home">
         <list>
             <![CDATA[
                 <img src="images/logo_big.png" height="174" width="450" alt="SFOC" title="SFOC" class="biglogo">
             ]]>
         </list>
+    </entry>
+    <entry name="Perfis">
+        <list>
+            <![CDATA[
+                <h1>Empresas</h1>
+                <div class="options">
+                    <p class="count">
+                        Total:<span>10</span>
+                    </p>
+                    <a href="#print" class="print s-third"></a>
+                    <a href="#Perfis/cadastro" class="create s-third"></a>
+                </div>
+                <table class="table table-striped imprimir">
+                    <thead class="adminHeader tnine">
+                      <tr>
+                        <th>Código</th>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Administrador</td>
+                            <td>O administrador do sistema. Possui acesso completo</td>
+                            <td class="actions">
+                                <a href="#1" class="delete"></a>
+                                <a href="#1" class="edit"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Operador</td>
+                            <td>Operador comum do sistema. Possui acesso basico ao sistema.</td>
+                            <td class="actions">
+                                <a href="#2" class="delete"></a>
+                                <a href="#2" class="edit"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            ]]>
+        </list>
+        <cadastro>
+            <![CDATA[
+                
+            ]]>
+        </cadastro>
     </entry>
 	<entry name="Usuarios">
 		<list>
@@ -205,6 +256,295 @@
             <![CDATA[
                 
             ]]>
-        </cadastro>    
+        </cadastro>  
+    </entry>
+    <entry name="Operadores">
+        <list>
+            <![CDATA[
+                <h1>Operadores</h1>
+                <div class="options">
+                    <p class="count">
+                        Total:<span>10</span>
+                    </p>
+                    <a href="#print" class="print s-third"></a>
+                    <a href="#Operadores/cadastro" class="create s-third"></a>
+                </div>
+                <table class="table table-striped imprimir">
+                    <thead class="adminHeader tnine">
+                      <tr>
+                        <th>Código</th>
+                        <th>Nome</th>
+                        <th>Senha</th>
+                        <th>Perfil</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Fabiano de Lima Abreu</td>
+                            <td>123456fab</td>
+                            <td>Administrador</td>
+                            <td class="actions">
+                                <a href="#1" class="delete"></a>
+                                <a href="#1" class="edit"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Fabiano de Lima Abreu</td>
+                            <td>564gfdsd</td>
+                            <td>Operador</td>
+                            <td class="actions">
+                                <a href="#2" class="delete"></a>
+                                <a href="#2" class="edit"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            ]]>
+        </list>
+        <cadastro>
+            <![CDATA[
+                
+            ]]>
+        </cadastro>
+    </entry>
+    <entry name="Empresas">
+        <list>
+            <![CDATA[
+                <h1>Empresas</h1>
+                <div class="options">
+                    <p class="count">
+                        Total:<span>10</span>
+                    </p>
+                    <a href="#print" class="print s-third"></a>
+                    <a href="#Empresas/cadastro" class="create s-third"></a>
+                </div>
+                <table class="table table-striped imprimir">
+                    <thead class="adminHeader tnine">
+                      <tr>
+                        <th>Código</th>
+                        <th>Razão Social</th>
+                        <th>Nome Fantasia</th>
+                        <th>Telefone Principal</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Excim Importação e Exportação</td>
+                            <td>Focus Têxtil</td>
+                            <td>(11) 9999-9999</td>
+                            <td class="actions">
+                                <a href="#1" class="delete"></a>
+                                <a href="#1" class="edit"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Excim Importação e Exportação</td>
+                            <td>Focus Têxtil</td>
+                            <td>(11) 9999-9999</td>
+                            <td class="actions">
+                                <a href="#2" class="delete"></a>
+                                <a href="#2" class="edit"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            ]]>
+        </list>
+        <cadastro>
+            <![CDATA[
+                
+            ]]>
+        </cadastro>
+    </entry>
+
+    <!--Dropdown 2-->
+    <entry name="Faixas">
+        <list>
+            <![CDATA[
+                <h1>Faixas</h1>
+                <div class="options">
+                    <p class="count">
+                        Total:<span>10</span>
+                    </p>
+                    <a href="#print" class="print s-third"></a>
+                    <a href="#Faixas/cadastro" class="create s-third"></a>
+                </div>
+                <table class="table table-striped imprimir">
+                    <thead class="adminHeader tnine">
+                      <tr>
+                        <th>Código</th>
+                        <th>Horário de Inicio</th>
+                        <th>Horário de Fim</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>08:00 hrs</td>
+                            <td>17:00 hrs</td>
+                            <td class="actions">
+                                <a href="#1" class="delete"></a>
+                                <a href="#1" class="edit"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>10:00 hrs</td>
+                            <td>17:00 hrs</td>
+                            <td class="actions">
+                                <a href="#2" class="delete"></a>
+                                <a href="#2" class="edit"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            ]]>
+        </list>
+        <cadastro>
+            <![CDATA[
+                
+            ]]>
+        </cadastro>
+    </entry>
+    <entry name="Zonas">
+        <list>
+            <![CDATA[
+                <h1>Zonas de Tempo</h1>
+                <div class="options">
+                    <p class="count">
+                        Total:<span>10</span>
+                    </p>
+                    <a href="#print" class="print s-third"></a>
+                    <a href="#Zonas/cadastro" class="create s-third"></a>
+                </div>
+                <table class="table table-striped imprimir">
+                    <thead class="adminHeader tnine">
+                      <tr>
+                        <th>Código</th>
+                        <th>Descrição</th>
+                        <th>Departamento</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Teste</td>
+                            <td>Departamento</td>
+                            <td class="actions">
+                                <a href="#1" class="delete"></a>
+                                <a href="#1" class="edit"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Teste2</td>
+                            <td>08:00 hrs</td>
+                            <td class="actions">
+                                <a href="#2" class="delete"></a>
+                                <a href="#2" class="edit"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            ]]>
+        </list>
+        <cadastro>
+            <![CDATA[
+                
+            ]]>
+        </cadastro>
+    </entry>
+
+    <!--DROPDOWN 3-->
+    <entry name="Status">
+        <list>
+            <![CDATA[
+                <h1>Status</h1>
+            ]]>
+        </list>
+        <cadastro>
+            <![CDATA[
+                
+            ]]>
+        </cadastro>
+    </entry>
+
+    <entry name="Especiais">
+        <list>
+            <![CDATA[
+                <h1>Especiais</h1>
+                
+            ]]>
+        </list>
+        <cadastro>
+            <![CDATA[
+                
+            ]]>
+        </cadastro>
+    </entry>
+    <entry name="Visitantes">
+        <list>
+            <![CDATA[
+                <h1>Visitantes</h1>
+                <div class="options">
+                    <p class="count">
+                        Total:<span>10</span>
+                    </p>
+                    <a href="#print" class="print s-third"></a>
+                    <a href="#Visitantes/cadastro" class="create s-third"></a>
+                </div>
+                <table class="table table-striped imprimir">
+                    <thead class="adminHeader tnine">
+                      <tr>
+                        <th>Código</th>
+                        <th>Nome</th>
+                        <th>Empresa</th>
+                        <th>Assunto</th>
+                        <th>Observação</th>
+                        <th>Departamento</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Fabiano de Lima Abreu</td>
+                            <td>Focus Têxtil</td>
+                            <td>Consultoria TI</td>
+                            <td>Realizar consultoria de TI</td>
+                            <td>Tecnologia da Informação</td>
+                            <td class="actions">
+                                <a href="#1" class="delete"></a>
+                                <a href="#1" class="edit"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Fabiano de Lima Abreu</td>
+                            <td>Focus Têxtil</td>
+                            <td>Consultoria TI</td>
+                            <td>Realizar consultoria de TI</td>
+                            <td>Tecnologia da Informação</td>
+                            <td class="actions">
+                                <a href="#2" class="delete"></a>
+                                <a href="#2" class="edit"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            ]]>
+        </list>
+        <cadastro>
+            <![CDATA[
+                
+            ]]>
+        </cadastro>
     </entry>
 </main>
