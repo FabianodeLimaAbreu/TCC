@@ -12,7 +12,7 @@
     <entry name="Perfis">
         <list>
             <![CDATA[
-                <h1>Empresas</h1>
+                <h1>Perfis</h1>
                 <div class="options">
                     <p class="count">
                         Total:<span>10</span>
@@ -327,7 +327,7 @@
                         <th>Código</th>
                         <th>Razão Social</th>
                         <th>Nome Fantasia</th>
-                        <th>Telefone Principal</th>
+                        <th>Telefone</th>
                         <th></th>
                       </tr>
                     </thead>
@@ -429,7 +429,6 @@
                       <tr>
                         <th>Código</th>
                         <th>Descrição</th>
-                        <th>Departamento</th>
                         <th></th>
                       </tr>
                     </thead>
@@ -437,7 +436,6 @@
                         <tr>
                             <td>1</td>
                             <td>Teste</td>
-                            <td>Departamento</td>
                             <td class="actions">
                                 <a href="#1" class="delete"></a>
                                 <a href="#1" class="edit"></a>
@@ -446,7 +444,6 @@
                         <tr>
                             <td>2</td>
                             <td>Teste2</td>
-                            <td>08:00 hrs</td>
                             <td class="actions">
                                 <a href="#2" class="delete"></a>
                                 <a href="#2" class="edit"></a>
@@ -510,6 +507,7 @@
                         <th>Assunto</th>
                         <th>Observação</th>
                         <th>Departamento</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>

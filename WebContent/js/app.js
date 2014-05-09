@@ -52,11 +52,57 @@ require(["methods", "sp/min", "app/content"], function() {
 					this.loaddata(a.func);
 				},	
 
-				"Perfil/*func": function(a) {
+				"Perfis/*func": function(a) {
 					//Listagem de usuarios
-					this.page="Perfil";
+					this.page="Perfis";
 					this.loaddata(a.func);
 				},
+				"Departamentos/*func": function(a) {
+					//Listagem de usuarios
+					this.page="Departamentos";
+					this.loaddata(a.func);
+				},
+				"Operadores/*func": function(a) {
+					//Listagem de usuarios
+					this.page="Operadores";
+					this.loaddata(a.func);
+				},
+				"Empresas/*func": function(a) {
+					//Listagem de usuarios
+					this.page="Empresas";
+					this.loaddata(a.func);
+				},
+
+				/*DROPDOWN 2**/
+				"Faixas/*func": function(a) {
+					//Listagem de usuarios
+					this.page="Faixas";
+					this.loaddata(a.func);
+				},
+				"Zonas/*func": function(a) {
+					//Listagem de usuarios
+					this.page="Zonas";
+					this.loaddata(a.func);
+				},
+
+				/*DROPDOWN 3*/
+				"Status/*func": function(a) {
+					//Listagem de usuarios
+					this.page="Status";
+					this.loaddata(a.func);
+				},
+				"Especiais/*func": function(a) {
+					//Listagem de usuarios
+					this.page="Especiais";
+					this.loaddata(a.func);
+				},
+				"Visitantes/*func": function(a) {
+					//Listagem de usuarios
+					this.page="Visitantes";
+					this.loaddata(a.func);
+				},
+
+				/*HOME*/
 				"": function() {
 					this.page = "Home";
 					var context=this;
