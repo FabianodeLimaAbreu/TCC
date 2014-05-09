@@ -90,6 +90,9 @@
                 
             </div>
         </div>
+        <div class="mask">
+            <img src="../images/loader.gif" class="loader">
+        </div>
         <footer class="notprint">
             <p>Copyright © 2014 - Software of control - Todos os direitos reservados</p>
         </footer>  
@@ -102,8 +105,8 @@
                         <h2></h2>
                         <p></p>
                         <div class="dialog">
-                            <a href="home.jsp">Sim</a>
-                            <a href="#no">Não</a>
+                            <a href="#yes" class="yes">Sim</a>
+                            <a href="#no" class="no">Não</a>
                         </div>
                     </div>
                 </div>

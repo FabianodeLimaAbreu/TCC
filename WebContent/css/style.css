@@ -597,3 +597,20 @@ span.bold {
 #modal.question .big-icon {
   display: none;
 }
+#wrap .mask {
+  position: fixed;
+  width: 960px;
+  height: 100%;
+  background: url(../images/mask.png);
+  top: 150px;
+  display: none;
+  z-index: 88;
+  left: 50%;
+  margin-left: -480px;
+}
+#wrap .loader {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  margin-left: -40px;
+}

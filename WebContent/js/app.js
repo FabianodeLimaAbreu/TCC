@@ -16,12 +16,20 @@ require(["methods", "sp/min", "app/content"], function() {
 	window.App = Spine.Controller.sub({
 		el: $("body"),
 		elements: {
-			"#container .content":"contentEl"
+			"#container .content":"contentEl",
+			"#modal": "modalEl",
+			".mask": "maskEl",
+			".mask img": "loader",
+			".finishform .submit":"bconfirm",
+			".finishform .cancel":"bcancel"
 		},
 		events: {
 			"click .print":"print",
 			"click .delete":"del",
-			"click .edit":"edit"
+			"click .edit":"edit",
+			"click .logout":"logout",
+			"click .finishform .submit": "submitform",
+			"click .finishform .cancel": "cancel"
 		},
 		init: function() {
 			this.xml="";
@@ -29,6 +37,7 @@ require(["methods", "sp/min", "app/content"], function() {
 			this.page = "Home";
 			this.getxml();
 			window.location="#"
+
 			/*this.usr = jQuery.parseJSON($.cookie("portal"));
 			if (!this.usr) {
 				return this.logout(), !1;
@@ -37,7 +46,9 @@ require(["methods", "sp/min", "app/content"], function() {
 			
 			this.el.find("#wrap").removeClass("hide");
 			this.content = new Content({
-				
+				setloading: this.proxy(this.setloading),
+				mask: this.maskEl,
+				el: this.contentEl,
 			});
 			this.routes({
 				"Usuarios/*func": function(a) {
@@ -150,6 +161,9 @@ require(["methods", "sp/min", "app/content"], function() {
 		},
 		loaddata:function(load){
 			var context=this;
+			if(!this.xml){
+				return window.location="#";
+			}
 			this.xml.each(function(){
 	            if($(this).attr("name")===context.page){
 	               context.contentEl.html($(this).find(load).text());
@@ -172,12 +186,70 @@ require(["methods", "sp/min", "app/content"], function() {
 			this.callservice({"codigo":cod},"deletar");
 		},
 
+		submitform:function(a){
+			a.preventDefault();
+			alert("submit");
+		},
+
+		/**
+		*	Cancel Button
+		*
+		*	This method cancel all editions and return to a previews page
+		*	Before redirect a previews page the method open modal question, and if the user click 'yes' it will be redirected
+		*/
+		cancel: function() {
+			if (this.loading) {
+				return false;
+			}
+			this.modal.question("Retornar?", "Suas alterações serão desfeitas!", !0, this.modal.action);
+		},
+
+		/**
+		*	Set the loading state
+		*
+		*	@param {Boolean} a. If true show mask, else hide mask.
+		*	@param {Boolean} b. If is false, open the loader, else open just the mask div
+		*
+		*	This method set the state loader
+		*/
+
+		setloading: function(a, b) {
+			if (!b) {
+				if (a) {
+					this.maskEl.fadeIn();
+					this.loading = !0;
+				} else {
+					this.maskEl.fadeOut();
+					this.loading = !1;
+				}
+			} else {
+				if (a) {
+					this.loader.fadeOut();
+					this.maskEl.fadeIn();
+					this.loading = !0;
+				} else {
+					this.maskEl.fadeOut();
+					this.loader.fadeIn();
+					this.loading = !1;
+				}
+			}
+			return this.loading;
+		},
+
+		/**
+		*	Return the loading state
+		*/
+		getloading:function(){
+			return this.loading;
+		},
+
+		logout:function(a) {
+	    	a && a.preventDefault();
+	    	//$.removeCookie("app", {path:"/"});
+	    	window.location = "login.html";
+	  	}
 		/**
 		*	Reseting the application
-		*
-		*	@param {Boolean} nothome. This method say if the application is at home or not.
-		*	
-		*	This method hide all some objects of the page, clean the search value and call the Content Class's reset.
 		*/
 
 		reset: function(nothome) {

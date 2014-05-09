@@ -1,8 +1,13 @@
 window.Modal = Spine.Controller.sub({
    elements:{
-    ".modal-content":"content", ".modal-text h2":"title", ".modal-text p":"msg",".modal-buttons":"buttons",".big-icon":"bigicon"
+    ".modal-content":"content", 
+    ".modal-text h2":"title", 
+    ".modal-text p":"msg",
+    ".dialog":"buttons",
+    ".big-icon":"bigicon"
   }, events:{
-      "click .bclose":"close", "click .modal-buttons a":"action"
+      "click .bclose":"close", 
+      "click .modal-buttons a":"action"
   }, 
   /**
   * Close modal window
@@ -76,25 +81,6 @@ window.Modal = Spine.Controller.sub({
       //If d is a function
       this.callback = d;
   },
-  /**
-  * Disable edit of page
-  *
-  * After modal, this method disable all functions of the page and reset onfocus table
-  */
-  disableedit:function(){
-    this.bsave.fadeOut(); 
-    this.content.removeClass("editing");
-    $(".tab-2 input[name='description']").attr("disabled","disabled");
-    $(".tab-2 input[name='search']").attr("disabled","disabled").val("");
-    $(".product").removeClass("edit");
-    $(".product .add-promo").addClass("remove");
-    $(".onfocus .add-promo").removeClass("remove");
-    $(".import").addClass("disabled").find(".filemask").addClass("disabled").find("input").attr("disabled","disabled");
-    $( "input[name='endpromo']" ).attr("disabled","disabled");
-    $(".end-desc").attr("disabled","disabled");
-    $(".tab-2 .onfocus .scrollContent").empty().animate({
-      height:0
-    },"slow");
   },
 
   /**
@@ -149,98 +135,47 @@ window.Content = Spine.Controller.sub({
   }
 });
 
-/*Spotlight*/
-window.Spotlight = Spine.Controller.sub({elements:{dd:"buttons"}, events:{"click dd":"select"}, select:function(a) {
-  if("object" === typeof a) {
-    a.preventDefault(), a = $(a.target);
-  }else {
-    return!1;
-  }
-  this.input.val(this.list + a.text()).focus().trigger("submit");
-  this.close();
-}, over:function(a) {
-  a.addClass("sel");
-  this.input.val(this.list + a.text()).focus();
-}, close:function(a) {
-  if(a && (a.preventDefault(), a = $(a.target), this.el.find(a).length)) {
-    return!1;
-  }
-  a && a.hasClass("bsearch") && this.input.trigger("submit");
-  this.input && this.input.focus();
-  this.list = "";
-  this.id = -1;
-  this.doc.unbind("click");
-  this.el.empty().fadeOut();
-  return!1;
-}, open:function(a) {
-  var b, c, d, e = [], g;
-  this.doc.unbind("click").bind("click", this.proxy(this.close));
-  this.input = $(a.target);
-  g = d = a.target.value;
-  this.list && (d = d.replace(this.list, ""));
-  if(2 > d.length) {
-      return!1;
-  }
-  if(40 === a.keyCode || 38 === a.keyCode) {
-    return this.arrow(a), !1;
-  }
-  if(48 <= a.keyCode && 90 >= a.keyCode || 8 == a.keyCode) {
-    b = this.spot.filter(function(a) {
-      return-1 !== a.VALUE.toLowerCase().indexOf(d.toLowerCase());
-    });
-    d = null;
-    for(c in b) {
-      b[c].DESC && (d === b[c].DESC ? e.push("<dd>" + b[c].VALUE + "</dd>") : (a = b.filter(function(a) {
-        return a.DESC === b[c].DESC;
-      }), a = 26 * a.length + 2, e.push("<dt style='height:" + a + "px'>" + b[c].DESC.capitalize() + "</dt><dd>" + b[c].VALUE + "</dd>"), d = b[c].DESC));
+window.Formulario=Spine.Controller.sub({
+  elements:{
+    ".combo-input":"combovalue",
+    ".bprompt":"bselect",
+    "#combo li":"combolist",
+    "#combo":"combo",
+    "input[name='action']":"fake"
+  },
+  events:{
+    "click .bprompt":"toggleSelect",
+    "click #combo li":"setting"
+  },
+  toggleSelect:function(e){
+    e.preventDefault();
+    if($(e.target).hasClass("sel")){
+      this.combo.hide();
+      this.bselect.removeClass("sel");
     }
-    if(e.length){
-        this.el.html(e.join(" ")).fadeIn();
-        this.buttons = this.el.find("dd");
-        return !1;
-    }else{
-       this.gettips(g);
-       return !1;
+    else{
+      this.combo.show();
+      this.bselect.addClass("sel");
     }
-  }else {
-    this.id = -1, 32 === a.keyCode && (this.list += d);
+  },
+  hide:function(){
+    this.combo.hide();
+    this.bselect.removeClass("sel");
+  },
+  setting:function(e){
+    e.preventDefault();
+    var a=$(e.target).attr("data");
+    this.fake.val(a);
+    if(!$(e.target).hasClass("sel")){
+      if(this.combolist.hasClass("sel")){
+        this.combolist.removeClass("sel");
+        $(e.target).addClass("sel");
+      }
+      else{
+        $(e.target).addClass("sel");
+      }
     }
-}, hint:function(a, b) {
-  var c, d, e = [];
-  this.el.empty();
-  if(!a.length)
-    return !1;
-  this.doc.unbind("click").bind("click", this.proxy(this.close));
-  d = 26 * a.length + 10;
-  e.push("<dt style='height:" + d + "px'>Você quis dizer:</dt>");
-    for(c = 0;c < a.length;c++) {
-        e.push("<dd>" + a[c].WORD.capitalize() + "</dd>");
-    }
-    this.el.html(e.join(" ")).fadeIn();
-    this.buttons = this.el.find("dd");
-}, arrow:function(a) {
-  a = a || window.event;
-  this.buttons.removeClass("sel");
-  switch(a.keyCode) {
-    case 38:
-      this.id--;
-      this.id < -this.buttons.length && (this.id = 0);
-      a = this.buttons.eq(this.id);
-      this.over(a);
-      break;
-    case 40:
-      this.id++, this.id > this.buttons.length - 1 && (this.id = 0), a = this.buttons.eq(this.id), this.over(a);
+    this.combovalue.val(a);
+    this.hide();
   }
-  return!1;
-}, gettips: function(a){
-    $.getJSON(nodePath + "SearchMaterial.svc/searchTermo/&query=" + a + "?callback=?", this.proxy(this.hint));
-}, init:function() {
-  this.spot = [];
-  this.list = "";
-  this.id = 0;
-  this.input = null;
-  this.doc = $(document);
-  $.getJSON("ajax/spotlight.js", this.proxy(function(a) {
-    this.spot = a;
-  }));
-}});
+});
