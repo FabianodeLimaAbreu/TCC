@@ -4,23 +4,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import br.com.tio.Contato;
-import br.com.tio.Tarefa;
+import br.com.tio.Usuarios;
 
 //@Repository
 public class ExecHibernate {
 
-	public static void main(String[] args) {	
-		Contato contato = new Contato();
-		Tarefa tarefa = new Tarefa();
-		contato.setNome("Gabriel");
-		tarefa.setDescricao("teste descricao");
-		ExecHibernate dao = new ExecHibernate();
-		dao.query(contato, "adicionar");
-		dao.query(tarefa, "adicionar");
-	}
-
-	public void query(Object contato, String op){
+	public void query(Object objeto, String op){
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("sfoc");
 		EntityManager manager = factory.createEntityManager();
 		
@@ -28,13 +17,13 @@ public class ExecHibernate {
 			manager.getTransaction().begin();
 				switch (op) {
 				case "adicionar":
-					manager.persist(contato);
+					manager.persist(objeto);
 				    break;
 				case "alterar":					
-					manager.merge(contato);
+					manager.merge(objeto);
 					break; 
 				case "remover":
-					Contato encontrada = manager.find(Contato.class, ((Contato) contato).getId());
+					Usuarios encontrada = manager.find(Usuarios.class, ((Usuarios) objeto).getId());
 					manager.remove(encontrada);
 					break;
 				default:

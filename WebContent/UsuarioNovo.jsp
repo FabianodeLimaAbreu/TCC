@@ -21,13 +21,13 @@
        <input type="submit" class="btn btn-default bsubmit">
      </form>
      
-     <input type="hidden" name="logica" value="AdicionaUsuarioLogic" id="logica">
-     <input type="hidden" name="objeto" value="Usuario" id="objeto" >
+     <input type="hidden" name="logica" value="AdicionaLogic" id="logica">
+     <input type="hidden" name="table" value="Usuarios" id="table" >
 
 	<script src="js/lib/jquery.min.js"></script>
 	<script type="text/javascript">
 			var logica;
-			var objeto;
+			var table;
             var contato={
                 //Padrao de objeto
                 nome:"",
@@ -40,10 +40,10 @@
                 contato.nome=$("input[name='nome'").val();
                 contato.email=$("input[name='email'").val();
                 logica=$("#logica").val();
-                objeto=$("#objeto").val();
+                table=$("#table").val();
 
                 //Chamando o servi√ßo para cadastro do usuario
-                $.get("./mvc",{'nome':contato.nome,'email':contato.email,'logica':logica,'objeto':objeto})
+                $.get("./mvc",{'nome':contato.nome,'email':contato.email,'logica':logica,'table':table})
                 .error(function(){
                 	alert("N„o foi possivel cadastrar o usuario");
                 })

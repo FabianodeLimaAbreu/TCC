@@ -5,7 +5,7 @@
 	<persistence-unit name="sfoc">
 	
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-	  	<class>br.com.tio.Contato</class>
+	  	<class>br.com.tio.Usuarios</class>
 	
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
