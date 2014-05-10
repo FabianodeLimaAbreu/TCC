@@ -54,7 +54,19 @@
         </list>
         <cadastro>
             <![CDATA[
-                
+                <h1>Cadastro de Perfis</h1>
+                <form role="form" action="">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="nome" placeholder="Nome do perfil" maxlength="80">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="descricao" placeholder="Descrição do perfil" maxlength="80">
+                  </div>
+                </form>
+                <div class="finishform">
+                    <a href="#submit" class="submit s-quad"></a>
+                    <a href="#cancel" class="cancel s-quad"></a>
+                </div>
             ]]>
         </cadastro>
     </entry>
@@ -126,7 +138,10 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Nome abreviado" name="abrname" required>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group floatLeft rightten s-twofour">
+                                    <input type="text" class="form-control " placeholder="So cobrir espaço por enquanto" required>
+                                </div>
+                                <div class="form-group floatLeft s-twoseven">
                                     <input type="text" class="form-control" placeholder="So cobrir espaço por enquanto" required>
                                 </div>
                                 <div class="form-group">
@@ -140,10 +155,25 @@
                                 </div>
                         </div>
                         <div class="tab-pane fade" id="personal">
-                            <p>Teste2</p>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nome completo" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nome abreviado" name="abrname" required>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="professional">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Nome completo" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Nome abreviado" name="abrname" required>
+                                </div>
                             </form>
+                            <div class="finishform">
+                                <a href="#submit" class="submit s-quad"></a>
+                                <a href="#cancel" class="cancel s-quad"></a>
+                            </div>
                         </div>  
                     </div>
 			]]>
@@ -204,11 +234,11 @@
                     <label for="descr">Descrição</label>
                     <input type="text" class="form-control" name="descr">
                   </div>
-                  <div class="finishform">
-                        <a href="#submit" class="submit s-quad"></a>
-                        <a href="#cancel" class="cancel s-quad"></a>
-                  </div>
                 <form>
+                <div class="finishform">
+                    <a href="#submit" class="submit s-quad"></a>
+                    <a href="#cancel" class="cancel s-quad"></a>
+                </div>
             ]]>
         </cadastro>    
     </entry>
@@ -254,7 +284,16 @@
         </list>
         <cadastro>
             <![CDATA[
-                
+                <h1>Cadastro de Departamentos</h1>
+                <form role="form" action="">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="departamento" placeholder="Departamento" maxlength="80">
+                  </div>
+                </form>
+                <div class="finishform">
+                    <a href="#submit" class="submit s-quad"></a>
+                    <a href="#cancel" class="cancel s-quad"></a>
+                </div>
             ]]>
         </cadastro>  
     </entry>
@@ -358,7 +397,22 @@
         </list>
         <cadastro>
             <![CDATA[
-                
+                <h1>Cadastro de Empresas</h1>
+                <form role="form" action="">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="razao" placeholder="Razão Social" maxlength="80">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control s-mini rightten" name="fantasia" placeholder="Nome Fantasia" maxlength="80">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control s-mini" name="telefone" placeholder="Telefone:">
+                  </div>
+                </form>
+                <div class="finishform">
+                    <a href="#submit" class="submit s-quad"></a>
+                    <a href="#cancel" class="cancel s-quad"></a>
+                </div>
             ]]>
         </cadastro>
     </entry>
@@ -367,7 +421,7 @@
     <entry name="Faixas">
         <list>
             <![CDATA[
-                <h1>Faixas</h1>
+                <h1>Faixas de horário</h1>
                 <div class="options">
                     <p class="count">
                         Total:<span>10</span>
@@ -409,7 +463,18 @@
         </list>
         <cadastro>
             <![CDATA[
-                
+                <h1>Cadastro de Faixas de horário</h1>
+                <form class="form-inline " role="form" action="">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="inicio" placeholder="hh/mm">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="fim" placeholder="hh/mm">
+                    </div>
+                <div class="finishform">
+                    <a href="#submit" class="submit s-quad"></a>
+                    <a href="#cancel" class="cancel s-quad"></a>
+                </div>
             ]]>
         </cadastro>
     </entry>
@@ -455,7 +520,16 @@
         </list>
         <cadastro>
             <![CDATA[
-                
+                <h1>Cadastro de Departamentos</h1>
+                <form role="form" action="">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="departamento" placeholder="Departamento" maxlength="80">
+                  </div>
+                </form>
+                <div class="finishform">
+                    <a href="#submit" class="submit s-quad"></a>
+                    <a href="#cancel" class="cancel s-quad"></a>
+                </div>
             ]]>
         </cadastro>
     </entry>

@@ -81,7 +81,6 @@ window.Modal = Spine.Controller.sub({
       //If d is a function
       this.callback = d;
   },
-  },
 
   /**
   * After yes of cancel changes

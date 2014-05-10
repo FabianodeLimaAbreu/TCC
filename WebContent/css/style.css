@@ -13,11 +13,20 @@
   width: 40px;
   height: 40px;
 }
+.s-twofour {
+  width: 240px;
+}
+.s-twoseven {
+  width: 270px;
+}
 .neat {
   margin: 0;
 }
 .topten {
   margin-top: 10px;
+}
+.rightten {
+  margin-right: 10px;
 }
 .no-border,
 li.no-border {
@@ -206,30 +215,34 @@ nav ul.holder .dropdown > a#visitantes:focus::after {
 #container .content form .date {
   width: 195px;
 }
-#container .content form .finishform {
+#container .content form .s-mini {
+  width: 455px;
+  float: left;
+}
+#container .content .finishform {
   position: relative;
   float: left;
   width: 100%;
   margin-top: 20px;
   height: 40px;
 }
-#container .content form .finishform a {
+#container .content .finishform a {
   display: block;
   background: url(../images/gui.png) no-repeat;
   position: relative;
   float: right;
 }
-#container .content form .finishform a.cancel {
+#container .content .finishform a.cancel {
   margin-right: 5px;
   background-position: 0 -150px;
 }
-#container .content form .finishform a.cancel:hover {
+#container .content .finishform a.cancel:hover {
   background-position: -45px -150px;
 }
-#container .content form .finishform a.submit {
+#container .content .finishform a.submit {
   background-position: 0 -70px;
 }
-#container .content form .finishform a.submit:hover {
+#container .content .finishform a.submit:hover {
   background-position: -45px -70px;
 }
 #container .options {
@@ -316,7 +329,6 @@ nav ul.holder .dropdown > a#visitantes:focus::after {
   float: right;
   width: 520px;
   height: auto;
-  border: 1px solid #ff0000;
 }
 .tab-pane form label {
   font-size: 11pt;
@@ -343,6 +355,7 @@ footer p {
 }
 .login #container .content {
   min-height: 560px;
+  display: block;
 }
 .login .question-buttons {
   margin-top: 35px;

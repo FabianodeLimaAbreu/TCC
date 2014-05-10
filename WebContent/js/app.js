@@ -35,8 +35,6 @@ require(["methods", "sp/min", "app/content"], function() {
 			this.xml="";
 			this.loading = !1;
 			this.page = "Home";
-			this.getxml();
-			window.location="#"
 
 			/*this.usr = jQuery.parseJSON($.cookie("portal"));
 			if (!this.usr) {
@@ -147,7 +145,7 @@ require(["methods", "sp/min", "app/content"], function() {
             	alert("Operação realizada com sucesso");
             });
 		},
-		getxml:function(){
+		loaddata:function(load){
 			var context=this;
 			$.ajax({
 	            //verifica se existe o xml para load das paginas
@@ -156,19 +154,13 @@ require(["methods", "sp/min", "app/content"], function() {
 	             dataType:"xml",
 	             success:function(e){
 	                 context.xml=$(e).find("entry");
+	                 context.xml.each(function(){
+			            if($(this).attr("name")===context.page){
+			               context.contentEl.html($(this).find(load).text());
+			            }
+			        });
 	             }
-		    });
-		},
-		loaddata:function(load){
-			var context=this;
-			if(!this.xml){
-				return window.location="#";
-			}
-			this.xml.each(function(){
-	            if($(this).attr("name")===context.page){
-	               context.contentEl.html($(this).find(load).text());
-	            }
-	        });
+		    });			
 			this.contentEl.fadeIn();
 		},
 		print:function(a){
@@ -246,8 +238,8 @@ require(["methods", "sp/min", "app/content"], function() {
 		logout:function(a) {
 	    	a && a.preventDefault();
 	    	//$.removeCookie("app", {path:"/"});
-	    	window.location = "login.html";
-	  	}
+	    	window.location = "login.jsp";
+	  	},
 		/**
 		*	Reseting the application
 		*/

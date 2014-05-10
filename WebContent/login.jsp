@@ -111,17 +111,20 @@
         </footer>  
         <div id="modal" class="hide">
             <div class="modal-content">
-                <a href="#close" class="bclose s-third neat"></a><span class="big-icon"></span>
+                <a href="#close" class="button s-third"></a>
                 <div class="modal-text">
-                    <h2>Tem certeza que deseja remover este artigo da promoção?</h2>
-                    <p></p>
-                </div>
-                <div class="modal-buttons">
-                    <a href="#yes" class="bquestion yes">Sim</a>
-                    <a href="#no" class="bquestion">Não</a>
+                    <span class="big-icon"></span>
+                    <div class="aviso">
+                        <h2></h2>
+                        <p></p>
+                        <div class="dialog">
+                            <a href="#yes" class="yes">Sim</a>
+                            <a href="#no" class="no">Não</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-      </div> 
+        </div>  
     </div>
     <!--[if !IE]>-->
         <script src="js/lib/jquery.min.js"></script>
