@@ -10,32 +10,36 @@ import br.com.tio.Usuarios;
 public class ExecHibernate {
 
 	public void query(Object objeto, String op){
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("sfoc");
-		EntityManager manager = factory.createEntityManager();
-		
 		try{
-			manager.getTransaction().begin();
-				switch (op) {
-				case "adicionar":
-					manager.persist(objeto);
-				    break;
-				case "alterar":					
-					manager.merge(objeto);
-					break; 
-				case "remover":
-					Usuarios encontrada = manager.find(Usuarios.class, ((Usuarios) objeto).getId());
-					manager.remove(encontrada);
-					break;
-				default:
-					System.out.println("Comando "+ op +" inexistente: ");
-					break;
-				}
-			manager.getTransaction().commit();
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("sfoc");
+			EntityManager manager = factory.createEntityManager();
 			
+			try{
+				manager.getTransaction().begin();
+					switch (op) {
+					case "adicionar":
+						manager.persist(objeto);
+					    break;
+					case "alterar":					
+						manager.merge(objeto);
+						break; 
+					case "remover":
+						Usuarios encontrada = manager.find(Usuarios.class, ((Usuarios) objeto).getId());
+						manager.remove(encontrada);
+						break;
+					default:
+						System.out.println("Comando "+ op +" inexistente: ");
+						break;
+					}
+				manager.getTransaction().commit();
+				
+			}catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+			manager.close();
+			factory.close();
 		}catch(Exception e){
-			System.out.println(e.getMessage());
+			throw new RuntimeException(e);
 		}
-		manager.close();
-		factory.close();
 	}	
 }

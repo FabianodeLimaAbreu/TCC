@@ -10,10 +10,17 @@
 
 <form action="mvc">
 
-	Visitante: <input type="text" name="visitante">
-	QTD: <input type="text" name="qtd">
+	Validade: <input type="text" name="val_cartao" ><br/>
+	Versao: <input type="text" name="versao"><br/>
+	Cracha: <input type="text" name="cracha"><br/>
+	Cod Emp: <input type="text" name="cod_emp"><br/>
+	Nome Usuario: <input type="text" name="nome"><br/>
+	Nome Abrev: <input type="text" name="nome_abrev"><br/>
+	Cod tip: <input type="text" name="cod_tip"><br/>
+	Senha: <input type="text" name="senha" ><br/>
+		
 	<input type="hidden" name="logica" value="AdicionaLogic">
-	<input type="hidden" name="table" value="VisitantesAux">
+	<input type="hidden" name="table" value="Usuarios">
 	<input type="submit" value="Enviar">
 
 </form>

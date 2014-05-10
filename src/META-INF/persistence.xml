@@ -6,6 +6,7 @@
 	
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 	  	<class>br.com.tio.Usuarios</class>
+	  	<class>br.com.tio.Visitantes</class>
 	
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
