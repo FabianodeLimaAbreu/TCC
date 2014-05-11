@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="mvc">
+<form action="">
 
 	Validade: <input type="text" name="val_cartao" ><br/>
 	Versao: <input type="text" name="versao"><br/>
@@ -19,10 +19,45 @@
 	Cod tip: <input type="text" name="cod_tip"><br/>
 	Senha: <input type="text" name="senha" ><br/>
 		
-	<input type="hidden" name="logica" value="AdicionarLogic">
-	<input type="hidden" name="table" value="Contatos">
-	<input type="submit" value="Enviar">
+	<input type="hidden" name="logica" id="logica" value="BuscarLogic">
+	<input type="hidden" name="table" id="table" value="Contatos">
+	<input type="submit" value="Enviar" class="bsubmit">
 </form>
+<script src="js/lib/jquery.min.js"></script>
+	<script type="text/javascript">
+		var contato={
+			nome:""
+		};
+		$(".bsubmit").bind("click",function(a){
+			alert("ok");
+            a.preventDefault();
+            
+            //Seta valores no objeto
+            contato.nome=$("input[name='nome'").val();
+            logica=$("#logica").val();
+            table=$("#table").val();
 
+            //Chamando o serviÃ§o para cadastro do usuario
+            $.get("./mvc",{'nome':contato.nome,'logica':logica,'table':table})
+            .error(function(){
+            	alert("Não foi possivel cadastrar o usuario");
+            })
+            .success(function(){
+            	alert("Usuario cadastrado com sucesso");
+            });
+        });
+        (function(){
+        	logica=$("#logica").val();
+            table=$("#table").val();
+        	//Chamando o serviÃ§o para cadastro do usuario
+            $.get("./mvc",{'logica':logica,'table':table})
+            .error(function(){
+            	alert("Não foi possivel cadastrar o usuario");
+            })
+            .success(function(){
+            	alert("Usuario cadastrado com sucesso");
+            });
+        })();
+	</script>
 </body>
 </html>
