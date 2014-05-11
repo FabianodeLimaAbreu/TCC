@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<!-- 
 <form action="mvc">
 
 	Validade: <input type="text" name="val_cartao" ><br/>
@@ -22,8 +22,7 @@
 	<input type="hidden" name="logica" value="AdicionaLogic">
 	<input type="hidden" name="table" value="Usuarios">
 	<input type="submit" value="Enviar">
-
-</form>
+</form> -->
 
 </body>
 </html>

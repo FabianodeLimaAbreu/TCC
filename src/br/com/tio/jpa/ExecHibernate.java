@@ -1,5 +1,7 @@
 package br.com.tio.jpa;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -16,7 +18,7 @@ public class ExecHibernate {
 			
 			try{
 				manager.getTransaction().begin();
-					switch (op) {
+					switch (op) {					
 					case "adicionar":
 						manager.persist(objeto);
 					    break;
