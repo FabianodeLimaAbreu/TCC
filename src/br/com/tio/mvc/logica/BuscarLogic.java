@@ -5,18 +5,25 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-public class BuscarLogic {
+import br.com.tio.Usuarios;
+import br.com.tio.jpa.ExecHibernate;
 
-	public List<String> buscar(Object objeto, Long id){
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("sfoc");
-		EntityManager manager = factory.createEntityManager();
-
-		List<String> lista = manager.createQuery("SELECT t FROM "+ objeto +" as t").getResultList();
+public class BuscarLogic implements Logica {
+public void executa(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+	
+		ExecHibernate dao = new ExecHibernate();
 		
-		manager.close();
-		factory.close();
-		
-		return lista;
-	}
+		try{
+			String table = request.getParameter("table");
+			
+			List<String> lista = dao.buscar(table);
+		}catch(Exception e){
+			throw new RuntimeException(e);
+		}
+	}	
 }
+	

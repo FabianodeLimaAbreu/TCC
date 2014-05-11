@@ -15,8 +15,7 @@ public class ExecHibernate {
 		try{
 			EntityManagerFactory factory = Persistence.createEntityManagerFactory("sfoc");
 			EntityManager manager = factory.createEntityManager();
-			
-			try{
+	
 				manager.getTransaction().begin();
 					switch (op) {					
 					case "adicionar":
@@ -34,14 +33,30 @@ public class ExecHibernate {
 						break;
 					}
 				manager.getTransaction().commit();
-				
-			}catch(Exception e){
-				System.out.println(e.getMessage());
-			}
+
 			manager.close();
 			factory.close();
 		}catch(Exception e){
 			throw new RuntimeException(e);
 		}
 	}	
+
+	public List<String> buscar(Object objeto){
+		try {
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("sfoc");
+			EntityManager manager = factory.createEntityManager();
+
+			List<String> lista = manager.createQuery("SELECT t FROM "+ objeto +" as t").getResultList();
+			
+			manager.close();
+			factory.close();
+			
+			return lista;
+			
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+	}
+
 }

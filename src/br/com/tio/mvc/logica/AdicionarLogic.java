@@ -14,7 +14,7 @@ import br.com.tio.Usuarios;
 import br.com.tio.Visitantes;
 import br.com.tio.jpa.ExecHibernate;
 
-public class AdicionaLogic implements Logica{
+public class AdicionarLogic implements Logica{
 	public void executa(HttpServletRequest request, HttpServletResponse response)
 		throws Exception {
 
