@@ -21,7 +21,7 @@
        <input type="submit" class="btn btn-default bsubmit">
      </form>
      
-     <input type="hidden" name="logica" value="AdicionaLogic" id="logica">
+     <input type="hidden" name="logica" value="AdicionarLogic" id="logica">
      <input type="hidden" name="table" value="Usuarios" id="table" >
 
 	<script src="js/lib/jquery.min.js"></script>

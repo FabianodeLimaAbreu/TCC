@@ -8,11 +8,11 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
-
+import br.com.tio.Contatos;
 import br.com.tio.Usuarios;
-import br.com.tio.Visitantes;
 import br.com.tio.jpa.ExecHibernate;
+
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 public class AdicionarLogic implements Logica{
 	public void executa(HttpServletRequest request, HttpServletResponse response)
@@ -26,6 +26,14 @@ public class AdicionarLogic implements Logica{
 			String table = request.getParameter("table");
 					
 			switch (table) {
+			case "Contatos":
+				String nomeContato = request.getParameter("nome");
+				
+				Contatos contatos = new Contatos();
+				contatos.setNome(nomeContato);
+				
+				dao.query(contatos, "adicionar");
+				break;
 			case "Usuarios":
 				String dataEmTexto = request.getParameter("val_cartao");
 				Calendar val_cartao = null;
