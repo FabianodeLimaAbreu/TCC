@@ -54,8 +54,9 @@
             .error(function(){
             	alert("Não foi possivel cadastrar o usuario");
             })
-            .success(function(){
-            	alert("Usuario cadastrado com sucesso");
+            .success(function(a){
+            	alert("Hum");
+            	console.dir(a);
             });
         })();
 	</script>
