@@ -74,14 +74,14 @@
 		<list>
 			<![CDATA[
 				<h1>Usuários</h1>
-                <div class="options">
+                <div class="options usuarios">
                     <p class="count">
                         Total:<span>10</span>
                     </p>
                     <a href="#print" class="print s-third"></a>
                     <a href="#Usuarios/cadastro" class="create s-third"></a>
                 </div>
-                <table class="table table-striped imprimir">
+                <table class="table table-striped imprimir usuarios">
                     <thead class="adminHeader tnine">
                       <tr>
                         <th>Matrícula</th>
@@ -231,11 +231,11 @@
                 <form role="form" action="">
                   <div class="form-group">
                     <label for="date">Data</label>
-                    <input type="text" class="form-control date" name="date">
+                    <input type="text" class="form-control date" name="date" maxlength="10">
                   </div>
                   <div class="form-group">
                     <label for="descr">Descrição</label>
-                    <input type="text" class="form-control" name="descr">
+                    <input type="text" class="form-control" name="descr" maxlength="80">
                   </div>
                 <form>
                 <div class="finishform">
@@ -409,7 +409,7 @@
                     <input type="text" class="form-control s-mini rightten" name="fantasia" placeholder="Nome Fantasia" maxlength="80">
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control s-mini" name="telefone" placeholder="Telefone:">
+                    <input type="text" class="form-control s-mini" name="telefone" placeholder="Telefone:" maxlength="12">
                   </div>
                 </form>
                 <div class="finishform">
@@ -469,10 +469,10 @@
                 <h1>Cadastro de Faixas de horário</h1>
                 <form class="form-inline " role="form" action="">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="inicio" placeholder="hh/mm">
+                        <input type="text" class="form-control" name="inicio" placeholder="hh/mm" maxlength="6">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="fim" placeholder="hh/mm">
+                        <input type="text" class="form-control" name="fim" placeholder="hh/mm" maxlength="6">
                     </div>
                 <div class="finishform">
                     <a href="#submit" class="submit s-quad"></a>

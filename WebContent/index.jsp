@@ -60,12 +60,12 @@
                 <li class="dropdown">
                     <a id="gerais" role="button" data-toggle="dropdown" href="#">Gerais <b class="caret"></b></a>
                     <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Perfis/list">Perfil</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Departamentos/list">Departamento</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Feriados/list">Feriados</a></li>
+                      <li role="presentation" class="perfis"><a role="menuitem" tabindex="-1" href="#Perfis/list">Perfil</a></li>
+                      <li role="presentation" class="departamentos"><a role="menuitem" tabindex="-1" href="#Departamentos/list">Departamento</a></li>
+                      <li role="presentation" class="feriados"><a role="menuitem" tabindex="-1" href="#Feriados/list">Feriados</a></li>
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="#Usuarios/list">Usuários</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Operadores/list">Operadores</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Empresas/list">Empresas</a></li>
+                      <li role="presentation" class="operadores"><a role="menuitem" tabindex="-1" href="#Operadores/list">Operadores</a></li>
+                      <li role="presentation" class="empresas"><a role="menuitem" tabindex="-1" href="#Empresas/list">Empresas</a></li>
                     </ul>
                   </li>
                   <li class="dropdown">

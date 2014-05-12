@@ -67,7 +67,24 @@
 
 html, body{.h-all; overflow-y:auto; overflow-x:hidden;}
 body, body.login{font-family: 'Open Sans',Arial, sans-serif; color:#454a4d; font-weight: 300;background-color: @white}
-body.noscroll{position: fixed; overflow: hidden; width: 100%;}
+body{
+	&.noscroll{
+		position: fixed; overflow: hidden; width: 100%;
+	}
+	&.rh{
+		#visitantes,.perfis,.empresas{
+			display: none;
+		}
+	}
+	&.operador{
+		.perfis,.departamentos,.feriados,.operadores,.empresas,#acesso{
+			display: none;
+		}
+		.usuarios .edit,.usuarios .delete,{
+			display: none;
+		}
+	}
+}
 .holder{
 	position: relative;width: 940px;padding: 0 @ten;margin: 0 auto;height: 70px;
 }

@@ -68,6 +68,23 @@ body.noscroll {
   overflow: hidden;
   width: 100%;
 }
+body.rh #visitantes,
+body.rh .perfis,
+body.rh .empresas {
+  display: none;
+}
+body.operador .perfis,
+body.operador .departamentos,
+body.operador .feriados,
+body.operador .operadores,
+body.operador .empresas,
+body.operador #acesso {
+  display: none;
+}
+body.operador .usuarios .edit,
+body.operador .usuarios .delete {
+  display: none;
+}
 .holder {
   position: relative;
   width: 940px;
