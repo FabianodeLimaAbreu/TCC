@@ -178,6 +178,12 @@ nav{
 				width: 455px;
 				float: left;
 			}
+			.input-group{
+				margin-bottom: 5px;
+			}
+			label[for="datecard"]{
+				line-height: 25pt;
+			}
 		}
 		.finishform{
 			.relative;
@@ -482,5 +488,5 @@ span.bold{font-weight: 700;}
 #modal.question .modal-text{float: left; margin-left: 10px; width: 360px; height: 80px;}
 #modal.question .big-icon{display: none;}
 
-#wrap .mask{position: fixed; width: 960px; height: 100%; background: url(../images/mask.png); top: 150px; display: none; z-index: 88;left:50%; margin-left:-480px;}
-#wrap .loader{position:absolute; left: 50%; top:30%; margin-left: -40px;}
+#wrap .mask{background: url(../images/mask.png); z-index: 9999;position: fixed; width: 960px; height: 100%; top: 0;left:50%; margin-left:-490px;display: none}
+.mask .loader{position:absolute; left: 50%; top:30%; margin-left: -50px;width: 100px;height: 100px}

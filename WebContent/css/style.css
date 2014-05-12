@@ -219,6 +219,12 @@ nav ul.holder .dropdown > a#visitantes:focus::after {
   width: 455px;
   float: left;
 }
+#container .content form .input-group {
+  margin-bottom: 5px;
+}
+#container .content form label[for="datecard"] {
+  line-height: 25pt;
+}
 #container .content .finishform {
   position: relative;
   float: left;
@@ -611,19 +617,21 @@ span.bold {
   display: none;
 }
 #wrap .mask {
+  background: url(../images/mask.png);
+  z-index: 9999;
   position: fixed;
   width: 960px;
   height: 100%;
-  background: url(../images/mask.png);
-  top: 150px;
-  display: none;
-  z-index: 88;
+  top: 0;
   left: 50%;
-  margin-left: -480px;
+  margin-left: -490px;
+  display: none;
 }
-#wrap .loader {
+.mask .loader {
   position: absolute;
   left: 50%;
   top: 30%;
-  margin-left: -40px;
+  margin-left: -50px;
+  width: 100px;
+  height: 100px;
 }

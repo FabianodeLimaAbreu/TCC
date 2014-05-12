@@ -145,9 +145,12 @@
                                     <input type="text" class="form-control" placeholder="So cobrir espaço por enquanto" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="datecard" class="col-sm-2 control-label">Data de validade do cartão:</label>
+                                    <label for="datecard" class="col-sm-2 control-label floatLeft">Data de validade do cartão:</label>
                                     <div class="col-sm-10">
-                                      <input type="date" class="form-control" name="datecard" placeholder="Data de validade do cartão">
+                                      <input type="date" class="form-control floatLeft" name="inicio" placeholder="Data de validade do cartão">
+                                    </div>
+                                    <div class="col-sm-10">
+                                      <input type="date" class="form-control" name="fim" placeholder="Data de validade do cartão">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -520,10 +523,10 @@
         </list>
         <cadastro>
             <![CDATA[
-                <h1>Cadastro de Departamentos</h1>
+                <h1>Cadastro de Zonas de tempo</h1>
                 <form role="form" action="">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="departamento" placeholder="Departamento" maxlength="80">
+                    <input type="text" class="form-control" name="zona" placeholder="" maxlength="80">
                   </div>
                 </form>
                 <div class="finishform">

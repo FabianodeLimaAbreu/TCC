@@ -51,68 +51,91 @@ require(["methods", "sp/min", "app/content"], function() {
 			this.routes({
 				"Usuarios/*func": function(a) {
 					//Listagem de usuarios
+					this.setloading(!0,!1);
 					this.page="Usuarios";
 					this.loaddata(a.func);
+					this.setloading(!1,!0);
 				},
 
 				"Feriados/*func": function(a) {
 					//Listagem de usuarios
+					this.setloading(!0,!1);
 					this.page="Feriados";
 					this.loaddata(a.func);
+					this.setloading(!1,!0);
 				},	
 
 				"Perfis/*func": function(a) {
 					//Listagem de usuarios
+					this.setloading(!0,!1);
 					this.page="Perfis";
 					this.loaddata(a.func);
+					this.setloading(!1,!0);
 				},
 				"Departamentos/*func": function(a) {
 					//Listagem de usuarios
+					this.setloading(!0,!1);
 					this.page="Departamentos";
 					this.loaddata(a.func);
+					this.setloading(!1,!0);
 				},
 				"Operadores/*func": function(a) {
 					//Listagem de usuarios
+					this.setloading(!0,!1);
 					this.page="Operadores";
 					this.loaddata(a.func);
+					this.setloading(!1,!0);
 				},
 				"Empresas/*func": function(a) {
 					//Listagem de usuarios
+					this.setloading(!0,!1);
 					this.page="Empresas";
 					this.loaddata(a.func);
+					this.setloading(!1,!0);
 				},
 
 				/*DROPDOWN 2**/
 				"Faixas/*func": function(a) {
 					//Listagem de usuarios
+					this.setloading(!0,!1);
 					this.page="Faixas";
 					this.loaddata(a.func);
+					this.setloading(!1,!0);
 				},
 				"Zonas/*func": function(a) {
 					//Listagem de usuarios
+					this.setloading(!0,!1);
 					this.page="Zonas";
 					this.loaddata(a.func);
+					this.setloading(!1,!0);
 				},
 
 				/*DROPDOWN 3*/
 				"Status/*func": function(a) {
 					//Listagem de usuarios
+					this.setloading(!0,!1);
 					this.page="Status";
 					this.loaddata(a.func);
+					this.setloading(!1,!0);
 				},
 				"Especiais/*func": function(a) {
 					//Listagem de usuarios
+					this.setloading(!0,!1);
 					this.page="Especiais";
 					this.loaddata(a.func);
+					this.setloading(!1,!0);
 				},
 				"Visitantes/*func": function(a) {
 					//Listagem de usuarios
+					this.setloading(!0,!1);
 					this.page="Visitantes";
 					this.loaddata(a.func);
+					this.setloading(!1,!0);
 				},
 
 				/*HOME*/
 				"": function() {
+					this.setloading(!0,!1);
 					this.page = "Home";
 					var context=this;
 					$.ajax({
@@ -130,7 +153,7 @@ require(["methods", "sp/min", "app/content"], function() {
 							context.contentEl.fadeIn();
 			             }
 				    });
-					this
+					this.setloading(!1,!0);
 				}
 			});
 		},

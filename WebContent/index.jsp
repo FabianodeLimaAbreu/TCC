@@ -91,7 +91,7 @@
             </div>
         </div>
         <div class="mask">
-            <img src="../images/loader.gif" class="loader">
+            <img src="images/loader.gif" class="loader">
         </div>
         <footer class="notprint">
             <p>Copyright © 2014 - Software of control - Todos os direitos reservados</p>
