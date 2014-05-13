@@ -25,10 +25,10 @@
 .s-third{width: 30px;height: 30px}
 .s-quad{width: 40px;height: 40px;}
 .s-twofour{width: 240px}
-.s-twoseven{width: 270px}
+.s-twosix{width: 260px}
 .neat{margin:0;}
 .topten{margin-top: 10px}
-.rightten{margin-right: 10px;}
+.bottomten{margin-bottom: 10px}
 .no-border, li.no-border{border:none; outline:none;}
 .off{color: #CCC}
 
@@ -80,8 +80,8 @@ body{
 		.perfis,.departamentos,.feriados,.operadores,.empresas,#acesso{
 			display: none;
 		}
-		.usuarios .edit,.usuarios .delete,{
-			display: none;
+		.edit,.delete{
+			display: none !important;
 		}
 	}
 }
@@ -193,13 +193,15 @@ nav{
 			}
 			.s-mini{
 				width: 455px;
-				float: left;
 			}
 			.input-group{
 				margin-bottom: 5px;
 			}
 			label[for="datecard"]{
 				line-height: 25pt;
+				width: 100%;
+				text-align: center;
+				color: #6792c4;
 			}
 		}
 		.finishform{
@@ -306,11 +308,32 @@ nav{
 }
 
 .tab-pane{
-	canvas{
-		.relative;
+	.takepicture{
 		width: 378px;
-		height: 278px;
-		border: 1px solid #6792c4;
+		height: 330px;
+		float: left;	
+		canvas{
+			.relative;
+			width: 378px;
+			height: 278px;
+			border: 1px solid #6792c4;
+		}
+		div{
+			.relative;
+			width: 100%;
+			height: 40px;
+			a{
+				position: relative;
+				margin: 0 auto;
+				width: 55px;
+				height: 40px;
+				display: block;
+				background: url(../images/gui.png) 0 -195px no-repeat;
+				&:hover{
+					background-position: 0 -240px;
+				}
+			}
+		}
 	}
 	form{
 		position: relative;
@@ -325,7 +348,7 @@ nav{
 
 
 footer{
-	.relative;.w-all;height: 30px;background: url(../images/footer_bkg.png);
+	position: fixed;bottom: 0;left: 0;z-index: 9999;.w-all;height: 30px;background: url(../images/footer_bkg.png);
 	p{
 		font-size: 9pt;.w-all;.relative;text-align: center;line-height: 23pt;color: @white;
 	}

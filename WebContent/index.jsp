@@ -40,7 +40,7 @@
         }
     </style>
 </head>
-<body>
+<body class="admin">
 	<div id="wrap" class="hide">
         <header class="notprint">
             <div class="holder">

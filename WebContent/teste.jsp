@@ -56,7 +56,12 @@
             })
             .success(function(a){
             	alert("Hum");
-            	console.dir(a);
+            	console.dir([{'nome':'Fabiano','idade':18},{'nome':'Gabriel','idade':30}]);
+                var objeto={
+                    'nome':'Fabiano',
+                    'idade':18
+                };
+                console.log(objeto.nome);
             });
         })();
 	</script>

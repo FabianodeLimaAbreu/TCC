@@ -74,7 +74,7 @@
 		<list>
 			<![CDATA[
 				<h1>Usuários</h1>
-                <div class="options usuarios">
+                <div class="options">
                     <p class="count">
                         Total:<span>10</span>
                     </p>
@@ -110,7 +110,7 @@
                             <td>Faculdade Carlos Drummond de Andrade</td>
                             <td>12/12/2012</td>
                             <td>Tecnologia da Informação</td>
-                            <td class="actions">
+                            <td class="actions usuarios">
                                 <a href="#10359" class="delete"></a>
                                 <a href="#10359" class="edit"></a>
                             </td>
@@ -130,7 +130,12 @@
                     </ul>
                     <div class="tab-content" id="user">
                         <div class="tab-pane fade" id="maintab">
-                            <canvas></canvas>
+                            <div class="takepicture">
+                                <canvas></canvas>
+                                <div class="topten">
+                                    <a href="#takepicture" class="camera"></a>
+                                </div>
+                            </div>
                             <form action="" role="form">
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Nome completo" name="name" required>
@@ -138,18 +143,18 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Nome abreviado" name="abrname" required>
                                 </div>
-                                <div class="form-group floatLeft rightten s-twofour">
+                                <div class="form-group floatLeft s-twofour">
                                     <input type="text" class="form-control " placeholder="So cobrir espaço por enquanto" required>
                                 </div>
-                                <div class="form-group floatLeft s-twoseven">
+                                <div class="form-group floatRight s-twosix">
                                     <input type="text" class="form-control" placeholder="So cobrir espaço por enquanto" required>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group bottomten">
                                     <label for="datecard" class="col-sm-2 control-label floatLeft">Data de validade do cartão:</label>
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-10 floatLeft s-twosix ">
                                       <input type="date" class="form-control floatLeft" name="inicio" placeholder="Data de validade do cartão">
                                     </div>
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-10 floatRight s-twofour bottomten">
                                       <input type="date" class="form-control" name="fim" placeholder="Data de validade do cartão">
                                     </div>
                                 </div>
@@ -406,10 +411,10 @@
                     <input type="text" class="form-control" name="razao" placeholder="Razão Social" maxlength="80">
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control s-mini rightten" name="fantasia" placeholder="Nome Fantasia" maxlength="80">
+                    <input type="text" class="form-control s-mini floatLeft" name="fantasia" placeholder="Nome Fantasia" maxlength="80">
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control s-mini" name="telefone" placeholder="Telefone:" maxlength="12">
+                    <input type="text" class="form-control s-mini floatRight" name="telefone" placeholder="Telefone:" maxlength="12">
                   </div>
                 </form>
                 <div class="finishform">
