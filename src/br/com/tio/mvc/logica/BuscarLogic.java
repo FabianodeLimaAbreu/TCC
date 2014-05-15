@@ -1,5 +1,6 @@
 package br.com.tio.mvc.logica;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,15 +17,16 @@ import br.com.tio.jpa.ExecHibernate;
 public class BuscarLogic implements Logica {
 	public void executa(HttpServletRequest request, HttpServletResponse response)
 				throws Exception {
-	//public static void main(String[] args){	
+	
 		ExecHibernate dao = new ExecHibernate();
-		//Usuarios usuarios = new Usuarios();
 		
 		try{
-			//String table = request.getParameter("table");
-			
-		String lista = dao.buscar("Contatos");
+			String table = request.getParameter("table");
+			PrintWriter out = response.getWriter();
 				
+			String json = dao.buscar(table);
+			
+			out.print(json);
 		}catch(Exception e){
 			throw new RuntimeException(e);
 		}

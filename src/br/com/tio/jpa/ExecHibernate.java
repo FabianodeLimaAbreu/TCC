@@ -6,7 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.springframework.ui.Model;
+
 import com.google.gson.Gson;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import br.com.tio.Usuarios;
 
@@ -43,24 +46,21 @@ public class ExecHibernate {
 		}
 	}	
 
-	public String buscar(Object objeto){	
+	public String buscar(String objeto){	
 		try {
 			EntityManagerFactory factory = Persistence.createEntityManagerFactory("sfoc");
 			EntityManager manager = factory.createEntityManager();
 
 			Gson gson = new Gson();
 			
-			List<Object> retornada = manager.createQuery("SELECT t FROM "+ objeto +" as t").getResultList();
+			List retornada = manager.createQuery("SELECT t FROM "+ objeto +" as t").getResultList();
 			
-			String json = gson.toJson(retornada);
+			 String json = gson.toJson(retornada);
 			
 			manager.close();
 			factory.close();
 			
-			System.out.println("JSON: "+ json);
-			
-			return json;
-			
+			return json;			
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}	

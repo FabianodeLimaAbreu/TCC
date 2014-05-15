@@ -17,7 +17,7 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 public class AdicionarLogic implements Logica{
 	public void executa(HttpServletRequest request, HttpServletResponse response)
 		throws Exception {
-
+		
 		PrintWriter out = response.getWriter();
 		
 		ExecHibernate dao = new ExecHibernate();
@@ -43,7 +43,6 @@ public class AdicionarLogic implements Logica{
 					val_cartao = Calendar.getInstance();
 				}catch (ParseException e) {
 					out.print("Erro na conversão de data");
-					return;
 				}
 			    String cracha = request.getParameter("cracha");
 			    int versao = Integer.parseInt(request.getParameter("versao"));
@@ -71,6 +70,6 @@ public class AdicionarLogic implements Logica{
 			}			
 		}catch (Exception e) {
 			throw new RuntimeException(e);	
-		}	
+		}
 	}
 }
