@@ -34,7 +34,24 @@ require(["methods", "sp/min", "app/content"], function() {
 		init: function() {
 			this.xml="";
 			this.loading = !1;
+			this.whatsave=""; //Este atributo diz se o operador esta criando um novo dado ou editando
 			this.page = "Home";
+
+			//Modelo de json para trabalhar com os dados
+			this.oop=[
+				{
+					'descr':'Confraternivação Universal',
+					"date":'01/01/2014'
+				},
+				{
+					'descr':'Tiradentes',
+					"date":'21/04/2014'
+				},
+				{
+					'descr':'Dia do trabalho',
+					"date":'01/05/2014'
+				},
+			];
 
 			/*this.usr = jQuery.parseJSON($.cookie("portal"));
 			if (!this.usr) {
@@ -168,23 +185,30 @@ require(["methods", "sp/min", "app/content"], function() {
             	alert("Operação realizada com sucesso");
             });
 		},
-		loaddata:function(load){
+		loaddata:function(load,obj){
 			var context=this;
 			$.ajax({
 	            //verifica se existe o xml para load das paginas
-	             type:"GET",
-	             url:"load.xml",
-	             dataType:"xml",
-	             success:function(e){
+	            type:"GET",
+	            url:"load.xml",
+	            dataType:"xml",
+	            success:function(e){
 	                 context.xml=$(e).find("entry");
 	                 context.xml.each(function(){
 			            if($(this).attr("name")===context.page){
-			               context.contentEl.html($(this).find(load).text());
+			            	if(obj){
+			            		context.whatsave="editar";
+			            		context.contentEl.html($(this).find("cadastro").text());
+			            	}
+			                else{
+			                	context.whatsave="cadastrar";
+			                	context.contentEl.html($(this).find(load).text());
+			                }
+			                context.contentEl.fadeIn();
 			            }
 			        });
-	             }
-		    });			
-			this.contentEl.fadeIn();
+	            }
+		    });
 		},
 		print:function(a){
 			a.preventDefault();
@@ -195,6 +219,9 @@ require(["methods", "sp/min", "app/content"], function() {
 			this.el.addClass("prevent"); //Editing or create data
 			var cod=parseInt($(a.target).attr("href").replace("#",""));
 			//this.callservice({"codigo":cod},"editar");
+			var obj=this.oop;
+			this.loaddata("cadastro",obj);
+			this.insertValues(obj);
 		},
 		del:function(a){
 			a.preventDefault();
@@ -204,7 +231,12 @@ require(["methods", "sp/min", "app/content"], function() {
 
 		submitform:function(a){
 			a.preventDefault();
-			alert("submit");
+			alert(this.whatsave);
+			//this.callservice({"codigo":cod},this.whatsave);
+		},
+
+		insertValues:function(obj){
+			console.dir(obj);
 		},
 
 		/**
