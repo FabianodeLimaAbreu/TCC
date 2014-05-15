@@ -502,19 +502,22 @@ footer{
 //Button
 .button{height:@s-third; font-weight:300; min-width: @s-third; float:left; background: url(../images/gui.png) no-repeat; text-align:left; color:#FFF; cursor:pointer; outline: none; border: none;box-shadow:none}
 .hide{display:none}
+
 span.bold{font-weight: 700;}
+.error{color: #b21e1e}
 
 /*MODAL*/
-#modal{position: fixed; left: 0; top:0; z-index:9999; width: 100%; height: 1000px; background: url(../images/mask.png);}
-#modal .modal-content{position:absolute; z-index:999; background-color:#fafafa; border:1px solid #e5e3e3; width: 360px; min-height: 100px; left: 50%; margin-left: -200px; top:240px; padding: 40px;}
+#modal{position: fixed; left: 0; top:0; z-index:9999; width: 100%; height: 1000px; background: url(../images/mask.png);display: none}
+#modal .modal-content{position:absolute; z-index:999; background-color:#fafafa; border:1px solid #e5e3e3; width: 500px; min-height: 100px; left: 50%; margin-left: -200px; top:240px; padding: 30px;}
 #modal .modal-buttons{width: 360px; position: relative; float: left; display:none;}
 #modal .confirm{margin-left: 90px;}
-#modal .bclose{position:absolute; right: -1px; top: -1px;}
-#modal .big-icon{float: left; width: 100px; height: 100px; background:url(../images/gui_ebook.png) no-repeat; background-color: #217fa5;  background-position: 11px -627px;border-radius:5px}
-#modal .modal-text{float: left; margin-left: 10px; width: 250px;}
+#modal .bclose{position:absolute; right: -1px; top: -1px;background-position: -160px 0}
+#modal .bclose:hover{background-position: -160px -35px}
+#modal .big-icon{position: relative;float: left; width: 140px; height: 140px; background:url(../images/gui.png) no-repeat; background-color: #6792c4;  background-position: -190px 0;}
+#modal .modal-text{float: left; margin-left: 10px; width: 430px;}
 #modal h1, #modal .tut-view, #modal .contact-view{display:none;}
 #modal h2{font-size: 12pt; font-weight: 400; line-height: 17pt; color: #217fa5;}
-#modal p{float:left; position:relative; font-size: 9.5pt; margin-top: 5px; line-height: 12pt;color:#535353}
+#modal p{float:left; position:relative; font-size: 9.5pt; margin-top: 10px; line-height: 12pt;color:#535353}
 #wrap br{clear:both; line-height:20px;}
 #modal .topaj{margin-top:40px;}
 #modal .bad h2{color: #b21e1e;}
@@ -523,10 +526,20 @@ span.bold{font-weight: 700;}
 #modal .bad .bclose:hover{ background:url(../images/gui_ebook_.png) -170px -830px;}
 /*#modal .bad .button, #modal .cancel{background-color: #ad1410; border-color: #cf282e;}*/
 
+#modal .aviso{margin-left: 30px;width: 260px;height: auto;position: relative;float: left;min-height: 100px}
+#modal .dialog{position: relative;float: left;width: 260px;height: auto;margin:10px 0 0 30px;}
+#modal .dialog a{background: #6792c4;color:@white;padding: 5px 25px;font-size: 12pt;.relative;margin-right: 10px;}
+#modal .dialog a:hover{background: #13498a;text-decoration: none;}
+
+#modal .warning .big-icon{background-position: -190px -150px;;background-color: #b21e1e}
+#modal .warning .aviso h2{color: #b21e1e}
+#modal .warning .dialog a{background: #b21e1e}
+#modal .warning .dialog a:hover{background: #a51c1c}
+
 #modal.question .modal-content{}
 #modal.question .modal-buttons{display: block}
 #modal.question .modal-text{float: left; margin-left: 10px; width: 360px; height: 80px;}
 #modal.question .big-icon{display: none;}
 
-#wrap .mask{background: url(../images/mask.png); z-index: 9999;position: fixed; width: 960px; height: 100%; top: 0;left:50%; margin-left:-490px;display: none}
+.mask{background: url(../images/mask.png); z-index: 9999;position: fixed; width: 100%; height: 100%; top: 0;left:0; display: none}
 .mask .loader{position:absolute; left: 50%; top:30%; margin-left: -50px;width: 100px;height: 100px}

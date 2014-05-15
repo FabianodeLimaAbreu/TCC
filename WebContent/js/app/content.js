@@ -32,6 +32,7 @@ window.Modal = Spine.Controller.sub({
   */
   save:function(){
     //window.location = "./";
+    $("body").removeClass("prevent");
     window.location.reload();
   },
 

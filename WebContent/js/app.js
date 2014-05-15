@@ -192,8 +192,9 @@ require(["methods", "sp/min", "app/content"], function() {
 		},
 		edit:function(a){
 			a.preventDefault();
+			this.el.addClass("prevent"); //Editing or create data
 			var cod=parseInt($(a.target).attr("href").replace("#",""));
-			this.callservice({"codigo":cod},"editar");
+			//this.callservice({"codigo":cod},"editar");
 		},
 		del:function(a){
 			a.preventDefault();

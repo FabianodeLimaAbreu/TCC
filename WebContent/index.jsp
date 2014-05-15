@@ -90,28 +90,29 @@
                 
             </div>
         </div>
-        <div class="mask">
-            <img src="images/loader.gif" class="loader">
-        </div>
+        
         <footer class="notprint">
             <p>Copyright © 2014 - Software of control - Todos os direitos reservados</p>
         </footer>  
-         <div id="modal" class="hide">
+         <div id="modal">
             <div class="modal-content">
-                <a href="#close" class="button s-third"></a>
-                <div class="modal-text">
+                <a href="#close" class="button s-third bclose"></a>
+                <div class="modal-text"><!-- add class to error: warning-->
                     <span class="big-icon"></span>
                     <div class="aviso">
-                        <h2></h2>
-                        <p></p>
-                        <div class="dialog">
-                            <a href="#yes" class="yes">Sim</a>
-                            <a href="#no" class="no">Não</a>
-                        </div>
+                        <h2>Fabiano de Lima</h2>
+                        <p>dsioahdasohas diosahodsa udshsdauidskahdsh dshoasdh ldas</p>
+                    </div>
+                    <div class="dialog hide">
+                        <a href="#yes" class="yes">Sim</a>
+                        <a href="#no" class="no">Não</a>
                     </div>
                 </div>
             </div>
         </div> 
+    </div>
+    <div class="mask">
+        <img src="images/loader.gif" class="loader">
     </div>
     <!--[if !IE]>-->
         <script src="js/lib/jquery.min.js"></script>
