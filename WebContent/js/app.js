@@ -36,22 +36,7 @@ require(["methods", "sp/min", "app/content"], function() {
 			this.loading = !1;
 			this.whatsave=""; //Este atributo diz se o operador esta criando um novo dado ou editando
 			this.page = "Home";
-
-			//Modelo de json para trabalhar com os dados
-			this.oop=[
-				{
-					'descr':'Confraternivação Universal',
-					"date":'01/01/2014'
-				},
-				{
-					'descr':'Tiradentes',
-					"date":'21/04/2014'
-				},
-				{
-					'descr':'Dia do trabalho',
-					"date":'01/05/2014'
-				},
-			];
+			this.list;
 
 			/*this.usr = jQuery.parseJSON($.cookie("portal"));
 			if (!this.usr) {
@@ -60,6 +45,8 @@ require(["methods", "sp/min", "app/content"], function() {
 			//this.userTx.text(this.usr.Nome.capitalize());
 			
 			this.el.find("#wrap").removeClass("hide");
+
+			/*Cria os objetos a serem utilizados nas paginas*/
 			this.content = new Content({
 				setloading: this.proxy(this.setloading),
 				mask: this.maskEl,
@@ -68,6 +55,8 @@ require(["methods", "sp/min", "app/content"], function() {
 			this.modal = new Modal({
 				el: this.modalEl
 			});
+
+			/*Rotas de páginas*/
 			this.routes({
 				"Usuarios/*func": function(a) {
 					//Listagem de usuarios
@@ -177,6 +166,8 @@ require(["methods", "sp/min", "app/content"], function() {
 				}
 			});
 		},
+
+		/*Chama metodos java para executar funções no banco de dados*/
 		callservice:function(obj,logic){
 			obj.logica=logic; //Oque sera feito com a tabela
             obj.table=this.page; //tabela que sera afetada, a mesma que a pagina atual
@@ -188,6 +179,8 @@ require(["methods", "sp/min", "app/content"], function() {
             	alert("Operação realizada com sucesso");
             });
 		},
+
+		/*Carrega conteudo do xml nas paginas*/
 		loaddata:function(load,obj){
 			var context=this;
 			$.ajax({
@@ -209,16 +202,52 @@ require(["methods", "sp/min", "app/content"], function() {
 			                	context.whatsave="cadastrar";
 			                	context.contentEl.html($(this).find(load).text());
 			                	context.contentEl.fadeIn();
+			                	if(load==="list"){
+			                		context.getTableValues();
+			                	}
 			                }
 			            }
 			        });
 	            }
 		    });
 		},
+
+		/*Chamada de metodo java para listar as tabelas na tela*/
+		getTableValues:function(){
+			var context=this;
+			$.get("./mvc",{'logica':'BuscarLogic','table':this.page})
+            .error(function(){
+            	context.modal.open("Não foi possivel retornar a lista cadastrada","Tente novamente mais tarde, ou contate o administrador do sistema.",!1,!0)
+            })
+            .success(function(a){
+                context.list=a;
+                context.writeTable(context.list);
+            });
+		},
+
+		/*Escreve a tabela na tela*/
+		writeTable:function(list){
+			var i,length,html="";
+			length=list.length;
+			switch(this.page){
+				case 'Feriados':
+					for(i=0;i<list.length;i++){
+						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].descr+"</td><td>"+list[i].date+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+					}
+				break;
+				default:
+					html+="Operação não encontrada!";
+			}
+			$("tbody").html(html);
+		},
+
+		/*Imprimi página*/
 		print:function(a){
 			a.preventDefault();
 			window.print();
 		},
+
+		/*Quando clicado no botão editar. Recebe o valor do objeto clicado e passa para o loaddata joga-los nos inputs*/
 		edit:function(a){
 			a.preventDefault();
 			this.el.addClass("prevent"); //Editing or create data
@@ -230,18 +259,22 @@ require(["methods", "sp/min", "app/content"], function() {
 			};
 			this.loaddata("cadastro",obj);
 		},
+
+		/*Quando clicado no botão deletar*/
 		del:function(a){
 			a.preventDefault();
 			var cod=parseInt($(a.target).attr("href").replace("#",""));
 			this.callservice({"codigo":cod},"deletar");
 		},
 
+		/*Quando clicado no botão enviar do formulário*/
 		submitform:function(a){
 			a.preventDefault();
 			alert(this.whatsave);
 			//this.callservice({"codigo":cod},this.whatsave);
 		},
 
+		/*Inseri os valores nos inputs*/
 		insertValues:function(obj){
 			var cinputs=$("input");
 			cinputs.each(function(){
@@ -307,10 +340,10 @@ require(["methods", "sp/min", "app/content"], function() {
 	    	//$.removeCookie("app", {path:"/"});
 	    	window.location = "login.jsp";
 	  	},
+
 		/**
 		*	Reseting the application
 		*/
-
 		reset: function(nothome) {
 		}
 	});

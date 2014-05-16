@@ -208,7 +208,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <!--<tr>
                             <td>1</td>
                             <td>Confraternização Universal</td>
                             <td>01/01/2014</td>
@@ -225,7 +225,7 @@
                                 <a href="#2" class="delete"></a>
                                 <a href="#2" class="edit"></a>
                             </td>
-                        </tr>
+                        </tr>-->
                     </tbody>
                 </table>
             ]]>
