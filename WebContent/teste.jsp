@@ -56,14 +56,19 @@
             })
             .success(function(a){
             	alert("Hum");
-            	console.dir([{'nome':'Fabiano','idade':18},{'nome':'Gabriel','idade':30}]);
-                var objeto={
+            	//console.dir([{'nome':'Fabiano','idade':18},{'nome':'Gabriel','idade':30}]);
+                /*var objeto={
                     'nome':'Fabiano',
                     'idade':18
-                };
-                console.log(objeto.nome);
+                };*/
+                var teste=a;
+                b(teste);
             });
         })();
+        
+        function b(a){
+        	alert(a);
+        }
 	</script>
 </body>
 </html>

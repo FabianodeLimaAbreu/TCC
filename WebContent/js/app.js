@@ -65,6 +65,9 @@ require(["methods", "sp/min", "app/content"], function() {
 				mask: this.maskEl,
 				el: this.contentEl,
 			});
+			this.modal = new Modal({
+				el: this.modalEl
+			});
 			this.routes({
 				"Usuarios/*func": function(a) {
 					//Listagem de usuarios
@@ -199,12 +202,14 @@ require(["methods", "sp/min", "app/content"], function() {
 			            	if(obj){
 			            		context.whatsave="editar";
 			            		context.contentEl.html($(this).find("cadastro").text());
+			            		context.contentEl.fadeIn();
+			            		context.insertValues(obj);
 			            	}
 			                else{
 			                	context.whatsave="cadastrar";
 			                	context.contentEl.html($(this).find(load).text());
+			                	context.contentEl.fadeIn();
 			                }
-			                context.contentEl.fadeIn();
 			            }
 			        });
 	            }
@@ -219,9 +224,11 @@ require(["methods", "sp/min", "app/content"], function() {
 			this.el.addClass("prevent"); //Editing or create data
 			var cod=parseInt($(a.target).attr("href").replace("#",""));
 			//this.callservice({"codigo":cod},"editar");
-			var obj=this.oop;
+			var obj={
+				'date':'01/01/2014',
+				'descr':'Confraternização Universal'
+			};
 			this.loaddata("cadastro",obj);
-			this.insertValues(obj);
 		},
 		del:function(a){
 			a.preventDefault();
@@ -236,7 +243,11 @@ require(["methods", "sp/min", "app/content"], function() {
 		},
 
 		insertValues:function(obj){
-			console.dir(obj);
+			var cinputs=$("input");
+			cinputs.each(function(){
+				$(this).val(obj[$(this).attr("name")]);
+			});
+			//console.dir(obj);
 		},
 
 		/**
@@ -244,7 +255,7 @@ require(["methods", "sp/min", "app/content"], function() {
 		*
 		*	This method cancel all editions and return to a previews page
 		*	Before redirect a previews page the method open modal question, and if the user click 'yes' it will be redirected
-		*/
+		**/
 		cancel: function() {
 			if (this.loading) {
 				return false;
