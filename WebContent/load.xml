@@ -270,7 +270,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <!--<tr>
                             <td>1</td>
                             <td>RH</td>
                             <td class="actions">
@@ -285,7 +285,7 @@
                                 <a href="#2" class="delete"></a>
                                 <a href="#2" class="edit"></a>
                             </td>
-                        </tr>
+                        </tr>-->
                     </tbody>
                 </table>
             ]]>
@@ -295,7 +295,7 @@
                 <h1>Cadastro de Departamentos</h1>
                 <form role="form" action="">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="departamento" placeholder="Departamento" maxlength="80">
+                    <input type="text" class="form-control" name="desc_dpto" placeholder="Departamento" maxlength="80">
                   </div>
                 </form>
                 <div class="finishform">

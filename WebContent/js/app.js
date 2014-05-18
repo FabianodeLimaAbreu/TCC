@@ -217,10 +217,12 @@ require(["methods", "sp/min", "app/content"], function() {
 			var context=this;
 			$.get("./mvc",{'logica':'BuscarLogic','table':this.page})
             .error(function(){
-            	context.modal.open("Não foi possivel retornar a lista cadastrada","Tente novamente mais tarde, ou contate o administrador do sistema.",!1,!0)
+            	context.modal.open("Não foi possivel retornar a lista cadastrada","Tente novamente mais tarde, ou contate o administrador do sistema.",!0,!0)
             })
             .success(function(a){
-                context.list=a;
+                context.list=JSON.parse(a);
+                //console.log(context.list.replace("\"",""));
+                console.dir(context.list);
                 context.writeTable(context.list);
             });
 		},
@@ -235,6 +237,10 @@ require(["methods", "sp/min", "app/content"], function() {
 						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].descr+"</td><td>"+list[i].date+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
 					}
 				break;
+				case 'Departamentos':
+					for(i=0;i<list.length;i++){
+						html+="<tr><td>"+list[i].id+"</td><td>"+list[i].desc_dpto+"</td><td class='actions'><a href='#"+list[i].id+"' class='delete'></a><a href='#"+list[i].id+"' class='edit'></a></td></tr>";
+					}
 				default:
 					html+="Operação não encontrada!";
 			}
@@ -253,10 +259,7 @@ require(["methods", "sp/min", "app/content"], function() {
 			this.el.addClass("prevent"); //Editing or create data
 			var cod=parseInt($(a.target).attr("href").replace("#",""));
 			//this.callservice({"codigo":cod},"editar");
-			var obj={
-				'date':'01/01/2014',
-				'descr':'Confraternização Universal'
-			};
+			var obj=filterBy(this.list,'id',cod);
 			this.loaddata("cadastro",obj);
 		},
 
@@ -276,9 +279,10 @@ require(["methods", "sp/min", "app/content"], function() {
 
 		/*Inseri os valores nos inputs*/
 		insertValues:function(obj){
+			console.dir(obj);
 			var cinputs=$("input");
 			cinputs.each(function(){
-				$(this).val(obj[$(this).attr("name")]);
+				$(this).val(obj[0][$(this).attr("name")]);
 			});
 			//console.dir(obj);
 		},

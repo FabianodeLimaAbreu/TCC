@@ -1,6 +1,6 @@
 window.Modal = Spine.Controller.sub({
    elements:{
-    ".modal-content":"content", 
+    ".modal-text":"content", 
     ".modal-text h2":"title", 
     ".modal-text p":"msg",
     ".dialog":"buttons",
@@ -50,8 +50,8 @@ window.Modal = Spine.Controller.sub({
     a = a || "Titulo da Mensagem";
     b = b || "";
     this.el.addClass("question");
-    this.content.removeClass("bad");
-    c && this.content.addClass("bad");
+    this.content.removeClass("warning");
+    c && this.content.addClass("warning");
     d && this.bigicon.show();
     this.title.text(a.capitalize());
     this.msg.html(b);
@@ -71,8 +71,8 @@ window.Modal = Spine.Controller.sub({
   open:function(a, b, c, d) {
     a = a || "Titulo da Mensagem";
     b = b || "";
-    this.content.removeClass("bad");
-    c && this.content.addClass("bad");
+    this.content.removeClass("warning");
+    c && this.content.addClass("warning");
     this.bigicon.hide();
     d && this.bigicon.show();
     this.title.text(a.capitalize());

@@ -159,7 +159,9 @@ Array.prototype.filter || (Array.prototype.filter = function(c, a) {
 });
 function filterBy(a, b, c){
     var d = a.filter(function(d) {
-        return -1 !== d[b].indexOf(c);
+      console.log(d[b] === c);
+        return false !== (d[b] === c);
+        //return -1 !== d[b].indexOf(c);
     });
     return d;
 }
