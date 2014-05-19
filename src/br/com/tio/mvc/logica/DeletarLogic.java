@@ -1,26 +1,29 @@
 package br.com.tio.mvc.logica;
 
 import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import br.com.tio.jpa.ExecHibernate;
 
-public class BuscarLogic implements Logica {
+public class DeletarLogic implements Logica{
 	public void executa(HttpServletRequest request, HttpServletResponse response)
-				throws Exception {
-	
+			throws Exception {
+		
 		ExecHibernate dao = new ExecHibernate();
 		PrintWriter out = response.getWriter();
 		
-		try{
+		try {
 			String table = request.getParameter("table");
-				
-			String json = dao.buscar(table);
+			String idS = request.getParameter("id");
+			Long id = Long.parseLong(idS);
 			
-			out.print(json);
-		}catch(Exception e){
+			boolean result = dao.deletar(table, id);
+			
+			out.print(result);
+		} catch (Exception e) {
 			throw new RuntimeException(e);
-		}
-	}
+		}		
+	}	
 }
-	

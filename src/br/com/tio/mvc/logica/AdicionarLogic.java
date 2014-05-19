@@ -24,7 +24,7 @@ public class AdicionarLogic implements Logica{
 
 		try{
 			String table = request.getParameter("table");
-					
+			
 			switch (table) {
 			case "Contatos":
 				String nomeContato = request.getParameter("nome");
@@ -52,17 +52,17 @@ public class AdicionarLogic implements Logica{
 			    int cod_tip = Integer.parseInt(request.getParameter("cod_tip"));
 			    String senha = request.getParameter("senha");
 			   
-				Usuarios usuario = new Usuarios();
-				usuario.setVal_cartao(val_cartao);
-				usuario.setCracha(cracha);			
-				usuario.setVersao(versao);
-				usuario.setCod_emp(cod_emp);
-				usuario.setNome(nome);
-				usuario.setNome_abrev(nome_abrev);
-				usuario.setCod_tip(cod_tip);
-				usuario.setSenha(senha);
+				Usuarios usuarios = new Usuarios();
+				usuarios.setVal_cartao(val_cartao);
+				usuarios.setCracha(cracha);			
+				usuarios.setVersao(versao);
+				usuarios.setCod_emp(cod_emp);
+				usuarios.setNome(nome);
+				usuarios.setNome_abrev(nome_abrev);
+				usuarios.setCod_tip(cod_tip);
+				usuarios.setSenha(senha);
 				
-				dao.query(usuario, "adicionar");		
+				dao.query(usuarios, "adicionar");		
 				break;
 			default:
 				out.println("Opção inválida");

@@ -16,32 +16,32 @@ public class Usuarios {
 	
 	@Id
 	@GeneratedValue
-	@Column(name="cod_usuario", length=11, nullable=false)
+	@Column(name="COD_USUARIO", length=11, nullable=false)
 	private Long id;
 	
 	@Temporal(TemporalType.DATE)
-	@Column(name="validade_cartao_usuario", nullable=true)
+	@Column(name="VALIDADE_CARTAO_USUARIO", nullable=true)
 	private Calendar val_cartao;
 	
-	@Column(name="cracha_usuario", length=30, nullable=false)
+	@Column(name="CRACHA_USUARIO", length=30, nullable=false)
 	private String cracha;
 	
-	@Column(length=11, nullable=true)
+	@Column(name = "VERSAO", length=11, nullable=true)
 	private int versao;
 	
-	@Column(name="cod_emp_usuario", length=11, nullable=false)
+	@Column(name="COD_EMP_USUARIO", length=11, nullable=false)
 	private int cod_emp;
 	
-	@Column(name="nome_usuario", length=256, nullable=false)
+	@Column(name="NOME_USUARIO", length=256, nullable=false)
 	private String nome;
 	
-	@Column(name="nome_abrev_usuario", length=45, nullable=false)
+	@Column(name="NOME_ABREV_USUARIO", length=45, nullable=false)
 	private String nome_abrev;
 	
-	@Column(name="cod_tip_usuario", length=11, nullable=false)
+	@Column(name="COD_TIP_USUARIO", length=11, nullable=false)
 	private int cod_tip ;
 	
-	@Column(name="senha_usuario", length=20, nullable=true)
+	@Column(name="SENHA_USUARIO", length=20, nullable=true)
 	private String senha;
 	
 	public Calendar getVal_cartao() {
