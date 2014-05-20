@@ -21,4 +21,32 @@ public class Operadores {
 	
 	@Column(name = "COD_PERF_OPERADOR", length = 11, nullable = false)
 	private int cod_perf;
+
+	public int getLogin() {
+		return login;
+	}
+
+	public void setLogin(int login) {
+		this.login = login;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public int getCod_perf() {
+		return cod_perf;
+	}
+
+	public void setCod_perf(int cod_perf) {
+		this.cod_perf = cod_perf;
+	}
+
+	public Long getId() {
+		return id;
+	}
 }

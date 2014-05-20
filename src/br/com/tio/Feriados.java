@@ -23,4 +23,25 @@ public class Feriados {
 	
 	@Column(name = "DESC_FERIADO", length = 256, nullable = false)
 	private String desc_feriado;
+
+	public Calendar getData_feriado() {
+		return data_feriado;
+	}
+
+	public void setData_feriado(Calendar data_feriado) {
+		this.data_feriado = data_feriado;
+	}
+
+	public String getDesc_feriado() {
+		return desc_feriado;
+	}
+
+	public void setDesc_feriado(String desc_feriado) {
+		this.desc_feriado = desc_feriado;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
 }

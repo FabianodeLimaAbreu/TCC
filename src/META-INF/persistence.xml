@@ -8,6 +8,12 @@
 	  	<class>br.com.tio.Usuarios</class>
 	  	<class>br.com.tio.Visitantes</class>
 	  	<class>br.com.tio.Contatos</class>
+	  	<class>br.com.tio.Departamentos</class>
+	  	<class>br.com.tio.Empresas</class>
+	  	<class>br.com.tio.Feriados</class>
+	  	<class>br.com.tio.Operadores</class>
+	  	<class>br.com.tio.Perfis</class>
+	  	<class>br.com.tio.Zonas_Tempo</class>	  		  		  		  	  	
 	
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

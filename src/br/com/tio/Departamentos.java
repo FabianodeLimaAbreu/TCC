@@ -12,6 +12,9 @@ public class Departamentos {
 	@GeneratedValue
 	@Column(name = "COD_DPTO", length = 11, nullable = false)
 	private Long id;
+
+	@Column(name = "DESC_DPTO", length = 256, nullable = false)
+	private String desc_dpto;
 	
 	public String getDesc_dpto() {
 		return desc_dpto;
@@ -25,7 +28,4 @@ public class Departamentos {
 		return id;
 	}
 
-	@Column(name = "DESC_DPTO", length = 256, nullable = false)
-	private String desc_dpto;
-	
 }

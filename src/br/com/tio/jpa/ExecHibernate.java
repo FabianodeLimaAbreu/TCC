@@ -8,8 +8,13 @@ import javax.persistence.Persistence;
 
 import br.com.tio.Contatos;
 import br.com.tio.Departamentos;
+import br.com.tio.Empresas;
+import br.com.tio.Feriados;
+import br.com.tio.Operadores;
+import br.com.tio.Perfis;
 import br.com.tio.Usuarios;
 import br.com.tio.Visitantes;
+import br.com.tio.Zonas_Tempo;
 
 import com.google.gson.Gson;
 
@@ -79,14 +84,29 @@ public class ExecHibernate {
 			case "Contatos":
 				encontrada = manager.find(Contatos.class, id);								
 				break;				
+			case "Departamentos":
+				encontrada = manager.find(Departamentos.class, id);
+				break;
+			case "Empresas":
+				encontrada = manager.find(Empresas.class, id);
+				break;				
+			case "Feriados":
+				encontrada = manager.find(Feriados.class, id);
+				break;				
+			case "Operadores":
+				encontrada = manager.find(Operadores.class, id);
+				break;				
+			case "Perfis":
+				encontrada = manager.find(Perfis.class, id);
+				break;				
 			case "Usuarios":
 				encontrada = manager.find(Usuarios.class, id);
 				break;
 			case "Visitantes":
 				encontrada = manager.find(Visitantes.class, id);
-				break;
-			case "Departamentos":
-				encontrada = manager.find(Departamentos.class, id);
+				break;				
+			case "Zonas_Tempo":
+				encontrada = manager.find(Zonas_Tempo.class, id);
 				break;				
 			default:
 				System.out.println("Classe "+ table +" inexistente: ");

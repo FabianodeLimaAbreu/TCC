@@ -33,7 +33,7 @@ public class Visitantes {
 	private String veiculo;
 	
 	@Column(name="PLACA_VISITANTE", length=20, nullable=true)
-	private String palca;
+	private String placa;
 	
 	@Column(name="CRACHA_VISITANTE", length=30, nullable=false)
 	private String cracha;
@@ -58,4 +58,112 @@ public class Visitantes {
 	@Temporal(TemporalType.DATE)
 	@Column(name="SAIDA_VISITANTE", nullable=false)
 	private Calendar data_saida;
+
+	public String getRg() {
+		return rg;
+	}
+
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public int getCod_emp() {
+		return cod_emp;
+	}
+
+	public void setCod_emp(int cod_emp) {
+		this.cod_emp = cod_emp;
+	}
+
+	public String getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(String veiculo) {
+		this.veiculo = veiculo;
+	}
+
+	public String getPlaca() {
+		return placa;
+	}
+
+	public void setPlaca(String palca) {
+		this.placa = placa;
+	}
+
+	public String getCracha() {
+		return cracha;
+	}
+
+	public void setCracha(String cracha) {
+		this.cracha = cracha;
+	}
+
+	public String getLocal_acesso() {
+		return local_acesso;
+	}
+
+	public void setLocal_acesso(String local_acesso) {
+		this.local_acesso = local_acesso;
+	}
+
+	public String getObs() {
+		return obs;
+	}
+
+	public void setObs(String obs) {
+		this.obs = obs;
+	}
+
+	public String getAssunto() {
+		return assunto;
+	}
+
+	public void setAssunto(String assunto) {
+		this.assunto = assunto;
+	}
+
+	public Calendar getData_cadastro() {
+		return data_cadastro;
+	}
+
+	public void setData_cadastro(Calendar data_cadastro) {
+		this.data_cadastro = data_cadastro;
+	}
+
+	public Calendar getData_entrada() {
+		return data_entrada;
+	}
+
+	public void setData_entrada(Calendar data_entrada) {
+		this.data_entrada = data_entrada;
+	}
+
+	public Calendar getData_saida() {
+		return data_saida;
+	}
+
+	public void setData_saida(Calendar data_saida) {
+		this.data_saida = data_saida;
+	}
+
+	public Long getId() {
+		return id;
+	}
 }
