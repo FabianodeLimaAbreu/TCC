@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.tio.Contatos;
+import br.com.tio.Departamentos;
+import br.com.tio.Empresas;
 import br.com.tio.Usuarios;
 import br.com.tio.jpa.ExecHibernate;
 
@@ -30,10 +32,25 @@ public class AdicionarLogic implements Logica{
 				String nomeContato = request.getParameter("nome");
 				
 				Contatos contatos = new Contatos();
-				contatos.setNome(nomeContato);
+				contatos.setNome(nomeContato);		
 				
 				dao.query(contatos, "adicionar");
 				break;
+			case "Departamentos":
+				String desc_dpto = request.getParameter("desc_dpto");
+				
+				Departamentos departamentos = new Departamentos();
+				departamentos.setDesc_dpto(desc_dpto);
+				
+				dao.query(departamentos, "adicionar");				
+				break;
+			case "Empresas":		
+				Empresas empresas = new Empresas();
+				
+				empresas.setRazao_social(request.getParameter("razao_social"));
+				empresas.setNome_fantasia(request.getParameter("nome_fantasia"));
+				empresas.setTelefone(request.getParameter("telefone"));
+			
 			case "Usuarios":
 				String dataEmTexto = request.getParameter("val_cartao");
 				Calendar val_cartao = null;
@@ -44,23 +61,16 @@ public class AdicionarLogic implements Logica{
 				}catch (ParseException e) {
 					out.print("Erro na conversão de data");
 				}
-			    String cracha = request.getParameter("cracha");
-			    int versao = Integer.parseInt(request.getParameter("versao"));
-			    int cod_emp = Integer.parseInt(request.getParameter("cod_emp"));
-			    String nome = request.getParameter("nome");
-			    String nome_abrev = request.getParameter("nome_abrev");
-			    int cod_tip = Integer.parseInt(request.getParameter("cod_tip"));
-			    String senha = request.getParameter("senha");
 			   
 				Usuarios usuarios = new Usuarios();
 				usuarios.setVal_cartao(val_cartao);
-				usuarios.setCracha(cracha);			
-				usuarios.setVersao(versao);
-				usuarios.setCod_emp(cod_emp);
-				usuarios.setNome(nome);
-				usuarios.setNome_abrev(nome_abrev);
-				usuarios.setCod_tip(cod_tip);
-				usuarios.setSenha(senha);
+				usuarios.setCracha(request.getParameter("cracha"));			
+				usuarios.setVersao(Integer.parseInt(request.getParameter("versao")));
+				usuarios.setCod_emp(Integer.parseInt(request.getParameter("cod_emp")));
+				usuarios.setNome(request.getParameter("nome"));
+				usuarios.setNome_abrev(request.getParameter("nome_abrev"));
+				usuarios.setCod_tip(Integer.parseInt(request.getParameter("cod_tip")));
+				usuarios.setSenha(request.getParameter("senha"));
 				
 				dao.query(usuarios, "adicionar");		
 				break;
