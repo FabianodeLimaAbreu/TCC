@@ -19,6 +19,24 @@
 .s-twosix {
   width: 260px;
 }
+.s-twonine {
+  width: 290px;
+}
+.s-ten {
+  width: 100px;
+}
+.s-four {
+  width: 400px;
+}
+.s-threefive {
+  width: 350px;
+}
+.s-fourfive {
+  width: 455px;
+}
+.s-fivefif {
+  width: 515px;
+}
 .neat {
   margin: 0;
 }
@@ -27,6 +45,9 @@
 }
 .bottomten {
   margin-bottom: 10px;
+}
+.leftten {
+  margin-left: 10px;
 }
 .no-border,
 li.no-border {
@@ -379,6 +400,11 @@ nav ul.holder .dropdown > a#visitantes:focus::after {
 }
 .tab-pane form label {
   font-size: 11pt;
+}
+.tab-pane#personal label {
+  line-height: 40px;
+  font-size: 14px;
+  color: #6792c4;
 }
 footer {
   position: fixed;
