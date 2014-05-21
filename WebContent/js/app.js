@@ -193,13 +193,13 @@ require(["methods", "sp/min", "app/content"], function() {
 	                 context.xml.each(function(){
 			            if($(this).attr("name")===context.page){
 			            	if(obj){
-			            		context.whatsave="editar";
+			            		context.whatsave="EditarLogic";
 			            		context.contentEl.html($(this).find("cadastro").text());
 			            		context.contentEl.fadeIn();
 			            		context.insertValues(obj);
 			            	}
 			                else{
-			                	context.whatsave="cadastrar";
+			                	context.whatsave="InsertLogic";
 			                	context.contentEl.html($(this).find(load).text());
 			                	context.contentEl.fadeIn();
 			                	if(load==="list"){
@@ -227,20 +227,82 @@ require(["methods", "sp/min", "app/content"], function() {
             });
 		},
 
-		/*Escreve a tabela na tela*/
+		/*Escreve a tabela de dados na tela*/
 		writeTable:function(list){
 			var i,length,html="";
 			length=list.length;
 			switch(this.page){
+				case 'Perfis':
+					for(i=0;i<list.length;i++){
+						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].nome+"</td><td>"+list[i].descr+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+					}
+					break;
+				case 'Usuarios':
+				//Falta fazer
+					for(i=0;i<list.length;i++){
+						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].nome+"</td><td>"+list[i].descr+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+					}
+					break;
 				case 'Feriados':
 					for(i=0;i<list.length;i++){
 						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].descr+"</td><td>"+list[i].date+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
 					}
-				break;
+					break;
 				case 'Departamentos':
 					for(i=0;i<list.length;i++){
 						html+="<tr><td>"+list[i].id+"</td><td>"+list[i].desc_dpto+"</td><td class='actions'><a href='#"+list[i].id+"' class='delete'></a><a href='#"+list[i].id+"' class='edit'></a></td></tr>";
 					}
+					break;
+				case 'Operadores':
+					for(i=0;i<list.length;i++){
+						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].nome+"</td><td>"+list[i].senha+"</td><td>"+list[i].perfil+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+					}
+					break;
+				case 'Empresas':
+					for(i=0;i<list.length;i++){
+						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].razao+"</td><td>"+list[i].fantasia+"</td><td>"+list[i].telefone+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+					}
+					break;
+				case 'Faixas':
+					for(i=0;i<list.length;i++){
+						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].inicio+"</td><td>"+list[i].fim+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+					}
+					break;
+				case 'Zonas':
+				//Falta fazer
+					for(i=0;i<list.length;i++){
+						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].inicio+"</td><td>"+list[i].fim+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+					}
+					break;
+				case 'Status':
+				//Falta fazer
+					for(i=0;i<list.length;i++){
+						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].inicio+"</td><td>"+list[i].fim+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+					}
+					break;
+				case 'Status':
+				//Falta fazer
+					for(i=0;i<list.length;i++){
+						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].inicio+"</td><td>"+list[i].fim+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+					}
+					break;
+				case 'Especiais':
+				//Falta fazer
+					for(i=0;i<list.length;i++){
+						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].inicio+"</td><td>"+list[i].fim+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+					}
+					break;
+				case 'Especiais':
+				//Falta fazer
+					for(i=0;i<list.length;i++){
+						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].inicio+"</td><td>"+list[i].fim+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+					}
+					break;
+				case 'Visitantes':
+					for(i=0;i<list.length;i++){
+						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].nome+"</td><td>"+list[i].empresa+"</td><td>"+list[i].assunto+"</td><td>"+list[i].observacao+"</td><td>"+list[i].departamento+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+					}
+					break;
 				default:
 					html+="Operação não encontrada!";
 			}
@@ -267,7 +329,7 @@ require(["methods", "sp/min", "app/content"], function() {
 		del:function(a){
 			a.preventDefault();
 			var cod=parseInt($(a.target).attr("href").replace("#",""));
-			this.callservice({"codigo":cod},"deletar");
+			this.callservice({"codigo":cod},"DeletarLogic");
 		},
 
 		/*Quando clicado no botão enviar do formulário*/
