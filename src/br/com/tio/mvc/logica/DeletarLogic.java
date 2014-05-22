@@ -10,7 +10,7 @@ import br.com.tio.jpa.ExecHibernate;
 public class DeletarLogic implements Logica{
 	public void executa(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		
+
 		ExecHibernate dao = new ExecHibernate();
 		PrintWriter out = response.getWriter();
 		
@@ -21,9 +21,9 @@ public class DeletarLogic implements Logica{
 			
 			boolean result = dao.deletar(table, id);
 			
-			out.print(result);
+			//out.print(result);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}		
-	}	
+	}
 }

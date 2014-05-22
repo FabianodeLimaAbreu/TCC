@@ -30,9 +30,11 @@ public class ExecHibernate {
 				manager.getTransaction().begin();
 					switch (op) {					
 					case "adicionar":
+						System.out.println("ENTROU NO ADICIONAR");						
 						manager.persist(objeto);
 					    break;
-					case "alterar":					
+					case "editar":	
+						System.out.println("ENTROU NO EDITAR");
 						manager.merge(objeto);
 						break; 
 					default:

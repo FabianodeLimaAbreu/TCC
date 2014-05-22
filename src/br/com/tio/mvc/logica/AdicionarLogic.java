@@ -1,9 +1,6 @@
 package br.com.tio.mvc.logica;
 
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,8 +16,6 @@ import br.com.tio.Visitantes;
 import br.com.tio.Zonas_Tempo;
 import br.com.tio.jpa.ExecHibernate;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
-
 public class AdicionarLogic implements Logica{
 	public void executa(HttpServletRequest request, HttpServletResponse response)
 		throws Exception {
@@ -28,11 +23,18 @@ public class AdicionarLogic implements Logica{
 		PrintWriter out = response.getWriter();
 		
 		ExecHibernate dao = new ExecHibernate();
-		
-		String dataEmTexto, cadastroEmTexto, entradaEmTexto, saidaEmTexto;
+		String acao;
 
 		try{
 			String table = request.getParameter("table");
+			Long id = Long.parseLong(request.getParameter("id"));
+			
+			if (id == 0) {
+				id = null;
+				acao = "adicionar"; 
+			} else {
+				acao = "editar";
+			}				
 			
 			switch (table) {
 			case "Contatos":
@@ -40,15 +42,18 @@ public class AdicionarLogic implements Logica{
 				
 				Contatos contatos = new Contatos();
 				
+				contatos.setId(id);
 				contatos.setNome(nomeContato);		
 				
-				dao.query(contatos, "adicionar");
+				dao.query(contatos, acao);
 				break;
 			case "Departamentos":				
 				Departamentos departamentos = new Departamentos();
+				
+				departamentos.setId(id);
 				departamentos.setDesc_dpto(request.getParameter("desc_dpto"));
 				
-				dao.query(departamentos, "adicionar");				
+				dao.query(departamentos, acao);				
 				break;
 			case "Empresas":		
 				Empresas empresas = new Empresas();
@@ -62,7 +67,7 @@ public class AdicionarLogic implements Logica{
 			case "Feriados":
 				Feriados feriados = new Feriados();
 				
-				dataEmTexto = request.getParameter("data_feriado");
+				/*dataEmTexto = request.getParameter("data_feriado");
 				Calendar data_feriado = null;
 				try {
 					Date date = new SimpleDateFormat("dd/MM;yyyy").parse(dataEmTexto);
@@ -70,7 +75,8 @@ public class AdicionarLogic implements Logica{
 					data_feriado.setTime(date);					
 				} catch (ParseException e) {
 					out.print("Erro na conversão de data");
-				}
+				}*/
+				String data_feriado = request.getParameter("data_feriado");
 				
 				feriados.setData_feriado(data_feriado);
 				feriados.setDesc_feriado(request.getParameter("desc_feriado"));
@@ -95,7 +101,7 @@ public class AdicionarLogic implements Logica{
 				dao.query(perfis, "adicionar");				
 				break;
 			case "Usuarios":
-				dataEmTexto = request.getParameter("val_cartao");
+				/*dataEmTexto = request.getParameter("val_cartao");
 				Calendar val_cartao = null;
 				//convertendo data
 				try{
@@ -104,10 +110,10 @@ public class AdicionarLogic implements Logica{
 					val_cartao.setTime(date);
 				}catch (ParseException e) {
 					out.print("Erro na conversão de data");
-				}			
+				}*/			
 				Usuarios usuarios = new Usuarios();
 				
-				usuarios.setVal_cartao(val_cartao);
+				usuarios.setVal_cartao(request.getParameter("val_cartao"));
 				usuarios.setCracha(request.getParameter("cracha"));			
 				usuarios.setVersao(Integer.parseInt(request.getParameter("versao")));
 				usuarios.setCod_emp(Integer.parseInt(request.getParameter("cod_emp")));
@@ -120,37 +126,8 @@ public class AdicionarLogic implements Logica{
 				break;
 			case "Visitantes":
 				Visitantes visitantes = new Visitantes();
-
-				cadastroEmTexto = request.getParameter("data_cadastro");
-				Calendar data_cadastro = null;
-				try {
-					Date date = new SimpleDateFormat("dd/MM/yyyy").parse(cadastroEmTexto);
-					data_cadastro = Calendar.getInstance();
-					data_cadastro.setTime(date);
-				} catch (ParseException e) {
-					out.print("Erro na conversão de data");
-				}
+				//Foi retirado todos os tratamentos de data com Calendar dessa classe
 				
-				entradaEmTexto = request.getParameter("data_entrada");
-				Calendar data_entrada = null;
-				try {
-					Date date = new SimpleDateFormat("dd/MM/yyyy").parse(entradaEmTexto);
-					data_entrada = Calendar.getInstance();
-					data_entrada.setTime(date);
-				} catch (ParseException e) {
-					out.print("Erro na conversão de data");
-				}				
-				
-				saidaEmTexto = request.getParameter("data_saida");
-				Calendar data_saida = null;
-				try {
-					Date date = new SimpleDateFormat("dd/MM/yyyy").parse(saidaEmTexto);
-					data_saida = Calendar.getInstance();
-					data_saida.setTime(date);
-				} catch (ParseException e) {
-					out.print("Erro na conversão de data");
-				}									
-								
 				visitantes.setRg(request.getParameter("rg"));
 				visitantes.setCpf(request.getParameter("cpf"));
 				visitantes.setNome(request.getParameter("nome"));
@@ -160,10 +137,10 @@ public class AdicionarLogic implements Logica{
 				visitantes.setCracha(request.getParameter("cracha"));
 				visitantes.setLocal_acesso(request.getParameter("local_acesso"));
 				visitantes.setObs(request.getParameter("obs"));
-				visitantes.setAssunto("assunto");
-				visitantes.setData_cadastro(data_cadastro);
-				visitantes.setData_entrada(data_entrada);
-				visitantes.setData_entrada(data_saida);
+				visitantes.setAssunto(request.getParameter("assunto"));
+				visitantes.setData_cadastro(request.getParameter("data_cadastro"));
+				visitantes.setData_entrada(request.getParameter("data_entrada"));
+				visitantes.setData_entrada(request.getParameter("data_saida"));
 				
 				dao.query(visitantes, "adicionar");
 				break;

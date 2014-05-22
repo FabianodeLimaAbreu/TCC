@@ -18,17 +18,18 @@ public class Feriados {
 	private Long id;
 	
 	@Column(name = "DATA_FERIADO", nullable = false)
-	@Temporal(TemporalType.DATE)
-	private Calendar data_feriado;
+	//@Temporal(TemporalType.DATE)
+	//private Calendar data_feriado;
+	private String data_feriado;
 	
 	@Column(name = "DESC_FERIADO", length = 256, nullable = false)
 	private String desc_feriado;
 
-	public Calendar getData_feriado() {
+	public String getData_feriado() {
 		return data_feriado;
 	}
 
-	public void setData_feriado(Calendar data_feriado) {
+	public void setData_feriado(String data_feriado) {
 		this.data_feriado = data_feriado;
 	}
 

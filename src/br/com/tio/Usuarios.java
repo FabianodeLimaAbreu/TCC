@@ -19,9 +19,10 @@ public class Usuarios {
 	@Column(name="COD_USUARIO", length=11, nullable=false)
 	private Long id;
 	
-	@Temporal(TemporalType.DATE)
 	@Column(name="VALIDADE_CARTAO_USUARIO", nullable=true)
-	private Calendar val_cartao;
+	//@Temporal(TemporalType.DATE)
+	//private Calendar val_cartao;
+	private String val_cartao;
 	
 	@Column(name="CRACHA_USUARIO", length=30, nullable=false)
 	private String cracha;
@@ -44,11 +45,11 @@ public class Usuarios {
 	@Column(name="SENHA_USUARIO", length=20, nullable=true)
 	private String senha;
 	
-	public Calendar getVal_cartao() {
+	public String getVal_cartao() {
 		return val_cartao;
 	}
 
-	public void setVal_cartao(Calendar val_cartao) {
+	public void setVal_cartao(String val_cartao) {
 		this.val_cartao = val_cartao;
 	}
 

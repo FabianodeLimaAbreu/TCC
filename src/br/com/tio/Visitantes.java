@@ -47,18 +47,21 @@ public class Visitantes {
 	@Column(name="ASSUNTO_VISITANTE", length=256, nullable=true)
 	private String assunto;
 	
-	@Temporal(TemporalType.DATE)
 	@Column(name="DATA_CADASTRO_VISITANTE", nullable=false)
-	private Calendar data_cadastro;
+	//@Temporal(TemporalType.DATE)
+	//private Calendar data_cadastro;
+	private String data_cadastro;
 	
-	@Temporal(TemporalType.DATE)
 	@Column(name="ENTRADA_VISITANTE", nullable=false)
-	private Calendar data_entrada;
+	//@Temporal(TemporalType.DATE)
+	//private Calendar data_entrada;
+	private String data_entrada;
 	
-	@Temporal(TemporalType.DATE)
 	@Column(name="SAIDA_VISITANTE", nullable=false)
-	private Calendar data_saida;
-
+	//@Temporal(TemporalType.DATE)
+	//private Calendar data_saida;
+	private String data_saida;
+	
 	public String getRg() {
 		return rg;
 	}
@@ -103,7 +106,7 @@ public class Visitantes {
 		return placa;
 	}
 
-	public void setPlaca(String palca) {
+	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
 
@@ -139,27 +142,27 @@ public class Visitantes {
 		this.assunto = assunto;
 	}
 
-	public Calendar getData_cadastro() {
+	public String getData_cadastro() {
 		return data_cadastro;
 	}
 
-	public void setData_cadastro(Calendar data_cadastro) {
+	public void setData_cadastro(String data_cadastro) {
 		this.data_cadastro = data_cadastro;
 	}
 
-	public Calendar getData_entrada() {
+	public String getData_entrada() {
 		return data_entrada;
 	}
 
-	public void setData_entrada(Calendar data_entrada) {
+	public void setData_entrada(String data_entrada) {
 		this.data_entrada = data_entrada;
 	}
 
-	public Calendar getData_saida() {
+	public String getData_saida() {
 		return data_saida;
 	}
 
-	public void setData_saida(Calendar data_saida) {
+	public void setData_saida(String data_saida) {
 		this.data_saida = data_saida;
 	}
 
