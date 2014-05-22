@@ -60,7 +60,7 @@
                     <input type="text" class="form-control" name="nome" placeholder="Nome do perfil" maxlength="80">
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" name="descricao" placeholder="Descrição do perfil" maxlength="80">
+                    <input type="text" class="form-control" name="desc_perfil" placeholder="Descrição do perfil" maxlength="80">
                   </div>
                 </form>
                 <div class="finishform">
@@ -263,11 +263,11 @@
                 <form role="form" action="">
                   <div class="form-group">
                     <label for="date">Data</label>
-                    <input type="text" class="form-control date" name="date" maxlength="10">
+                    <input type="text" class="form-control date" name="data_feriado" maxlength="10">
                   </div>
                   <div class="form-group">
                     <label for="descr">Descrição</label>
-                    <input type="text" class="form-control" name="descr" maxlength="80">
+                    <input type="text" class="form-control" name="desc_feriado" maxlength="80">
                   </div>
                 <form>
                 <div class="finishform">
@@ -435,10 +435,10 @@
                 <h1>Cadastro de Empresas</h1>
                 <form role="form" action="">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="razao" placeholder="Razão Social" maxlength="80">
+                    <input type="text" class="form-control" name="razao_social" placeholder="Razão Social" maxlength="80">
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control s-mini floatLeft" name="fantasia" placeholder="Nome Fantasia" maxlength="80">
+                    <input type="text" class="form-control s-mini floatLeft" name="nome_fantasia" placeholder="Nome Fantasia" maxlength="80">
                   </div>
                   <div class="form-group">
                     <input type="text" class="form-control s-mini floatRight" name="telefone" placeholder="Telefone:" maxlength="12">

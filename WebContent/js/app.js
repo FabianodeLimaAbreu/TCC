@@ -169,14 +169,15 @@ require(["methods", "sp/min", "app/content"], function() {
 
 		/*Chama metodos java para executar funções no banco de dados*/
 		callservice:function(obj,logic){
+			var context=this;
 			obj.logica=logic; //Oque sera feito com a tabela
             obj.table=this.page; //tabela que sera afetada, a mesma que a pagina atual
             $.get("./mvc",obj)
             .error(function(){
-            	alert("Não foi realizar a operação");
+            	context.modal.open("Não foi realizar a operação","Tente novamente mais tarde, ou contate o administrador do sistema.",!1,!0)
             })
             .success(function(){
-            	alert("Operação realizada com sucesso");
+            	context.modal.open("Operação realizada com sucesso","Feche esta janela para continuar",!0,context.modal.save)
             });
 		},
 
@@ -234,7 +235,7 @@ require(["methods", "sp/min", "app/content"], function() {
 			switch(this.page){
 				case 'Perfis':
 					for(i=0;i<list.length;i++){
-						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].nome+"</td><td>"+list[i].descr+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+						html+="<tr><td>"+list[i].id+"</td><td>"+list[i].nome+"</td><td>"+list[i].desc_perfil+"</td><td class='actions'><a href='#"+list[i].id+"' class='delete'></a><a href='#"+list[i].id+"' class='edit'></a></td></tr>";
 					}
 					break;
 				case 'Usuarios':
@@ -245,7 +246,8 @@ require(["methods", "sp/min", "app/content"], function() {
 					break;
 				case 'Feriados':
 					for(i=0;i<list.length;i++){
-						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].descr+"</td><td>"+list[i].date+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+						var data=list[i].data_feriado.toString();
+						html+="<tr><td>"+list[i].id+"</td><td>"+list[i].desc_feriado+"</td><td>"+data+"</td><td class='actions'><a href='#"+list[i].id+"' class='delete'></a><a href='#"+list[i].id+"' class='edit'></a></td></tr>";
 					}
 					break;
 				case 'Departamentos':
@@ -255,12 +257,12 @@ require(["methods", "sp/min", "app/content"], function() {
 					break;
 				case 'Operadores':
 					for(i=0;i<list.length;i++){
-						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].nome+"</td><td>"+list[i].senha+"</td><td>"+list[i].perfil+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+						html+="<tr><td>"+list[i].id+"</td><td>"+list[i].login+"</td><td>"+list[i].senha+"</td><td>"+list[i].cod_perf+"</td><td class='actions'><a href='#"+list[i].id+"' class='delete'></a><a href='#"+list[i].id+"' class='edit'></a></td></tr>";
 					}
 					break;
 				case 'Empresas':
 					for(i=0;i<list.length;i++){
-						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].razao+"</td><td>"+list[i].fantasia+"</td><td>"+list[i].telefone+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+						html+="<tr><td>"+list[i].id+"</td><td>"+list[i].razao_social+"</td><td>"+list[i].nome_fantasia+"</td><td>"+list[i].telefone+"</td><td class='actions'><a href='#"+list[i].id+"' class='delete'></a><a href='#"+list[i].id+"' class='edit'></a></td></tr>";
 					}
 					break;
 				case 'Faixas':
@@ -329,7 +331,7 @@ require(["methods", "sp/min", "app/content"], function() {
 		del:function(a){
 			a.preventDefault();
 			var cod=parseInt($(a.target).attr("href").replace("#",""));
-			this.callservice({"codigo":cod},"DeletarLogic");
+			this.callservice({"id":cod},"DeletarLogic");
 		},
 
 		/*Quando clicado no botão enviar do formulário*/
