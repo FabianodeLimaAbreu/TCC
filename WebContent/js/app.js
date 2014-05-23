@@ -169,15 +169,30 @@ require(["methods", "sp/min", "app/content"], function() {
 
 		/*Chama metodos java para executar funções no banco de dados*/
 		callservice:function(obj,logic){
+			console.log("ENTROU");
 			var context=this;
-			obj.logica=logic; //Oque sera feito com a tabela
-            obj.table=this.page; //tabela que sera afetada, a mesma que a pagina atual
+            if(this.whatsave==="AdicionarLogic"){
+            	if(!obj.id){
+            		obj[0].id=0;
+            	}
+            	obj[0].logica=logic; //Oque sera feito com a tabela
+            	obj[0].table=this.page; //tabela que sera afetada, a mesma que a pagina atual
+            	obj=JSON.parse(JSON.stringify(obj).replace("[","").replace("]",""));
+            }
+            else{
+            	obj.logica=logic; //Oque sera feito com a tabela
+            	obj.table=this.page; //tabela que sera afetada, a mesma que a pagina atual
+            }
+            console.log(obj);
+            //obj=JSON.parse(obj);
+            // $.get("./mvc",obj)
+            // {'id':16,'desc_dpto': 'dasdas', 'logica': 'AdicionarLogic', 'table': 'Departamentos'}
             $.get("./mvc",obj)
             .error(function(){
-            	context.modal.open("Não foi realizar a operação","Tente novamente mais tarde, ou contate o administrador do sistema.",!1,!0)
+            	context.modal.open("Não foi realizar a operação","Tente novamente mais tarde, ou contate o administrador do sistema.",!0,context.modal.refresh)
             })
             .success(function(){
-            	context.modal.open("Operação realizada com sucesso","Feche esta janela para continuar",!0,context.modal.save)
+            	context.modal.open("Operação realizada com sucesso","Feche esta janela para continuar",!1,context.modal.refresh)
             });
 		},
 
@@ -200,7 +215,7 @@ require(["methods", "sp/min", "app/content"], function() {
 			            		context.insertValues(obj);
 			            	}
 			                else{
-			                	context.whatsave="InsertLogic";
+			                	context.whatsave="AdicionarLogic";
 			                	context.contentEl.html($(this).find(load).text());
 			                	context.contentEl.fadeIn();
 			                	if(load==="list"){
@@ -224,6 +239,7 @@ require(["methods", "sp/min", "app/content"], function() {
                 context.list=JSON.parse(a);
                 //console.log(context.list.replace("\"",""));
                 console.dir(context.list);
+                $("p.count span").text(context.list.length);
                 context.writeTable(context.list);
             });
 		},
@@ -331,14 +347,34 @@ require(["methods", "sp/min", "app/content"], function() {
 		del:function(a){
 			a.preventDefault();
 			var cod=parseInt($(a.target).attr("href").replace("#",""));
+			this.whatsave="DeletarLogic";
 			this.callservice({"id":cod},"DeletarLogic");
 		},
 
 		/*Quando clicado no botão enviar do formulário*/
 		submitform:function(a){
+			var complet,length,context=this,obj="[{";
+			var cinputs=$("input");
+			length=cinputs.length;
 			a.preventDefault();
-			alert(this.whatsave);
-			//this.callservice({"codigo":cod},this.whatsave);
+			//alert(this.whatsave);
+			cinputs.each(function(index){
+				obj=obj.concat('"'+$(this).attr("name")+'":"'+$(this).val()+'"');
+				if((index+1)<length){
+					obj+=",";
+				}
+				//complet=!1;
+				if((index+1)>=length){
+					obj+="}]";
+					console.log(obj);
+					obj=JSON.parse(obj);
+					console.dir(obj);
+					context.callservice(obj,context.whatsave);
+				}
+				//$(this).val(obj[0][$(this).attr("name")]);
+			});
+
+			
 		},
 
 		/*Inseri os valores nos inputs*/

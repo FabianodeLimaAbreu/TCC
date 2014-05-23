@@ -30,7 +30,7 @@ window.Modal = Spine.Controller.sub({
   *
   * After the user click in "yes" at modal window, this method redirect to home page
   */
-  save:function(){
+  refresh:function(){
     //window.location = "./";
     //$("body").removeClass("prevent");
     window.location.reload();

@@ -15,7 +15,7 @@
                 <h1>Perfis</h1>
                 <div class="options">
                     <p class="count">
-                        Total:<span>10</span>
+                        Total:<span>00</span>
                     </p>
                     <a href="#print" class="print s-third"></a>
                     <a href="#Perfis/cadastro" class="create s-third"></a>
@@ -76,7 +76,7 @@
 				<h1>Usuários</h1>
                 <div class="options">
                     <p class="count">
-                        Total:<span>10</span>
+                        Total:<span>00</span>
                     </p>
                     <a href="#print" class="print s-third"></a>
                     <a href="#Usuarios/cadastro" class="create s-third"></a>
@@ -220,7 +220,7 @@
                 <h1>Feriados</h1>
                 <div class="options">
                     <p class="count">
-                        Total:<span>10</span>
+                        Total:<span>00</span>
                     </p>
                     <a href="#print" class="print s-third"></a>
                     <a href="#Feriados/cadastro" class="create s-third"></a>
@@ -283,7 +283,7 @@
                 <h1>Departamentos</h1>
                 <div class="options">
                     <p class="count">
-                        Total:<span>10</span>
+                        Total:<span>00</span>
                     </p>
                     <a href="#print" class="print s-third"></a>
                     <a href="#Departamentos/cadastro" class="create s-third"></a>
@@ -338,7 +338,7 @@
                 <h1>Operadores</h1>
                 <div class="options">
                     <p class="count">
-                        Total:<span>10</span>
+                        Total:<span>00</span>
                     </p>
                     <a href="#print" class="print s-third"></a>
                     <a href="#Operadores/cadastro" class="create s-third"></a>
@@ -390,7 +390,7 @@
                 <h1>Empresas</h1>
                 <div class="options">
                     <p class="count">
-                        Total:<span>10</span>
+                        Total:<span>00</span>
                     </p>
                     <a href="#print" class="print s-third"></a>
                     <a href="#Empresas/cadastro" class="create s-third"></a>
@@ -459,7 +459,7 @@
                 <h1>Faixas de horário</h1>
                 <div class="options">
                     <p class="count">
-                        Total:<span>10</span>
+                        Total:<span>00</span>
                     </p>
                     <a href="#print" class="print s-third"></a>
                     <a href="#Faixas/cadastro" class="create s-third"></a>
@@ -519,7 +519,7 @@
                 <h1>Zonas de Tempo</h1>
                 <div class="options">
                     <p class="count">
-                        Total:<span>10</span>
+                        Total:<span>00</span>
                     </p>
                     <a href="#print" class="print s-third"></a>
                     <a href="#Zonas/cadastro" class="create s-third"></a>
@@ -602,7 +602,7 @@
                 <h1>Visitantes</h1>
                 <div class="options">
                     <p class="count">
-                        Total:<span>10</span>
+                        Total:<span>00</span>
                     </p>
                     <a href="#print" class="print s-third"></a>
                     <a href="#Visitantes/cadastro" class="create s-third"></a>
