@@ -51,11 +51,11 @@ require(["methods", "sp/min", "app/content"], function() {
     $(inputs).each(function(index,val){
       complet = !1;
       if("numbermat" === $(val).attr("name")  && (!val.value || val.value==="Número da matricula")) {
-        return alert("Campo de matricula vazio");
+        return e.modal.open("Campo de matricula vazio","Preencha-o corretamente para prosseguir",!0,!0)
         //return e.modal.open("Campo obrigat\u00f3rio n\u00e3o preenchido", "E-Mail inv\u00e1lido!", !0), !1;
       }
       if("password" === $(val).attr("name") && (!val.value || val.value==="Senha")) {
-        return alert("Campo de senha vazio");
+        return e.modal.open("Campo de senha vazio","Preencha-o corretamente para prosseguir",!0,!0)
          //return e.modal.open("Campo obrigat\u00f3rio n\u00e3o preenchido", "Senha inv\u00e1lida!", !0), !1;
       }
       complet = !0;

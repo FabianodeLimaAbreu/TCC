@@ -367,7 +367,6 @@ require(["methods", "sp/min", "app/content"], function() {
 			var cinputs=$("input");
 			length=cinputs.length;
 			
-			
 			if(this.editactive){
 				obj+='"id":'+this.editactive+",";
 			}
@@ -386,8 +385,6 @@ require(["methods", "sp/min", "app/content"], function() {
 				}
 				//$(this).val(obj[0][$(this).attr("name")]);
 			});
-
-			
 		},
 
 		/*Inseri os valores nos inputs*/
