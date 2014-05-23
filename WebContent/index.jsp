@@ -78,8 +78,8 @@
                   <li class="dropdown">
                     <a id="visitantes" role="button" data-toggle="dropdown" href="#">Visitantes <b class="caret"></b></a>
                     <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Status/list">Status </a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Especiais/list">Especial</a></li>
+                      <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#Status/list">Status </a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Especiais/list">Especial</a></li>-->
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="#Visitantes/list">Controle de Visitantes</a></li>
                     </ul>
                   </li>

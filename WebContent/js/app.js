@@ -34,9 +34,10 @@ require(["methods", "sp/min", "app/content"], function() {
 		init: function() {
 			this.xml="";
 			this.loading = !1;
-			this.whatsave=""; //Este atributo diz se o operador esta criando um novo dado ou editando
+			this.whatsave=""; //Este atributo diz se o operador equal a logica utilizada para java
 			this.page = "Home";
 			this.list;
+			this.editactive=0;
 
 			/*this.usr = jQuery.parseJSON($.cookie("portal"));
 			if (!this.usr) {
@@ -169,8 +170,12 @@ require(["methods", "sp/min", "app/content"], function() {
 
 		/*Chama metodos java para executar funções no banco de dados*/
 		callservice:function(obj,logic){
-			console.log("ENTROU");
+			console.dir(this.whatsave);
 			var context=this;
+			if(logic==="DeletarLogic"){
+				obj.logica=logic; //Oque sera feito com a tabela
+            	obj.table=this.page; //tabela que sera afetada, a mesma que a pagina atual
+			}
             if(this.whatsave==="AdicionarLogic"){
             	if(!obj.id){
             		obj[0].id=0;
@@ -179,14 +184,16 @@ require(["methods", "sp/min", "app/content"], function() {
             	obj[0].table=this.page; //tabela que sera afetada, a mesma que a pagina atual
             	obj=JSON.parse(JSON.stringify(obj).replace("[","").replace("]",""));
             }
-            else{
-            	obj.logica=logic; //Oque sera feito com a tabela
-            	obj.table=this.page; //tabela que sera afetada, a mesma que a pagina atual
+            if(this.whatsave==="EditarLogic"){
+            	console.dir(obj);
+            	obj[0].logica="AdicionarLogic"; //Oque sera feito com a tabela
+            	obj[0].table=this.page; //tabela que sera afetada, a mesma que a pagina atual
+            	obj=JSON.parse(JSON.stringify(obj).replace("[","").replace("]",""));
             }
             console.log(obj);
             //obj=JSON.parse(obj);
             // $.get("./mvc",obj)
-            // {'id':16,'desc_dpto': 'dasdas', 'logica': 'AdicionarLogic', 'table': 'Departamentos'}
+            // {'id':16,'desc_dpto': 'Testao', 'logica': 'AdicionarLogic', 'table': 'Departamentos'}
             $.get("./mvc",obj)
             .error(function(){
             	context.modal.open("Não foi realizar a operação","Tente novamente mais tarde, ou contate o administrador do sistema.",!0,context.modal.refresh)
@@ -194,6 +201,7 @@ require(["methods", "sp/min", "app/content"], function() {
             .success(function(){
             	context.modal.open("Operação realizada com sucesso","Feche esta janela para continuar",!1,context.modal.refresh)
             });
+            this.reset();
 		},
 
 		/*Carrega conteudo do xml nas paginas*/
@@ -340,6 +348,7 @@ require(["methods", "sp/min", "app/content"], function() {
 			var cod=parseInt($(a.target).attr("href").replace("#",""));
 			//this.callservice({"codigo":cod},"editar");
 			var obj=filterBy(this.list,'id',cod);
+			this.editactive=cod;
 			this.loaddata("cadastro",obj);
 		},
 
@@ -353,11 +362,15 @@ require(["methods", "sp/min", "app/content"], function() {
 
 		/*Quando clicado no botão enviar do formulário*/
 		submitform:function(a){
+			a.preventDefault();
 			var complet,length,context=this,obj="[{";
 			var cinputs=$("input");
 			length=cinputs.length;
-			a.preventDefault();
-			//alert(this.whatsave);
+			
+			
+			if(this.editactive){
+				obj+='"id":'+this.editactive+",";
+			}
 			cinputs.each(function(index){
 				obj=obj.concat('"'+$(this).attr("name")+'":"'+$(this).val()+'"');
 				if((index+1)<length){
@@ -449,6 +462,7 @@ require(["methods", "sp/min", "app/content"], function() {
 		*	Reseting the application
 		*/
 		reset: function(nothome) {
+			this.editactive=0;
 		}
 	});
 	new App; //Creates application
