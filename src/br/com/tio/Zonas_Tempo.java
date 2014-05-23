@@ -104,4 +104,8 @@ public class Zonas_Tempo {
 	public Long getId() {
 		return id;
 	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

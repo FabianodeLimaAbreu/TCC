@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 import br.com.tio.Contatos;
 import br.com.tio.Departamentos;
 import br.com.tio.Empresas;
+import br.com.tio.Faixas_Acesso;
 import br.com.tio.Feriados;
 import br.com.tio.Operadores;
 import br.com.tio.Perfis;
@@ -30,11 +31,9 @@ public class ExecHibernate {
 				manager.getTransaction().begin();
 					switch (op) {					
 					case "adicionar":
-						System.out.println("ENTROU NO ADICIONAR");						
 						manager.persist(objeto);
 					    break;
 					case "editar":	
-						System.out.println("ENTROU NO EDITAR");
 						manager.merge(objeto);
 						break; 
 					default:
@@ -91,7 +90,10 @@ public class ExecHibernate {
 				break;
 			case "Empresas":
 				encontrada = manager.find(Empresas.class, id);
-				break;				
+				break;		
+			case "Faixas_Acesso":
+				encontrada = manager.find(Faixas_Acesso.class, id);
+				break;
 			case "Feriados":
 				encontrada = manager.find(Feriados.class, id);
 				break;				

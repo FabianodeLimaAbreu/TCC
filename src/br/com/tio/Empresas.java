@@ -50,4 +50,9 @@ public class Empresas {
 		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+
 }

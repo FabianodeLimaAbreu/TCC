@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.tio.Contatos;
 import br.com.tio.Departamentos;
 import br.com.tio.Empresas;
+import br.com.tio.Faixas_Acesso;
 import br.com.tio.Feriados;
 import br.com.tio.Operadores;
 import br.com.tio.Perfis;
@@ -58,11 +59,21 @@ public class AdicionarLogic implements Logica{
 			case "Empresas":		
 				Empresas empresas = new Empresas();
 				
+				empresas.setId(id);
 				empresas.setRazao_social(request.getParameter("razao_social"));
 				empresas.setNome_fantasia(request.getParameter("nome_fantasia"));
 				empresas.setTelefone(request.getParameter("telefone"));
 				
-				dao.query(empresas, "adicionar");
+				dao.query(empresas, acao);
+				break;
+			case "Faixas_Acesso":
+				Faixas_Acesso faixas_acesso = new Faixas_Acesso();
+				
+				faixas_acesso.setId(id);
+				faixas_acesso.setHora_ini(request.getParameter("hora_ini"));
+				faixas_acesso.setHora_fim(request.getParameter("hora_fim"));
+				
+				dao.query(faixas_acesso, acao);
 				break;
 			case "Feriados":
 				Feriados feriados = new Feriados();
@@ -70,35 +81,37 @@ public class AdicionarLogic implements Logica{
 				/*dataEmTexto = request.getParameter("data_feriado");
 				Calendar data_feriado = null;
 				try {
-					Date date = new SimpleDateFormat("dd/MM;yyyy").parse(dataEmTexto);
+					Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dataEmTexto);
 					data_feriado = Calendar.getInstance();
 					data_feriado.setTime(date);					
 				} catch (ParseException e) {
 					out.print("Erro na conversão de data");
 				}*/
-				String data_feriado = request.getParameter("data_feriado");
 				
-				feriados.setData_feriado(data_feriado);
+				feriados.setId(id);
+				feriados.setData_feriado(request.getParameter("data_feriado"));
 				feriados.setDesc_feriado(request.getParameter("desc_feriado"));
 				
-				dao.query(feriados, "adicionar");				
+				dao.query(feriados, acao);				
 				break;		
 			case "Operadores":
 				Operadores operadores = new Operadores();
 				
+				operadores.setId(id);
 				operadores.setLogin(Integer.parseInt(request.getParameter("login")));
 				operadores.setSenha(request.getParameter("senha"));
 				operadores.setCod_perf(Integer.parseInt(request.getParameter("cod_perf")));
 				
-				dao.query(operadores, "adicionar");				
+				dao.query(operadores, acao);				
 				break;
 			case "Perfis":
 				Perfis perfis = new Perfis();
 				
+				perfis.setId(id);
 				perfis.setNome(request.getParameter("nome"));
 				perfis.setDesc_perfil(request.getParameter("desc_perfil"));
 				
-				dao.query(perfis, "adicionar");				
+				dao.query(perfis, acao);				
 				break;
 			case "Usuarios":
 				/*dataEmTexto = request.getParameter("val_cartao");
@@ -113,6 +126,7 @@ public class AdicionarLogic implements Logica{
 				}*/			
 				Usuarios usuarios = new Usuarios();
 				
+				usuarios.setId(id);
 				usuarios.setVal_cartao(request.getParameter("val_cartao"));
 				usuarios.setCracha(request.getParameter("cracha"));			
 				usuarios.setVersao(Integer.parseInt(request.getParameter("versao")));
@@ -122,12 +136,13 @@ public class AdicionarLogic implements Logica{
 				usuarios.setCod_tip(Integer.parseInt(request.getParameter("cod_tip")));
 				usuarios.setSenha(request.getParameter("senha"));
 				
-				dao.query(usuarios, "adicionar");		
+				dao.query(usuarios, acao);		
 				break;
 			case "Visitantes":
 				Visitantes visitantes = new Visitantes();
 				//Foi retirado todos os tratamentos de data com Calendar dessa classe
 				
+				visitantes.setId(id);
 				visitantes.setRg(request.getParameter("rg"));
 				visitantes.setCpf(request.getParameter("cpf"));
 				visitantes.setNome(request.getParameter("nome"));
@@ -142,11 +157,12 @@ public class AdicionarLogic implements Logica{
 				visitantes.setData_entrada(request.getParameter("data_entrada"));
 				visitantes.setData_entrada(request.getParameter("data_saida"));
 				
-				dao.query(visitantes, "adicionar");
+				dao.query(visitantes, acao);
 				break;
 			case "Zonas_Tempo":
 				Zonas_Tempo zonas_tempos = new Zonas_Tempo();
 				
+				zonas_tempos.setId(id);
 				zonas_tempos.setDesc_zona(request.getParameter("desc_zona"));
 				zonas_tempos.setSegunda(request.getParameter("segunda"));
 				zonas_tempos.setTerca(request.getParameter("terca"));
@@ -156,7 +172,7 @@ public class AdicionarLogic implements Logica{
 				zonas_tempos.setSabado(request.getParameter("sabado"));
 				zonas_tempos.setDomingo(request.getParameter("domingo"));
 				
-				dao.query(zonas_tempos, "adicionar");
+				dao.query(zonas_tempos, acao);
 				break;
 			default:
 				out.println("Opção inválida");
