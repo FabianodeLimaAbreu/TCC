@@ -7,7 +7,7 @@ window.Modal = Spine.Controller.sub({
     ".big-icon":"bigicon"
   }, events:{
       "click .bclose":"close", 
-      "click .modal-buttons a":"action"
+      "click .dialog a":"action"
   }, 
   /**
   * Close modal window
@@ -20,9 +20,7 @@ window.Modal = Spine.Controller.sub({
     if("object" === typeof a) {
       a.preventDefault(), $(a.target);
     }
-    this.el.fadeOut(function() {
-      $(this).attr('class','hide');
-    });
+    this.el.fadeOut();
     this.callback && this.callback();
   }, 
   /**
@@ -49,7 +47,7 @@ window.Modal = Spine.Controller.sub({
   question: function(a, b, c, d) {
     a = a || "Titulo da Mensagem";
     b = b || "";
-    this.el.addClass("question");
+    this.buttons.removeClass("hide");
     this.content.removeClass("warning");
     c && this.content.addClass("warning");
     d && this.bigicon.show();
@@ -71,6 +69,7 @@ window.Modal = Spine.Controller.sub({
   open:function(a, b, c, d) {
     a = a || "Titulo da Mensagem";
     b = b || "";
+    this.buttons.addClass("hide");
     this.content.removeClass("warning");
     c && this.content.addClass("warning");
     this.bigicon.hide();
@@ -95,26 +94,27 @@ window.Modal = Spine.Controller.sub({
     }else {
       return!1;
     }
-    if(a.hasClass('yes')){
-      //If click in 'yes' button
-      if(this.content.hasClass("editing")){
-        //If is editing the page
-          this.bedit.removeClass("sel");
-          //Call methods
-          this.clean();
-          this.disableedit();
+    if(this.getCancelStatus){
+      if(a.hasClass('yes')){
+        this.close();
+        window.location.reload();
       }
       else{
-        //Else editing page
-        window.history.go(-1);
+        this.close();
       }
-      //Close modal
-      this.close();
     }
     else{
-      //Else, just close modal
-      this.close();
+      if(a.hasClass('yes')){
+        //Close modal
+        window.history.go(-1);
+        this.close();
+      }
+      else{
+        //Else, just close modal
+        this.close();
+      }
     }
+    
   },init:function() {
     this.itens = [];
 }});

@@ -357,6 +357,7 @@ require(["methods", "sp/min", "app/content"], function() {
 			a.preventDefault();
 			var cod=parseInt($(a.target).attr("href").replace("#",""));
 			this.whatsave="DeletarLogic";
+			//this.modal.question("Teste","Testando",!0,this.modal.save);
 			this.callservice({"id":cod},"DeletarLogic");
 		},
 
@@ -404,10 +405,11 @@ require(["methods", "sp/min", "app/content"], function() {
 		*	Before redirect a previews page the method open modal question, and if the user click 'yes' it will be redirected
 		**/
 		cancel: function() {
+			a.preventDefault();
 			if (this.loading) {
 				return false;
 			}
-			this.modal.question("Retornar?", "Suas alterações serão desfeitas!", !0, this.modal.action);
+			//this.modal.question("Retornar?", "Suas alterações serão desfeitas!", !0, this.modal.action);
 		},
 
 		/**

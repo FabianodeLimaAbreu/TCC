@@ -467,6 +467,7 @@ footer p {
 .box form input {
   font-size: 10pt;
   color: #d1d1d1;
+  height: 34pt;
 }
 .box form .input-group.first {
   margin-bottom: 10px;
