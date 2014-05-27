@@ -381,19 +381,14 @@ require(["methods", "sp/min", "app/content"], function() {
 					
 					break;
 				case 'Usuarios':
-				//Falta fazer
-					
+					$('#user a').click(function (e) {
+		              e.preventDefault();
+		              $(this).tab('show');
+		            }).eq(0).trigger("click");
+					this.setDatePicker($("input[name='nascimento']"),!1);
 					break;
 				case 'Feriados':
-					$( "input[name='data_feriado']" ).datepicker({
-						changeMonth: true,
-       					numberOfMonths: 2,
-						monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-					    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-					    dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
-					    dateFormat:"yy/mm/dd",
-					    minDate:new Date()
-					});
+					this.setDatePicker($("input[name='data_feriado']"),new Date());
 					break;
 				case 'Departamentos':
 					
@@ -417,6 +412,23 @@ require(["methods", "sp/min", "app/content"], function() {
 				default:
 					html+="Operação não encontrada! Contate o administrador do sistema";
 			}
+		},
+
+		setDatePicker:function(input,mindate,closeopt){
+			input.datepicker({
+				changeMonth: true,
+				numberOfMonths: 2,
+				monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+			    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+			    dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
+			    dateFormat:"yy/mm/dd",
+			    minDate:mindate,
+			    onClose: function( selectedDate ) {
+			    	if(closeopt){
+
+			    	}
+			    }
+			});
 		},
 		/*Quando clicado no botão enviar do formulário*/
 		submitform:function(a){
