@@ -34,13 +34,17 @@ window.Modal = Spine.Controller.sub({
     window.location.reload();
   },
 
+  refreshBack:function(){
+    window.history.go(-1);
+  },
+
   /**
   * Question modal
   *
   * @param {String} a. Title message
   * @param {String} b. Content message
   * @param {Boolean} c. true to set bad Modal
-  * @param {function} d. true to set a callback function and show bigicon
+  * @param {function} d. true to show bigicon
   * 
   * This method make a question to user. Use the param "a" and "b" to set it's content and title, and use "c" and "d" to set it's type and callback.
   */
@@ -94,10 +98,16 @@ window.Modal = Spine.Controller.sub({
     }else {
       return!1;
     }
-    if(this.getCancelStatus){
+    if(this.getRefreshStatus()){
       if(a.hasClass('yes')){
         this.close();
-        window.location.reload();
+        if(this.getRefreshStatus()==="Deletar"){
+          //Caso alem de dar refresh, vá deletar um dado do banco de dados
+          this.callservice({"id":this.codToDelete},"DeletarLogic");
+        }
+        else{
+          window.location.reload();
+        }
       }
       else{
         this.close();
@@ -116,7 +126,7 @@ window.Modal = Spine.Controller.sub({
     }
     
   },init:function() {
-    this.itens = [];
+    this.codToDelete;
 }});
 
 window.Content = Spine.Controller.sub({

@@ -29,7 +29,9 @@ require(["methods", "sp/min", "app/content"], function() {
 			"click .edit":"edit",
 			"click .logout":"logout",
 			"click .finishform .submit": "submitform",
-			"click .finishform .cancel": "cancel"
+			"click .finishform .cancel": "cancel",
+			"click .logo":"preventClick",
+			"click nav .dropdown-menu a":"preventClick"
 		},
 		init: function() {
 			this.xml="";
@@ -38,7 +40,8 @@ require(["methods", "sp/min", "app/content"], function() {
 			this.page = "Home";
 			this.list;
 			this.editactive=0;
-
+			this.refreshStatus;
+			this.prevent;
 			/*this.usr = jQuery.parseJSON($.cookie("portal"));
 			if (!this.usr) {
 				return this.logout(), !1;
@@ -51,10 +54,12 @@ require(["methods", "sp/min", "app/content"], function() {
 			this.content = new Content({
 				setloading: this.proxy(this.setloading),
 				mask: this.maskEl,
-				el: this.contentEl,
+				el: this.contentEl
 			});
 			this.modal = new Modal({
-				el: this.modalEl
+				el: this.modalEl,
+				getRefreshStatus:this.proxy(this.getRefreshStatus),
+				callservice:this.proxy(this.callservice)
 			});
 
 			/*Rotas de páginas*/
@@ -199,7 +204,15 @@ require(["methods", "sp/min", "app/content"], function() {
             	context.modal.open("Não foi realizar a operação","Tente novamente mais tarde, ou contate o administrador do sistema.",!0,context.modal.refresh)
             })
             .success(function(){
-            	context.modal.open("Operação realizada com sucesso","Feche esta janela para continuar",!1,context.modal.refresh)
+				if(context.whatsave === "AdicionarLogic"){
+					context.setRefreshStatus(true);
+					context.modal.open("Operação realizada com sucesso","Feche esta janela para continuar",!1,context.modal.refreshBack);
+					return !0;
+				}
+            	else{
+            		context.setRefreshStatus(false);
+            		context.modal.open("Operação realizada com sucesso","Feche esta janela para continuar",!1,context.modal.refresh)
+            	}
             });
             this.reset();
 		},
@@ -207,6 +220,12 @@ require(["methods", "sp/min", "app/content"], function() {
 		/*Carrega conteudo do xml nas paginas*/
 		loaddata:function(load,obj){
 			var context=this;
+			if(load !=="list"){
+				this.prevent=true;
+			}
+			else{
+				this.prevent=false;
+			}
 			$.ajax({
 	            //verifica se existe o xml para load das paginas
 	            type:"GET",
@@ -221,6 +240,7 @@ require(["methods", "sp/min", "app/content"], function() {
 			            		context.contentEl.html($(this).find("cadastro").text());
 			            		context.contentEl.fadeIn();
 			            		context.insertValues(obj);
+			            		context.formAction(context.page);
 			            	}
 			                else{
 			                	context.whatsave="AdicionarLogic";
@@ -228,6 +248,9 @@ require(["methods", "sp/min", "app/content"], function() {
 			                	context.contentEl.fadeIn();
 			                	if(load==="list"){
 			                		context.getTableValues();
+			                	}
+			                	else{
+			                		context.formAction(context.page);
 			                	}
 			                }
 			            }
@@ -300,30 +323,6 @@ require(["methods", "sp/min", "app/content"], function() {
 						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].inicio+"</td><td>"+list[i].fim+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
 					}
 					break;
-				case 'Status':
-				//Falta fazer
-					for(i=0;i<list.length;i++){
-						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].inicio+"</td><td>"+list[i].fim+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
-					}
-					break;
-				case 'Status':
-				//Falta fazer
-					for(i=0;i<list.length;i++){
-						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].inicio+"</td><td>"+list[i].fim+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
-					}
-					break;
-				case 'Especiais':
-				//Falta fazer
-					for(i=0;i<list.length;i++){
-						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].inicio+"</td><td>"+list[i].fim+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
-					}
-					break;
-				case 'Especiais':
-				//Falta fazer
-					for(i=0;i<list.length;i++){
-						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].inicio+"</td><td>"+list[i].fim+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
-					}
-					break;
 				case 'Visitantes':
 					for(i=0;i<list.length;i++){
 						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].nome+"</td><td>"+list[i].empresa+"</td><td>"+list[i].assunto+"</td><td>"+list[i].observacao+"</td><td>"+list[i].departamento+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
@@ -335,6 +334,19 @@ require(["methods", "sp/min", "app/content"], function() {
 			$("tbody").html(html);
 		},
 
+		preventClick:function(a){
+			if(this.prevent){
+				a.preventDefault();
+				this.cancel();
+			}
+		},
+		getRefreshStatus:function(){
+			return this.refreshStatus;
+		},
+
+		setRefreshStatus:function(status){
+			this.refreshStatus=status;
+		},
 		/*Imprimi página*/
 		print:function(a){
 			a.preventDefault();
@@ -357,10 +369,55 @@ require(["methods", "sp/min", "app/content"], function() {
 			a.preventDefault();
 			var cod=parseInt($(a.target).attr("href").replace("#",""));
 			this.whatsave="DeletarLogic";
-			//this.modal.question("Teste","Testando",!0,this.modal.save);
-			this.callservice({"id":cod},"DeletarLogic");
+			this.setRefreshStatus("Deletar");
+			this.modal.codToDelete=cod;
+			this.modal.question("Realmente Deletar?","Caso deseje realmente deletar, clique em Sim.",!0,!0);
+			//this.callservice({"id":cod},"DeletarLogic");
 		},
 
+		formAction:function(){
+			switch(this.page){
+				case 'Perfis':
+					
+					break;
+				case 'Usuarios':
+				//Falta fazer
+					
+					break;
+				case 'Feriados':
+					$( "input[name='data_feriado']" ).datepicker({
+						changeMonth: true,
+       					numberOfMonths: 2,
+						monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+					    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+					    dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
+					    dateFormat:"yy/mm/dd",
+					    minDate:new Date()
+					});
+					break;
+				case 'Departamentos':
+					
+					break;
+				case 'Operadores':
+					
+					break;
+				case 'Empresas':
+					
+					break;
+				case 'Faixas':
+					
+					break;
+				case 'Zonas':
+				//Falta fazer
+					
+					break;
+				case 'Visitantes':
+					
+					break;
+				default:
+					html+="Operação não encontrada! Contate o administrador do sistema";
+			}
+		},
 		/*Quando clicado no botão enviar do formulário*/
 		submitform:function(a){
 			a.preventDefault();
@@ -404,12 +461,20 @@ require(["methods", "sp/min", "app/content"], function() {
 		*	This method cancel all editions and return to a previews page
 		*	Before redirect a previews page the method open modal question, and if the user click 'yes' it will be redirected
 		**/
-		cancel: function() {
-			a.preventDefault();
+		cancel: function(a) {
+			if("object" === typeof a) {
+		      a.preventDefault();
+		    }
 			if (this.loading) {
 				return false;
 			}
-			//this.modal.question("Retornar?", "Suas alterações serão desfeitas!", !0, this.modal.action);
+			if(this.whatsave === "EditarLogic"){
+				this.setRefreshStatus(true);
+			}
+			else{
+				this.setRefreshStatus(false);
+			}
+			this.modal.question("Retornar?", "Suas alterações serão desfeitas!", !0, !0);
 		},
 
 		/**
