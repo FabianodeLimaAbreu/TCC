@@ -94,13 +94,16 @@ public class AdicionarLogic implements Logica{
 				
 				dao.query(feriados, acao);				
 				break;		
-			case "Operadores":
+			case "Operadores":				
 				Operadores operadores = new Operadores();
+				
+				Perfis cod_perf = new Perfis();
+				cod_perf.setId(Long.parseLong(request.getParameter("cod_perf")));
 				
 				operadores.setId(id);
 				operadores.setLogin(Integer.parseInt(request.getParameter("login")));
 				operadores.setSenha(request.getParameter("senha"));
-				operadores.setCod_perf(Integer.parseInt(request.getParameter("cod_perf")));
+				operadores.setPerfis(cod_perf);
 				
 				dao.query(operadores, acao);				
 				break;
