@@ -15,6 +15,7 @@
     <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
 
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,300' rel='stylesheet' type='text/css'>
+    <link href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
     <!-- build:css css/app.min.css-->
     <link rel="stylesheet" type="text/css" href="css/common.min.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -118,6 +119,7 @@
         <script src="js/lib/jquery.min.js"></script>
         <script src="js/lib/spine/min.js"></script>
         <script data-main="js/app" src="js/lib/require-jquery.js"></script>
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script type="text/javascript" src="js/bootstrap.js"></script>
         <script type="text/javascript">
             //Tabshow

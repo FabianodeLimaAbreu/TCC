@@ -152,10 +152,10 @@
                                 <div class="form-group bottomten">
                                     <label for="datecard" class="col-sm-2 control-label floatLeft">Data de validade do cartão:</label>
                                     <div class="col-sm-10 floatLeft s-twosix ">
-                                      <input type="date" class="form-control floatLeft" name="inicio" placeholder="Data de validade do cartão">
+                                      <input type="text" class="form-control floatLeft" name="inicio" placeholder="Data de validade do cartão">
                                     </div>
                                     <div class="col-sm-10 floatRight s-twofour bottomten">
-                                      <input type="date" class="form-control" name="fim" placeholder="Data de validade do cartão">
+                                      <input type="text" class="form-control" name="fim" placeholder="Data de validade do cartão">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -195,12 +195,6 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="professional">
-                                <div class="form-group floatLeft s-fourfive">
-                                    <input type="text" class="form-control" placeholder="Carteira de trabalho" name="clt" required>
-                                </div>
-                                <div class="form-group floatLeft s-fourfive leftten">
-                                    <input type="text" class="form-control" placeholder="Número do PIS" name="pis" required>
-                                </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Observação" name="observacao" required>
                                 </div>
@@ -570,32 +564,6 @@
     </entry>
 
     <!--DROPDOWN 3-->
-    <entry name="Status">
-        <list>
-            <![CDATA[
-                <h1>Status</h1>
-            ]]>
-        </list>
-        <cadastro>
-            <![CDATA[
-                
-            ]]>
-        </cadastro>
-    </entry>
-
-    <entry name="Especiais">
-        <list>
-            <![CDATA[
-                <h1>Especiais</h1>
-                
-            ]]>
-        </list>
-        <cadastro>
-            <![CDATA[
-                
-            ]]>
-        </cadastro>
-    </entry>
     <entry name="Visitantes">
         <list>
             <![CDATA[
