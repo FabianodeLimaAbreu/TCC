@@ -12,6 +12,7 @@ import br.com.tio.Faixas_Acesso;
 import br.com.tio.Feriados;
 import br.com.tio.Operadores;
 import br.com.tio.Perfis;
+import br.com.tio.Tipo_Usuario;
 import br.com.tio.Usuarios;
 import br.com.tio.Visitantes;
 import br.com.tio.Zonas_Tempo;
@@ -78,16 +79,6 @@ public class AdicionarLogic implements Logica{
 			case "Feriados":
 				Feriados feriados = new Feriados();
 				
-				/*dataEmTexto = request.getParameter("data_feriado");
-				Calendar data_feriado = null;
-				try {
-					Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dataEmTexto);
-					data_feriado = Calendar.getInstance();
-					data_feriado.setTime(date);					
-				} catch (ParseException e) {
-					out.print("Erro na conversão de data");
-				}*/
-				
 				feriados.setId(id);
 				feriados.setData_feriado(request.getParameter("data_feriado"));
 				feriados.setDesc_feriado(request.getParameter("desc_feriado"));
@@ -100,8 +91,11 @@ public class AdicionarLogic implements Logica{
 				Perfis cod_perf = new Perfis();
 				cod_perf.setId(Long.parseLong(request.getParameter("cod_perf")));
 				
+				Usuarios login = new Usuarios();
+				login.setId(Long.parseLong(request.getParameter("login")));
+				
 				operadores.setId(id);
-				operadores.setLogin(Integer.parseInt(request.getParameter("login")));
+				operadores.setLogin(login);
 				operadores.setSenha(request.getParameter("senha"));
 				operadores.setPerfis(cod_perf);
 				
@@ -117,39 +111,37 @@ public class AdicionarLogic implements Logica{
 				dao.query(perfis, acao);				
 				break;
 			case "Usuarios":
-				/*dataEmTexto = request.getParameter("val_cartao");
-				Calendar val_cartao = null;
-				//convertendo data
-				try{
-					Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dataEmTexto);
-					val_cartao = Calendar.getInstance();
-					val_cartao.setTime(date);
-				}catch (ParseException e) {
-					out.print("Erro na conversão de data");
-				}*/			
 				Usuarios usuarios = new Usuarios();
+				
+				Empresas cod_emp = new Empresas();
+				cod_emp.setId(Long.parseLong(request.getParameter("cod_emp")));
+				
+				Tipo_Usuario cod_tip = new Tipo_Usuario();
+				cod_tip.setId(Long.parseLong(request.getParameter("cod_tip")));
 				
 				usuarios.setId(id);
 				usuarios.setVal_cartao(request.getParameter("val_cartao"));
 				usuarios.setCracha(request.getParameter("cracha"));			
 				usuarios.setVersao(Integer.parseInt(request.getParameter("versao")));
-				usuarios.setCod_emp(Integer.parseInt(request.getParameter("cod_emp")));
+				usuarios.setCod_emp(cod_emp);
 				usuarios.setNome(request.getParameter("nome"));
 				usuarios.setNome_abrev(request.getParameter("nome_abrev"));
-				usuarios.setCod_tip(Integer.parseInt(request.getParameter("cod_tip")));
+				usuarios.setCod_tip(cod_tip);
 				usuarios.setSenha(request.getParameter("senha"));
 				
 				dao.query(usuarios, acao);		
 				break;
 			case "Visitantes":
 				Visitantes visitantes = new Visitantes();
-				//Foi retirado todos os tratamentos de data com Calendar dessa classe
+				
+				Empresas cod_emp_visit = new Empresas();
+				cod_emp_visit.setId(Long.parseLong(request.getParameter("cod_emp")));
 				
 				visitantes.setId(id);
 				visitantes.setRg(request.getParameter("rg"));
 				visitantes.setCpf(request.getParameter("cpf"));
 				visitantes.setNome(request.getParameter("nome"));
-				visitantes.setCod_emp(Integer.parseInt(request.getParameter("cod_emp")));
+				visitantes.setCod_emp(cod_emp_visit);
 				visitantes.setVeiculo(request.getParameter("veiculo"));
 				visitantes.setPlaca(request.getParameter("placa"));
 				visitantes.setCracha(request.getParameter("cracha"));

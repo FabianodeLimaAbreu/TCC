@@ -12,11 +12,14 @@ public class DeletarLogic implements Logica{
 			throws Exception {
 
 		ExecHibernate dao = new ExecHibernate();
-		PrintWriter out = response.getWriter();
+		//PrintWriter out = response.getWriter();
 		
 		try {
 			String table = request.getParameter("table");
 			String idS = request.getParameter("id");
+			
+			table = "Operadores";
+			idS = "5";
 			Long id = Long.parseLong(idS);
 			
 			boolean result = dao.deletar(table, id);

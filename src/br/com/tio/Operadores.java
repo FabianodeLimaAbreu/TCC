@@ -1,8 +1,5 @@
 package br.com.tio;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,14 +15,12 @@ public class Operadores {
 	@Column(name = "COD_OPERADOR", length = 11, nullable = false)
 	private Long id;
 	
-	@Column(name = "LOGIN_OPERADOR", length = 11, nullable = false)
-	private int login;
+	@OneToOne
+	@JoinColumn(name = "LOGIN_OPERADOR")
+	private Usuarios login;
 	
 	@Column(name = "SENHA_OPERADOR", length = 20, nullable = false)
 	private String senha;
-	
-	//@Column(name = "COD_PERF_OPERADOR", length = 11, nullable = false)
-	//private int cod_perf_aux;
 	
 	@OneToOne
 	@JoinColumn(name="COD_PERF_OPERADOR")
@@ -39,11 +34,11 @@ public class Operadores {
 		this.perfis = perfis; 
 	}
 
-	public int getLogin() {
+	public Usuarios getLogin() {
 		return login;
 	}
 
-	public void setLogin(int login) {
+	public void setLogin(Usuarios login) {
 		this.login = login;
 	}
 

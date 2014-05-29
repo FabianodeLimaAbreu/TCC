@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,8 +18,6 @@ public class Usuarios {
 	private Long id;
 	
 	@Column(name="VALIDADE_CARTAO_USUARIO", nullable=true)
-	//@Temporal(TemporalType.DATE)
-	//private Calendar val_cartao;
 	private String val_cartao;
 	
 	@Column(name="CRACHA_USUARIO", length=30, nullable=false)
@@ -26,8 +26,9 @@ public class Usuarios {
 	@Column(name = "VERSAO", length=11, nullable=true)
 	private int versao;
 	
-	@Column(name="COD_EMP_USUARIO", length=11, nullable=false)
-	private int cod_emp;
+	@OneToOne
+	@JoinColumn(name = "COD_EMP_USUARIO")
+	private Empresas cod_emp;
 	
 	@Column(name="NOME_USUARIO", length=256, nullable=false)
 	private String nome;
@@ -35,8 +36,9 @@ public class Usuarios {
 	@Column(name="NOME_ABREV_USUARIO", length=45, nullable=false)
 	private String nome_abrev;
 	
-	@Column(name="COD_TIP_USUARIO", length=11, nullable=false)
-	private int cod_tip ;
+	@OneToOne
+	@JoinColumn(name = "COD_TIP_USUARIO")
+	private Tipo_Usuario cod_tip;
 	
 	@Column(name="SENHA_USUARIO", length=20, nullable=true)
 	private String senha;
@@ -65,19 +67,19 @@ public class Usuarios {
 		this.versao = versao;
 	}
 
-	public int getCod_emp() {
+	public Empresas getCod_emp() {
 		return cod_emp;
 	}
 
-	public void setCod_emp(int cod_emp) {
+	public void setCod_emp(Empresas cod_emp) {
 		this.cod_emp = cod_emp;
 	}
 
-	public int getCod_tip() {
+	public Tipo_Usuario getCod_tip() {
 		return cod_tip;
 	}
 
-	public void setCod_tip(int cod_tip) {
+	public void setCod_tip(Tipo_Usuario cod_tip) {
 		this.cod_tip = cod_tip;
 	}
 

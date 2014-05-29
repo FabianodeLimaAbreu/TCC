@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Visitantes {
@@ -22,8 +24,9 @@ public class Visitantes {
 	@Column(name="NOME_VISITANTE", length=256, nullable=false)
 	private String nome;
 	
-	@Column(name="COD_EMP_VISITANTE", length=11, nullable=false)
-	private int cod_emp;
+	@OneToOne
+	@JoinColumn(name = "COD_EMP_VISITANTE")
+	private Empresas cod_emp;
 	
 	@Column(name="VEICULO_VISITANTE", length=50, nullable=true)
 	private String veiculo;
@@ -44,18 +47,12 @@ public class Visitantes {
 	private String assunto;
 	
 	@Column(name="DATA_CADASTRO_VISITANTE", nullable=false)
-	//@Temporal(TemporalType.DATE)
-	//private Calendar data_cadastro;
 	private String data_cadastro;
 	
 	@Column(name="ENTRADA_VISITANTE", nullable=false)
-	//@Temporal(TemporalType.DATE)
-	//private Calendar data_entrada;
 	private String data_entrada;
 	
 	@Column(name="SAIDA_VISITANTE", nullable=false)
-	//@Temporal(TemporalType.DATE)
-	//private Calendar data_saida;
 	private String data_saida;
 	
 	public String getRg() {
@@ -82,11 +79,11 @@ public class Visitantes {
 		this.nome = nome;
 	}
 
-	public int getCod_emp() {
+	public Empresas getCod_emp() {
 		return cod_emp;
 	}
 
-	public void setCod_emp(int cod_emp) {
+	public void setCod_emp(Empresas cod_emp) {
 		this.cod_emp = cod_emp;
 	}
 
