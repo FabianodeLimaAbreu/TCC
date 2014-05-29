@@ -12,7 +12,7 @@ require.config({
 		sp: "spine"
 	}
 });
-require(["methods", "sp/min", "app/content"], function() {
+require(["methods","jquery.webcam", "sp/min", "app/content"], function() {
 	window.App = Spine.Controller.sub({
 		el: $("body"),
 		elements: {
@@ -304,7 +304,7 @@ require(["methods", "sp/min", "app/content"], function() {
 					break;
 				case 'Operadores':
 					for(i=0;i<list.length;i++){
-						html+="<tr><td>"+list[i].id+"</td><td>"+list[i].login+"</td><td>"+list[i].senha+"</td><td>"+list[i].cod_perf+"</td><td class='actions'><a href='#"+list[i].id+"' class='delete'></a><a href='#"+list[i].id+"' class='edit'></a></td></tr>";
+						html+="<tr><td>"+list[i].id+"</td><td>"+list[i].login.nome_abrev+"</td><td>"+list[i].senha+"</td><td>"+list[i].perfis.desc_perfil+"</td><td class='actions'><a href='#"+list[i].id+"' class='delete'></a><a href='#"+list[i].id+"' class='edit'></a></td></tr>";
 					}
 					break;
 				case 'Empresas':
@@ -337,7 +337,7 @@ require(["methods", "sp/min", "app/content"], function() {
 		preventClick:function(a){
 			if(this.prevent){
 				a.preventDefault();
-				this.cancel();
+				this.modal.open("Atenção!!!","Você deve finalizar suas atividades antes de mudar de tela.",!0,!0)
 			}
 		},
 		getRefreshStatus:function(){
@@ -384,11 +384,69 @@ require(["methods", "sp/min", "app/content"], function() {
 					$('#user a').click(function (e) {
 		              e.preventDefault();
 		              $(this).tab('show');
-		            }).eq(0).trigger("click");
-					this.setDatePicker($("input[name='nascimento']"),!1);
+		            });
+
+		            $("#initial").trigger("click");
+		            var date=new Date();
+
+		            var inicio={"input":"input[name='fim']","whatDate":"minDate"};
+		            var fim = {"input":"input[name='inicio']","whatDate":"maxDate"};
+					this.setDatePicker($("input[name='nascimento']"),new Date(),!1,true);
+					this.setDatePicker($("input[name='inicio']"),date,inicio,null);
+					this.setDatePicker($("input[name='fim']"),null,fim,null);
+
+					$("#webcamera").webcam({
+
+					    width: 376,
+					    height: 276,
+					    mode: "callback",
+					    swffile: "js/lib/jscam.swf", 
+						// canvas only doesn't implement a jpeg encoder, so the file is much smaller
+
+					    onTick: function(remain) {
+
+					        if (0 == remain) {
+					            //jQuery("#status").text("Cheese!");
+					        } else {
+					            //jQuery("#status").text(remain + " seconds remaining...");
+					        }
+					    },
+
+					    onSave: function(data) {
+					        var col = data.split(";");
+					    	// Work with the picture. Picture-data is encoded as an array of arrays... Not really nice, though =/
+					    },
+
+					    onCapture: function () {
+					        webcam.save();
+					        console.log("Tirou a foto");
+					      // Show a flash for example
+					    },
+
+					    debug: function (type, string) {
+					        // Write debug information to console.log() or a div, ...
+					        console.log("Ok camera");
+					    },
+
+					    onLoad: function () {
+					    // Page load
+					        var cams = webcam.getCameraList();
+					        for(var i in cams) {
+					            //$("#cams").append("<li>" + cams[i] + "</li>");
+					        }
+					    }
+					});
+
+					$(".camera").bind("click",function(a){
+						console.log("clicou na camera");
+						a.preventDefault();
+						webcam.capture();
+					});
+
+
 					break;
 				case 'Feriados':
-					this.setDatePicker($("input[name='data_feriado']"),new Date());
+					this.setDatePicker($("input[name='data_feriado']"),new Date(),!1,null);
 					break;
 				case 'Departamentos':
 					
@@ -414,20 +472,31 @@ require(["methods", "sp/min", "app/content"], function() {
 			}
 		},
 
-		setDatePicker:function(input,mindate,closeopt){
+		setDatePicker:function(input,mindate,closeopt,year){
+			console.dir(closeopt);
+			console.log(closeopt.input);
 			input.datepicker({
 				changeMonth: true,
 				numberOfMonths: 2,
+				changeYear: year,
 				monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
 			    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
 			    dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
 			    dateFormat:"yy/mm/dd",
 			    minDate:mindate,
 			    onClose: function( selectedDate ) {
+			    	//{"input":"input[name='fim']","whatDate":"minDate"}
 			    	if(closeopt){
-
+			    		console.log("option", closeopt.whatDate);
+			    		console.dir(selectedDate);
+			    		//$( "input[name='start']").datepicker( "option", "maxDate", selectedDate );
+			    		$(closeopt.input).datepicker( "option", closeopt.whatDate , selectedDate)
 			    	}
 			    }
+			});
+			input.keypress(function(e){
+				console.dir(e);
+				e.preventDefault();
 			});
 		},
 		/*Quando clicado no botão enviar do formulário*/
