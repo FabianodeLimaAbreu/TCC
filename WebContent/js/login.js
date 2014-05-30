@@ -31,7 +31,7 @@ require(["methods", "sp/min", "app/content"], function() {
     $(inputs).each(function(index,val){
       complet = !1;
       if("email" === $(val).attr("name")  && (!val.value || val.value==="Email")) {
-        return alert("Campo de email vazio");
+        //return alert("Campo de email vazio");
         //return e.modal.open("Campo obrigat\u00f3rio n\u00e3o preenchido", "E-Mail inv\u00e1lido!", !0), !1;
       }
       complet = !0;
@@ -62,10 +62,10 @@ require(["methods", "sp/min", "app/content"], function() {
     })
     complet && $.get("./mvc",{'matricula':$("form input[name='numbermat']").val(),'password':$("form input[name='password']").val()})
     .error(function(){
-      alert("Não foi possivel efetuar o login");
+      //alert("Não foi possivel efetuar o login");
     })
     .success(function(){
-      alert("Usuario cadastrado com sucesso");
+      //alert("Usuario cadastrado com sucesso");
     });
         
 

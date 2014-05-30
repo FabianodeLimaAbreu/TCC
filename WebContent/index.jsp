@@ -72,7 +72,7 @@
                   <li class="dropdown">
                     <a id="acesso" role="button" data-toggle="dropdown" href="#">Acesso <b class="caret"></b></a>
                     <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Faixas/list">Faixas de Acesso</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Faixas_Acesso/list">Faixas de Acesso</a></li>
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="#Zonas/list">Zonas de Acesso</a></li>
                     </ul>
                   </li>

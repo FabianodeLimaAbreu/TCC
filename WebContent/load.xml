@@ -124,13 +124,14 @@
 				<div id="tab-perfil">
                     <h1>Cadastro de usuário</h1>
                     <ul class="nav nav-tabs" id="cad-user">
-                        <li class="active"><a href="#maintab" data-toggle="tab">Principal</a></li>
+                        <li><a href="#maintab" data-toggle="tab" id="initial">Principal</a></li>
                         <li><a href="#personal" data-toggle="tab">Pessoal</a></li>
                         <li><a href="#professional" data-toggle="tab">Profissional</a></li>
                     </ul>
                     <div class="tab-content" id="user">
                         <div class="tab-pane fade" id="maintab">
                             <div class="takepicture">
+                                <div id="webcamera"></div>
                                 <canvas></canvas>
                                 <div class="topten">
                                     <a href="#takepicture" class="camera"></a>
@@ -152,28 +153,28 @@
                                 <div class="form-group bottomten">
                                     <label for="datecard" class="col-sm-2 control-label floatLeft">Data de validade do cartão:</label>
                                     <div class="col-sm-10 floatLeft s-twosix ">
-                                      <input type="text" class="form-control floatLeft" name="inicio" placeholder="Data de validade do cartão">
+                                      <input type="text" class="form-control floatLeft" name="inicio" placeholder="Inicio do cartão">
                                     </div>
                                     <div class="col-sm-10 floatRight s-twofour bottomten">
-                                      <input type="text" class="form-control" name="fim" placeholder="Data de validade do cartão">
+                                      <input type="text" class="form-control" name="fim" placeholder="Final do cartão" autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="password" placeholder="Senha">
+                                    <input type="password" class="form-control" name="password" placeholder="Senha" autocomplete="off">
                                 </div>
                         </div>
                         <div class="tab-pane fade" id="personal">
                             <div class="form-group">
                                 <label for="nascimento" class="col-sm-2 control-label floatLeft">Data de nascimento: </label>
                                 <div class="col-sm-10 floatLeft s-twofour leftten">
-                                  <input type="date" class="form-control" name="nascimento" placeholder="Data de nascimento"/>
+                                  <input type="text" class="form-control" name="nascimento" placeholder="Data de nascimento"/>
                                 </div>
                             </div>
                             <div class="form-group floatLeft leftten s-fivefif">
                                 <input type="text" class="form-control" placeholder="Endereço" name="rua" required/>
                             </div>
                             <div class="form-group floatLeft s-ten">
-                                <input type="text" class="form-control" placeholder="Número" name="numero" required/>
+                                <input type="number" class="form-control" placeholder="Número" name="numero" required/>
                             </div>
                             <div class="form-group floatLeft s-four leftten">
                                 <input type="text" class="form-control" placeholder="Bairro" name="bairro" required/>
@@ -447,7 +448,7 @@
     </entry>
 
     <!--Dropdown 2-->
-    <entry name="Faixas">
+    <entry name="Faixas_Acesso">
         <list>
             <![CDATA[
                 <h1>Faixas de horário</h1>
@@ -456,7 +457,7 @@
                         Total:<span>00</span>
                     </p>
                     <a href="#print" class="print s-third"></a>
-                    <a href="#Faixas/cadastro" class="create s-third"></a>
+                    <a href="#Faixas_Acesso/cadastro" class="create s-third"></a>
                 </div>
                 <table class="table table-striped imprimir">
                     <thead class="adminHeader tnine">
@@ -495,10 +496,10 @@
                 <h1>Cadastro de Faixas de horário</h1>
                 <form class="form-inline " role="form" action="">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="inicio" placeholder="hh/mm" maxlength="6">
+                        <input type="text" class="form-control" name="hora_ini" placeholder="hh:mm:ss" maxlength="6">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="fim" placeholder="hh/mm" maxlength="6">
+                        <input type="text" class="form-control" name="hora_fim" placeholder="hh:mm:ss" maxlength="6">
                     </div>
                 <div class="finishform">
                     <a href="#submit" class="submit s-quad"></a>
