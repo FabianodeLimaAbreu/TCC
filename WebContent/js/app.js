@@ -12,7 +12,7 @@ require.config({
 		sp: "spine"
 	}
 });
-require(["methods","jquery.webcam", "sp/min", "app/content"], function() {
+require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"], function() {
 	window.App = Spine.Controller.sub({
 		el: $("body"),
 		elements: {
@@ -69,7 +69,6 @@ require(["methods","jquery.webcam", "sp/min", "app/content"], function() {
 					this.setloading(!0,!1);
 					this.page="Usuarios";
 					this.loaddata(a.func);
-					this.setloading(!1,!0);
 				},
 
 				"Feriados/*func": function(a) {
@@ -77,7 +76,6 @@ require(["methods","jquery.webcam", "sp/min", "app/content"], function() {
 					this.setloading(!0,!1);
 					this.page="Feriados";
 					this.loaddata(a.func);
-					this.setloading(!1,!0);
 				},	
 
 				"Perfis/*func": function(a) {
@@ -85,35 +83,31 @@ require(["methods","jquery.webcam", "sp/min", "app/content"], function() {
 					this.setloading(!0,!1);
 					this.page="Perfis";
 					this.loaddata(a.func);
-					this.setloading(!1,!0);
 				},
 				"Departamentos/*func": function(a) {
 					//Listagem de usuarios
 					this.setloading(!0,!1);
 					this.page="Departamentos";
 					this.loaddata(a.func);
-					this.setloading(!1,!0);
 				},
 				"Operadores/*func": function(a) {
 					//Listagem de usuarios
 					this.setloading(!0,!1);
 					this.page="Operadores";
 					this.loaddata(a.func);
-					this.setloading(!1,!0);
 				},
 				"Empresas/*func": function(a) {
 					//Listagem de usuarios
 					this.setloading(!0,!1);
 					this.page="Empresas";
 					this.loaddata(a.func);
-					this.setloading(!1,!0);
 				},
 
 				/*DROPDOWN 2**/
-				"Faixas/*func": function(a) {
+				"Faixas_Acesso/*func": function(a) {
 					//Listagem de usuarios
 					this.setloading(!0,!1);
-					this.page="Faixas";
+					this.page="Faixas_Acesso";
 					this.loaddata(a.func);
 					this.setloading(!1,!0);
 				},
@@ -122,7 +116,6 @@ require(["methods","jquery.webcam", "sp/min", "app/content"], function() {
 					this.setloading(!0,!1);
 					this.page="Zonas";
 					this.loaddata(a.func);
-					this.setloading(!1,!0);
 				},
 
 				/*DROPDOWN 3*/
@@ -131,21 +124,18 @@ require(["methods","jquery.webcam", "sp/min", "app/content"], function() {
 					this.setloading(!0,!1);
 					this.page="Status";
 					this.loaddata(a.func);
-					this.setloading(!1,!0);
 				},
 				"Especiais/*func": function(a) {
 					//Listagem de usuarios
 					this.setloading(!0,!1);
 					this.page="Especiais";
 					this.loaddata(a.func);
-					this.setloading(!1,!0);
 				},
 				"Visitantes/*func": function(a) {
 					//Listagem de usuarios
 					this.setloading(!0,!1);
 					this.page="Visitantes";
 					this.loaddata(a.func);
-					this.setloading(!1,!0);
 				},
 
 				/*HOME*/
@@ -166,9 +156,9 @@ require(["methods","jquery.webcam", "sp/min", "app/content"], function() {
 					            }
 					        });
 							context.contentEl.fadeIn();
+							context.setloading(!1,!0);
 			             }
 				    });
-					this.setloading(!1,!0);
 				}
 			});
 		},
@@ -264,6 +254,7 @@ require(["methods","jquery.webcam", "sp/min", "app/content"], function() {
 			var context=this;
 			$.get("./mvc",{'logica':'BuscarLogic','table':this.page})
             .error(function(){
+            	context.setloading(!1,!0);
             	context.modal.open("Não foi possivel retornar a lista cadastrada","Tente novamente mais tarde, ou contate o administrador do sistema.",!0,!0)
             })
             .success(function(a){
@@ -312,9 +303,9 @@ require(["methods","jquery.webcam", "sp/min", "app/content"], function() {
 						html+="<tr><td>"+list[i].id+"</td><td>"+list[i].razao_social+"</td><td>"+list[i].nome_fantasia+"</td><td>"+list[i].telefone+"</td><td class='actions'><a href='#"+list[i].id+"' class='delete'></a><a href='#"+list[i].id+"' class='edit'></a></td></tr>";
 					}
 					break;
-				case 'Faixas':
+				case 'Faixas_Acesso':
 					for(i=0;i<list.length;i++){
-						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].inicio+"</td><td>"+list[i].fim+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+						html+="<tr><td>"+list[i].id+"</td><td>"+list[i].hora_ini+"</td><td>"+list[i].hora_fim+"</td><td class='actions'><a href='#"+list[i].id+"' class='delete'></a><a href='#"+list[i].id+"' class='edit'></a></td></tr>";
 					}
 					break;
 				case 'Zonas':
@@ -332,6 +323,7 @@ require(["methods","jquery.webcam", "sp/min", "app/content"], function() {
 					html+="Operação não encontrada!";
 			}
 			$("tbody").html(html);
+			this.setloading(!1,!0);
 		},
 
 		preventClick:function(a){
@@ -340,6 +332,8 @@ require(["methods","jquery.webcam", "sp/min", "app/content"], function() {
 				this.modal.open("Atenção!!!","Você deve finalizar suas atividades antes de mudar de tela.",!0,!0)
 			}
 		},
+
+
 		getRefreshStatus:function(){
 			return this.refreshStatus;
 		},
@@ -361,6 +355,7 @@ require(["methods","jquery.webcam", "sp/min", "app/content"], function() {
 			//this.callservice({"codigo":cod},"editar");
 			var obj=filterBy(this.list,'id',cod);
 			this.editactive=cod;
+			this.setloading(!0,!0);
 			this.loaddata("cadastro",obj);
 		},
 
@@ -387,6 +382,7 @@ require(["methods","jquery.webcam", "sp/min", "app/content"], function() {
 		            });
 
 		            $("#initial").trigger("click");
+		            $("input[name='telefone']").mask("(99) 9999-9999");
 		            var date=new Date();
 
 		            var inicio={"input":"input[name='fim']","whatDate":"minDate"};
@@ -455,21 +451,23 @@ require(["methods","jquery.webcam", "sp/min", "app/content"], function() {
 					
 					break;
 				case 'Empresas':
-					
+					$("input[name='telefone']").mask("(99) 9999-9999");
 					break;
-				case 'Faixas':
-					
+				case 'Faixas_Acesso':
+					$("input[name='hora_ini']").mask("99:99:99");
+					$("input[name='hora_fim']").mask("99:99:99");
 					break;
 				case 'Zonas':
 				//Falta fazer
 					
 					break;
 				case 'Visitantes':
-					
+					$("input[name='telefone']").mask("(99) 9999-9999");
 					break;
 				default:
 					html+="Operação não encontrada! Contate o administrador do sistema";
 			}
+			this.setloading(!1,!0);
 		},
 
 		setDatePicker:function(input,mindate,closeopt,year){
@@ -533,6 +531,7 @@ require(["methods","jquery.webcam", "sp/min", "app/content"], function() {
 			cinputs.each(function(){
 				$(this).val(obj[0][$(this).attr("name")]);
 			});
+			this.setloading(!1,!0);
 			//console.dir(obj);
 		},
 

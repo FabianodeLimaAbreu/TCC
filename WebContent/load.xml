@@ -174,7 +174,7 @@
                                 <input type="text" class="form-control" placeholder="Endereço" name="rua" required/>
                             </div>
                             <div class="form-group floatLeft s-ten">
-                                <input type="text" class="form-control" placeholder="Número" name="numero" required/>
+                                <input type="number" class="form-control" placeholder="Número" name="numero" required/>
                             </div>
                             <div class="form-group floatLeft s-four leftten">
                                 <input type="text" class="form-control" placeholder="Bairro" name="bairro" required/>
@@ -448,7 +448,7 @@
     </entry>
 
     <!--Dropdown 2-->
-    <entry name="Faixas">
+    <entry name="Faixas_Acesso">
         <list>
             <![CDATA[
                 <h1>Faixas de horário</h1>
@@ -457,7 +457,7 @@
                         Total:<span>00</span>
                     </p>
                     <a href="#print" class="print s-third"></a>
-                    <a href="#Faixas/cadastro" class="create s-third"></a>
+                    <a href="#Faixas_Acesso/cadastro" class="create s-third"></a>
                 </div>
                 <table class="table table-striped imprimir">
                     <thead class="adminHeader tnine">
@@ -496,10 +496,10 @@
                 <h1>Cadastro de Faixas de horário</h1>
                 <form class="form-inline " role="form" action="">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="inicio" placeholder="hh/mm" maxlength="6">
+                        <input type="text" class="form-control" name="hora_ini" placeholder="hh:mm:ss" maxlength="6">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="fim" placeholder="hh/mm" maxlength="6">
+                        <input type="text" class="form-control" name="hora_fim" placeholder="hh:mm:ss" maxlength="6">
                     </div>
                 <div class="finishform">
                     <a href="#submit" class="submit s-quad"></a>
