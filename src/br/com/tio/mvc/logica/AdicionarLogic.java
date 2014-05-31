@@ -68,7 +68,12 @@ public class AdicionarLogic implements Logica{
 				dao.query(empresas, acao);
 				break;
 			case "Faixas_Acesso":
-				Faixas_Acesso faixas_acesso = new Faixas_Acesso();
+				Faixas_Acesso faixas_acesso = new Faixas_Acesso();		
+				
+				/*SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+				Date date = format.parse(request.getParameter("hora_ini"));
+				Time time = new Time(date.getTime());
+				*/
 				
 				faixas_acesso.setId(id);
 				faixas_acesso.setHora_ini(request.getParameter("hora_ini"));

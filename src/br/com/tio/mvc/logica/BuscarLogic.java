@@ -11,11 +11,20 @@ public class BuscarLogic implements Logica {
 	
 		ExecHibernate dao = new ExecHibernate();
 		PrintWriter out = response.getWriter();
+		String json;
 		
 		try{
 			String table = request.getParameter("table");
-				
-			String json = dao.buscar(table);
+			
+			if (table.equals("Visitantes")) {		
+				String rg = request.getParameter("rg");	
+				if (rg.equals("")) {
+					rg = null;
+				}
+				json = dao.buscar(table, rg);
+			} else {
+				json = dao.buscar(table, null);
+			}
 			
 			out.print(json);
 		}catch(Exception e){

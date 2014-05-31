@@ -52,14 +52,20 @@ public class ExecHibernate {
 	}	
 
 	/******************** BUSCAR ********************/	
-	public String buscar(String tabela){	
+	public String buscar(String tabela, String rg){	
 		try {
 			EntityManagerFactory factory = Persistence.createEntityManagerFactory("sfoc");
 			EntityManager manager = factory.createEntityManager();
 
 			Gson gson = new Gson();
+			String where;
 			
-			List<String> retornada = manager.createQuery("SELECT t FROM "+ tabela +" as t").getResultList();
+			if (rg == null)
+				where = "";				
+			else
+				where = "WHERE RG_VISITANTE = " + rg + "";		
+			
+			List<String> retornada = manager.createQuery("SELECT t FROM "+ tabela +" as t " + where).getResultList();
 			
 			String json = gson.toJson(retornada);
 			
@@ -70,7 +76,7 @@ public class ExecHibernate {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}	
-	}
+	} 
 	
 	/******************** DELETAR ********************/	
 	public boolean deletar(String table, Long id){
