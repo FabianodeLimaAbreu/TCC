@@ -373,6 +373,8 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 			//this.callservice({"id":cod},"DeletarLogic");
 		},
 
+		/*Recebe o valor a ser atribuido nos combobox, chama o metodo do formulario que popula o combobox*/
+		/*Metodo recebe um obj com o nome da tabela e outro objeto com as especificaçoes*/
 		getComboValues:function(obj,link){
 			var context=this;
 			$.get("./mvc",{'logica':'BuscarLogic','table':obj.table})
@@ -384,9 +386,11 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
             });
 		},
 
-
+		/*Ações dos formularios de CADASTRO/EDITAR, como dapicker e camera*/
 		formAction:function(){
 			var context=this;
+
+			//Executa determinadas ações dependendo da página*/
 			switch(this.page){
 				case 'Perfis':
 					
@@ -450,16 +454,19 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 					});
 
 					$(".camera").bind("click",function(a){
-						console.log("clicou na camera");
+						//Ao clicar no botão para tirar foto
+						console.log("tirou foto");
 						a.preventDefault();
 						webcam.capture();
 					});
 
+					//Combobox
 					this.getComboValues({"table":"Empresas"},{"pk":"empresa","collum":"nome_fantasia","foreign":"cod_emp"});
 					this.getComboValues({"table":"Tipo_Usuario"},{"pk":"tipusuario","collum":"desc_usuario","foreign":"cod_tip"});
 					this.getComboValues({"table":"Tipo_Usuario"},{"pk":"estado","collum":"desc_usuario","foreign":"estado_col"});
 
 					$(".bprompt").click(function(e){
+						//Ao clicar na seta para baixo do combobox
 			            e.preventDefault();
 			            context.formulario.toggleSelect($(this),$(this).attr("href").replace("#","."));
 			        });
@@ -492,7 +499,7 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 			}
 			this.setloading(!1,!0);
 		},
-
+		
 		setDatePicker:function(input,mindate,closeopt,year){
 			console.dir(closeopt);
 			console.log(closeopt.input);
