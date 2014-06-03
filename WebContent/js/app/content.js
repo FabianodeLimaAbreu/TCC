@@ -147,32 +147,28 @@ window.Content = Spine.Controller.sub({
 
 window.Formulario=Spine.Controller.sub({
   elements:{
-    ".combo-input":"combovalue",
-    ".bprompt":"bselect",
-    "#combo li":"combolist",
-    "#combo":"combo",
-    "input[name='action']":"fake"
+   
   },
   events:{
-    "click .bprompt":"toggleSelect",
-    "click #combo li":"setting"
+    
   },
-  toggleSelect:function(e){
-    e.preventDefault();
-    if($(e.target).hasClass("sel")){
-      this.combo.hide();
-      this.bselect.removeClass("sel");
+  toggleSelect:function(status,link){
+    if(status.hasClass("sel")){
+      $(link+".combo").hide();
+      status.removeClass("sel");
     }
     else{
-      this.combo.show();
-      this.bselect.addClass("sel");
+      this.hide();
+      $(link+".combo").show();
+      status.addClass("sel");
     }
   },
   hide:function(){
-    this.combo.hide();
-    this.bselect.removeClass("sel");
+    console.log("ok");
+    $(".combo").hide();
+    $(".bprompt").removeClass("sel");
   },
-  setting:function(e){
+  /*setting:function(e){
     e.preventDefault();
     var a=$(e.target).attr("data");
     this.fake.val(a);
@@ -187,5 +183,24 @@ window.Formulario=Spine.Controller.sub({
     }
     this.combovalue.val(a);
     this.hide();
-  }
+  }*/
+  popCombo:function(obj,link){
+    console.dir(link);
+    console.log(link.foreign);
+    var i,length,context=this,html="";
+    length=obj.length;
+    for(i=0;i<length;i++){
+      html+="<li data='"+(i+1)+"' class='"+link.pk+"' rel='"+link.foreign+"'>"+obj[i][""+link.collum].initialCaps()+"</li>";
+    }
+    $("."+link.pk+".combo").find(".combo-list").html(html);
+
+    $(".combo-list li").click(function(){
+      console.log($(this).attr("class"));
+      console.dir($("form label[for='"+$(this).attr("class")+"']"));
+        var data=$(this).attr("data");
+        $("input[name='"+$(this).attr("rel")+"']").val(data);
+        $("label[for='"+$(this).attr("class")+"']").text($(this).text());
+        context.hide();
+    });
+  },
 });

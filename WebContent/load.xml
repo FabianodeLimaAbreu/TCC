@@ -144,12 +144,37 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Nome abreviado" name="abrname" required>
                                 </div>
-                                <div class="form-group floatLeft s-twofour">
-                                    <input type="text" class="form-control " placeholder="So cobrir espaço por enquanto" required>
+
+                                <div class="form-group floatLeft s-twosix combobox empresa"> <!--Estado-->
+                                    <label for="empresa"><!--valor de estados selecionado-->Empresa</label>
+                                    <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
+                                    <input name="cod_emp" class="fake-input form-control" type="hidden" value="Empresa"/><!--value com valor selecionado-->
+                                    <a href="#empresa" class="button bprompt empresa"></a>
+                                    <div class="empresa combo">
+                                        <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                                        <div class="viewport combo-content">
+                                            <ul class="combo-list empresa">
+                                                <!--Cria a lista de itens para selecionar-->
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group floatRight s-twosix">
-                                    <input type="text" class="form-control" placeholder="So cobrir espaço por enquanto" required>
+
+                                <div class="form-group floatRight s-twofour combobox tipusuario">
+                                    <label for="tipusuario">Tipo</label>
+                                    <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
+                                    <input name="cod_tip" class="fake-input form-control" type="hidden" value="Tipo"/><!--value com valor selecionado-->
+                                    <a href="#tipusuario" class="button bprompt tipusuario"></a>
+                                    <div class="tipusuario combo">
+                                        <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                                        <div class="viewport combo-content">
+                                            <ul class="combo-list tipusuario">
+                                                <!--Cria a lista de itens para selecionar-->
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <div class="form-group bottomten">
                                     <label for="datecard" class="col-sm-2 control-label floatLeft">Data de validade do cartão:</label>
                                     <div class="col-sm-10 floatLeft s-twosix ">
@@ -165,29 +190,42 @@
                         </div>
                         <div class="tab-pane fade" id="personal">
                             <div class="form-group">
-                                <label for="nascimento" class="col-sm-2 control-label floatLeft">Data de nascimento: </label>
-                                <div class="col-sm-10 floatLeft s-twofour leftten">
+                                <div class="col-sm-10 floatLeft s-twofour rightten">
                                   <input type="text" class="form-control" name="nascimento" placeholder="Data de nascimento"/>
                                 </div>
                             </div>
-                            <div class="form-group floatLeft leftten s-fivefif">
+                            <div class="form-group floatLeft s-fivesix">
                                 <input type="text" class="form-control" placeholder="Endereço" name="rua" required/>
                             </div>
-                            <div class="form-group floatLeft s-ten">
+                            <div class="form-group floatLeft s-ten leftten">
                                 <input type="number" class="form-control" placeholder="Número" name="numero" required/>
                             </div>
-                            <div class="form-group floatLeft s-four leftten">
+                            <div class="form-group floatLeft s-fourfive">
                                 <input type="text" class="form-control" placeholder="Bairro" name="bairro" required/>
                             </div>
-                            <div class="form-group floatLeft s-four leftten">
+                            <div class="form-group floatLeft s-fourfive leftten">
                                 <input type="text" class="form-control" placeholder="Complemento" name="complemento" />
                             </div>
                             <div class="form-group floatLeft s-threefive">
                                 <input type="text" class="form-control" placeholder="Cidade" name="cidade" />
                             </div>
-                            <div class="form-group floatLeft s-twosix leftten">
-                                <input type="text" class="form-control" placeholder="Estado" name="estado" />
+
+                            <div class="form-group floatLeft s-twosix leftten combobox estado">
+                                <label for="estado">Estado</label>
+                                <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
+                                <input name="estado_col" class="fake-input form-control" type="hidden" value="Estado"/><!--value com valor selecionado-->
+                                <a href="#estado" class="button bprompt estado"></a>
+                                <div class="estado combo">
+                                    <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                                    <div class="viewport combo-content">
+                                        <ul class="combo-list estado">
+                                            <!--Cria a lista de itens para selecionar-->
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
+
+
                             <div class="form-group floatLeft s-twonine leftten">
                                 <input type="text" class="form-control" placeholder="Telefone" name="telefone" />
                             </div>

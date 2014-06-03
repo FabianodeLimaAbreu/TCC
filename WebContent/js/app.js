@@ -61,6 +61,9 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 				getRefreshStatus:this.proxy(this.getRefreshStatus),
 				callservice:this.proxy(this.callservice)
 			});
+			this.formulario=new Formulario({
+
+			});
 
 			/*Rotas de páginas*/
 			this.routes({
@@ -370,7 +373,20 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 			//this.callservice({"id":cod},"DeletarLogic");
 		},
 
+		getComboValues:function(obj,link){
+			var context=this;
+			$.get("./mvc",{'logica':'BuscarLogic','table':obj.table})
+            .error(function(){
+            	context.modal.open("Um erro ocorreu!","Tente novamente mais tarde, ou contate o administrador do sistema.",!0,!0)
+            })
+            .success(function(a){
+                context.formulario.popCombo(JSON.parse(a),link);
+            });
+		},
+
+
 		formAction:function(){
+			var context=this;
 			switch(this.page){
 				case 'Perfis':
 					
@@ -439,7 +455,14 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 						webcam.capture();
 					});
 
+					this.getComboValues({"table":"Empresas"},{"pk":"empresa","collum":"nome_fantasia","foreign":"cod_emp"});
+					this.getComboValues({"table":"Tipo_Usuario"},{"pk":"tipusuario","collum":"desc_usuario","foreign":"cod_tip"});
+					this.getComboValues({"table":"Tipo_Usuario"},{"pk":"estado","collum":"desc_usuario","foreign":"estado_col"});
 
+					$(".bprompt").click(function(e){
+			            e.preventDefault();
+			            context.formulario.toggleSelect($(this),$(this).attr("href").replace("#","."));
+			        });
 					break;
 				case 'Feriados':
 					this.setDatePicker($("input[name='data_feriado']"),new Date(),!1,null);
