@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="Content-Type"  content="text/html; charset=UTF-8">
 
     <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
     Remove this if you use the .htaccess -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>SFOC - Controle de acesso empresárial</title>
 
-    <meta name="description" content="Sistema de controle de acesso empresarial, utilizando da web como ambiente para a aplicação" />
+    <meta name="description" content="Sistema de controle de acesso empresarial, utilizando da web como ambiente para a aplicaÃ§Ã£o" />
     <meta name="author" content="Fabiano de Lima" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
@@ -47,10 +47,10 @@
             <div class="holder">
                 <a href="" class="logo"></a>
                 <p id="current-date">
-                    São Paulo, 24 de Outubro de 2014.
+                    SÃ£o Paulo, 24 de Outubro de 2014.
                 </p>
                 <div class="user-box">
-                    <span class="user-icon s-quart"></span><span class="user-name">Nome do Usuário</span>
+                    <span class="user-icon s-quart"></span><span class="user-name">Nome do UsuÃ¡rio</span>
                     <br/>
                     <a href="#logout" class="logout s-quart"></a>
                 </div>
@@ -64,7 +64,7 @@
                       <li role="presentation" class="perfis"><a role="menuitem" tabindex="-1" href="#Perfis/list">Perfil</a></li>
                       <li role="presentation" class="departamentos"><a role="menuitem" tabindex="-1" href="#Departamentos/list">Departamento</a></li>
                       <li role="presentation" class="feriados"><a role="menuitem" tabindex="-1" href="#Feriados/list">Feriados</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Usuarios/list">Usuários</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Usuarios/list">UsuÃ¡rios</a></li>
                       <li role="presentation" class="operadores"><a role="menuitem" tabindex="-1" href="#Operadores/list">Operadores</a></li>
                       <li role="presentation" class="empresas"><a role="menuitem" tabindex="-1" href="#Empresas/list">Empresas</a></li>
                     </ul>
@@ -93,7 +93,7 @@
         </div>
         
         <footer class="notprint">
-            <p>Copyright © 2014 - Software of control - Todos os direitos reservados</p>
+            <p>Copyright Â© 2014 - Software of control - Todos os direitos reservados</p>
         </footer>  
          <div id="modal">
             <div class="modal-content">
@@ -106,7 +106,7 @@
                     </div>
                     <div class="dialog hide">
                         <a href="#yes" class="yes">Sim</a>
-                        <a href="#no" class="no">Não</a>
+                        <a href="#no" class="no">NÃ£o</a>
                     </div>
                 </div>
             </div>

@@ -31,11 +31,12 @@
 .s-four{width: 400px;}
 .s-threefive{width: 350px;}
 .s-fourfive{width: 455px;}
-.s-fivefif{width: 515px}
+.s-fivesix{width: 560px;}
 .neat{margin:0;}
 .topten{margin-top: 10px}
 .bottomten{margin-bottom: 10px}
 .leftten{margin-left: 10px;}
+.rightten{margin-right: 10px;}
 .no-border, li.no-border{border:none; outline:none;}
 .off{color: #CCC}
 
@@ -331,8 +332,8 @@ nav{
 			left: 11px;
 			z-index: 999;
 			width: 95px;
-			height: 70px*/;
-			border: 1px solid red;
+			height: 70px;
+			//border: 1px solid red;
 		}
 		div{
 			.relative;
@@ -360,11 +361,94 @@ nav{
 			font-size: 11pt;
 		}
 	}
-	&#personal{
+	.combobox{
+		position: relative;
+		height: 40px;
+		cursor: pointer;
+		color:#a4a4a4;
+		font-size: 12pt;
+		right: 0;
 		label{
-			line-height: 40px;
-			font-size: 14px;
+			position: absolute;
+			z-index: 1;
+			top: 10px;
+			left: 12px;
 			color: #6792c4;
+			font-weight: 400;
+		}
+		input{
+			.relative;
+			height: @s-four;
+			margin-top:0;
+			text-transform: uppercase;
+			border:1px solid #6792c4;
+			border-right: 0;
+			background-color: #ffffff;
+			cursor: default;
+		}
+		a{
+			width: @s-four;
+			height: @s-four;
+			margin: 0;
+			background: url(../images/gui.png) no-repeat;
+			background-position: -90px -150px;
+			.relative;
+			&:hover{
+				background-position: -90px -195px;
+			}
+		}
+		.combo{
+			position: absolute;
+			z-index: 999; 
+			margin-top:40px;
+			display: none;
+			.combo-content{
+				height:210px;
+				top: -2px; 
+				border: 1px solid #e4e4e4; 
+				background:#f9f9f9;
+			}
+			.viewport{
+				height:210px; 
+				overflow-x:hidden; 
+				overflow-y: auto;
+				top: 0; 
+				position:relative;
+			}
+			.combo-list{
+				padding-bottom: 2px;
+			}
+			.combo-list{
+				li{
+					float:left; 
+					padding: 2px 10px; 
+					width: 100%; 
+					height: 28px; 
+					font-weight: normal; 
+					cursor: pointer;
+					list-style-type:none; 
+					margin-left: 0;
+					&:hover{
+						background: #6792c4; 
+						color: #FFF; 
+					}
+				}
+			}
+		}
+		&.empresa{
+			input,.combo{
+				width: 220px;
+			}
+		}
+		&.tipusuario{
+			input,.combo{
+				width: 200px;
+			}
+		}
+		&.estado{
+			input,.combo{
+				width: 220px;
+			}
 		}
 	}
 }
@@ -569,6 +653,10 @@ span.bold{font-weight: 700;}
 .mask .loader{position:absolute; left: 50%; top:30%; margin-left: -50px;width: 100px;height: 100px}
 
 /*Datepicker*/
+#ui-datepicker-div{
+	min-width: 35em;
+}
+
 .ui-widget {
     font-family: Verdana,Arial,sans-serif;
     font-size: 1em;
