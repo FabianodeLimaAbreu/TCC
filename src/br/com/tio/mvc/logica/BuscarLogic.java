@@ -12,7 +12,7 @@ public class BuscarLogic implements Logica {
 		ExecHibernate dao = new ExecHibernate();
 		PrintWriter out = response.getWriter();
 		String json;
-		String cod = null;
+		String cod = "";
 		
 		try{
 			String table = request.getParameter("table");
