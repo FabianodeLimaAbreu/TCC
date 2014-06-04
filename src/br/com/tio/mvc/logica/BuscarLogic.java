@@ -12,19 +12,22 @@ public class BuscarLogic implements Logica {
 		ExecHibernate dao = new ExecHibernate();
 		PrintWriter out = response.getWriter();
 		String json;
+		String cod = null;
 		
 		try{
 			String table = request.getParameter("table");
 			
 			if (table.equals("Visitantes")) {		
-				String rg = request.getParameter("rg");	
-				if (rg.equals("")) {
-					rg = null;
-				}
-				json = dao.buscar(table, rg);
-			} else {
-				json = dao.buscar(table, null);
+				cod = request.getParameter("rg");	
+
+			} else if (table.equals("Cidades")) {
+				cod = request.getParameter("cod_estado");				
+			
 			}
+			if (cod.equals("")) 
+				cod = null;
+			
+			json = dao.buscar(table, cod);			
 			
 			out.print(json);
 		}catch(Exception e){

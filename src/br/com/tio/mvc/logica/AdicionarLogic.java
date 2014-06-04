@@ -5,9 +5,11 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.tio.Cidades;
 import br.com.tio.Contatos;
 import br.com.tio.Departamentos;
 import br.com.tio.Empresas;
+import br.com.tio.Estados;
 import br.com.tio.Faixas_Acesso;
 import br.com.tio.Feriados;
 import br.com.tio.Operadores;
@@ -124,6 +126,18 @@ public class AdicionarLogic implements Logica{
 				Tipo_Usuario cod_tip = new Tipo_Usuario();
 				cod_tip.setId(Long.parseLong(request.getParameter("cod_tip")));
 				
+				Cidades cod_cidade = new Cidades();
+				cod_cidade.setId(Long.parseLong(request.getParameter("cod_cidade")));
+				
+				Estados cod_estado = new Estados();
+				cod_estado.setId(Long.parseLong(request.getParameter("cod_estado")));
+				
+				Zonas_Tempo cod_zona_tempo = new Zonas_Tempo();
+				cod_zona_tempo.setId(Long.parseLong(request.getParameter("cod_zona_tempo")));
+				
+				Departamentos cod_depto = new Departamentos();
+				cod_depto.setId(Long.parseLong(request.getParameter("cod_depto")));
+				
 				usuarios.setId(id);
 				usuarios.setVal_cartao(request.getParameter("val_cartao"));
 				usuarios.setCracha(request.getParameter("cracha"));			
@@ -133,6 +147,17 @@ public class AdicionarLogic implements Logica{
 				usuarios.setNome_abrev(request.getParameter("nome_abrev"));
 				usuarios.setCod_tip(cod_tip);
 				usuarios.setSenha(request.getParameter("senha"));
+				usuarios.setData_nasc(request.getParameter("data_nasc"));
+				usuarios.setRua_lgdro(request.getParameter("rua_lgdro"));
+				usuarios.setNum_lgdro(Integer.parseInt(request.getParameter("num_lgdro")));
+				usuarios.setCompl_lgdro(request.getParameter("compl_lgdro"));
+				usuarios.setCidade_lgdro(cod_cidade);
+				usuarios.setEstado_lgdro(cod_estado);
+				usuarios.setTel(request.getParameter("tel"));
+				usuarios.setRg(request.getParameter("rg"));
+				usuarios.setEmail(request.getParameter("email"));
+				usuarios.setCod_zona_tempo(cod_zona_tempo);
+				usuarios.setCod_depto(cod_depto);				
 				
 				dao.query(usuarios, acao);		
 				break;

@@ -52,18 +52,20 @@ public class ExecHibernate {
 	}	
 
 	/******************** BUSCAR ********************/	
-	public String buscar(String tabela, String rg){	
+	public String buscar(String tabela, String cod){	
 		try {
 			EntityManagerFactory factory = Persistence.createEntityManagerFactory("sfoc");
 			EntityManager manager = factory.createEntityManager();
 
 			Gson gson = new Gson();
-			String where;
+			String where = null;
 			
-			if (rg == null)
+			if (cod == null)
 				where = "";				
-			else
-				where = "WHERE RG_VISITANTE = " + rg + "";		
+			else if (tabela.equals("Visitantes"))
+				where = "WHERE RG_VISITANTE = " + cod + "";
+			else if (tabela.equals("Cidades"))
+				where = "WHERE ESTADO_ID = " + cod + "";
 			
 			List<String> retornada = manager.createQuery("SELECT t FROM "+ tabela +" as t " + where).getResultList();
 			
