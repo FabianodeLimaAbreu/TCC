@@ -60,7 +60,7 @@ public class ExecHibernate {
 			Gson gson = new Gson();
 			String where = null;
 			
-			if (cod == null)
+			if (cod == "")
 				where = "";				
 			else if (tabela.equals("Visitantes"))
 				where = "WHERE RG_VISITANTE = " + cod + "";

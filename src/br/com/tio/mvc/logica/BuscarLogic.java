@@ -24,8 +24,8 @@ public class BuscarLogic implements Logica {
 				cod = request.getParameter("cod_estado");				
 			
 			}
-			if (cod.equals("")) 
-				cod = null;
+			/*if (cod.equals("")) 
+				cod = null;*/
 			
 			json = dao.buscar(table, cod);			
 			
