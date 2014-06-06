@@ -1,7 +1,11 @@
 package br.com.tio.mvc.logica;
 
 import java.io.PrintWriter;
+import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -103,8 +107,19 @@ public class AdicionarLogic implements Logica{
 				
 				operadores.setId(id);
 				operadores.setLogin(login);
-				operadores.setSenha(request.getParameter("senha"));
 				operadores.setPerfis(cod_perf);
+				
+				/********************SELECT NA USUARIOS PARA DESCOBRIR A SENHA***************************/
+				EntityManagerFactory factory = Persistence.createEntityManagerFactory("sfoc");
+				EntityManager manager = factory.createEntityManager();
+				
+				List<?> senha = manager.createQuery("SELECT senha FROM Usuarios WHERE COD_USUARIO = "+ login.getId() + "").getResultList();
+				
+				manager.close();
+				factory.close();
+
+				operadores.setSenha(senha.get(0).toString());
+				/****************************************************************************************/
 				
 				dao.query(operadores, acao);				
 				break;
