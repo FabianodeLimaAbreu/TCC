@@ -185,12 +185,11 @@ window.Formulario=Spine.Controller.sub({
     this.hide();
   }*/
   popCombo:function(obj,link){
-    console.dir(link);
-    console.log(link.foreign);
+    console.dir(obj);
     var i,length,context=this,html="";
     length=obj.length;
     for(i=0;i<length;i++){
-      html+="<li data='"+(i+1)+"' class='"+link.pk+"' rel='"+link.foreign+"'>"+obj[i][""+link.collum].initialCaps()+"</li>";
+      html+="<li data='"+obj[i].id+"' class='"+link.pk+"' rel='"+link.foreign+"'>"+obj[i][""+link.collum].initialCaps()+"</li>";
     }
     $("."+link.pk+".combo").find(".combo-list").html(html);
 
@@ -199,7 +198,7 @@ window.Formulario=Spine.Controller.sub({
       console.dir($("form label[for='"+$(this).attr("class")+"']"));
         var data=$(this).attr("data");
         $("input[name='"+$(this).attr("rel")+"']").val(data);
-        $("label[for='"+$(this).attr("class")+"']").text($(this).text());
+        $("label[for='"+$(this).attr("rel")+"']").text($(this).text());
         context.hide();
     });
   },

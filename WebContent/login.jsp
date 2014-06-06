@@ -34,7 +34,7 @@
     <!--[if IE]><script src="js/lib/jquery.min.js"></script><script src="js/lib/spine/min.js"></script><script data-main="js/app.js" src="js/lib/require-jquery.js"></script><![endif]-->
 
 </head>
-<body class="login">
+<body class="loginpage">
 	<div id="wrap">
         <header>
             <div class="holder">

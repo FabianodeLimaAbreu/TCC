@@ -114,10 +114,10 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 					this.loaddata(a.func);
 					this.setloading(!1,!0);
 				},
-				"Zonas/*func": function(a) {
+				"Zonas_Tempo/*func": function(a) {
 					//Listagem de usuarios
 					this.setloading(!0,!1);
-					this.page="Zonas";
+					this.page="Zonas_Tempo";
 					this.loaddata(a.func);
 				},
 
@@ -282,7 +282,7 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 				case 'Usuarios':
 				//Falta fazer
 					for(i=0;i<list.length;i++){
-						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].nome+"</td><td>"+list[i].descr+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+						html+="<tr><td>"+list[i].id+"</td><td>"+list[i].nome+"</td><td>"+list[i].cod_emp.nome_fantasia+"</td><td>"+list[i].cod_depto.desc_dpto+"</td><td class='actions'><a href='#"+list[i].id+"' class='delete'></a><a href='#"+list[i].id+"' class='edit'></a></td></tr>";
 					}
 					break;
 				case 'Feriados':
@@ -308,10 +308,10 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 					break;
 				case 'Faixas_Acesso':
 					for(i=0;i<list.length;i++){
-						html+="<tr><td>"+list[i].id+"</td><td>"+list[i].hora_ini+"</td><td>"+list[i].hora_fim+"</td><td class='actions'><a href='#"+list[i].id+"' class='delete'></a><a href='#"+list[i].id+"' class='edit'></a></td></tr>";
+						html+="<tr><td>"+list[i].id+"</td><td>"+list[i].hora_ini+"</td><td>"+list[i].hora_fim+"</td><td>"+list[i].desc_faixa+"</td><td class='actions'><a href='#"+list[i].id+"' class='delete'></a><a href='#"+list[i].id+"' class='edit'></a></td></tr>";
 					}
 					break;
-				case 'Zonas':
+				case 'Zonas_Tempo':
 				//Falta fazer
 					for(i=0;i<list.length;i++){
 						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].inicio+"</td><td>"+list[i].fim+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
@@ -375,9 +375,15 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 
 		/*Recebe o valor a ser atribuido nos combobox, chama o metodo do formulario que popula o combobox*/
 		/*Metodo recebe um obj com o nome da tabela e outro objeto com as especificaçoes*/
-		getComboValues:function(obj,link){
-			var context=this;
-			$.get("./mvc",{'logica':'BuscarLogic','table':obj.table})
+		getComboValues:function(obj,link,estado){
+			var param,context=this;
+			if(estado){
+				param={'logica':'BuscarLogic','table':obj.table,'cod_estado':estado};
+			}
+			else{
+				param={'logica':'BuscarLogic','table':obj.table};
+			}
+			$.get("./mvc",param)
             .error(function(){
             	context.modal.open("Um erro ocorreu!","Tente novamente mais tarde, ou contate o administrador do sistema.",!0,!0)
             })
@@ -391,30 +397,36 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 			var context=this;
 
 			//Executa determinadas ações dependendo da página*/
+			$(".bprompt").click(function(e){
+				//Ao clicar na seta para baixo do combobox
+	            e.preventDefault();
+	            if($(this).hasClass("cidade")){
+	            	context.getComboValues({"table":"Cidades"},{"pk":"cidade","collum":"cidade","foreign":"cod_cidade"},$("input[name='cod_estado']").val());
+	            }
+	            context.formulario.toggleSelect($(this),$(this).attr("href").replace("#","."));
+	        });
 			switch(this.page){
 				case 'Perfis':
 					
 					break;
 				case 'Usuarios':
+					//context.finishform.fadeOut();
 					$('#user a').click(function (e) {
 		              e.preventDefault();
 		              $(this).tab('show');
 		            });
 
 		            $("#initial").trigger("click");
-		            $("input[name='telefone']").mask("(99) 9999-9999");
+		            $("input[name='tel']").mask("(99) 9999-9999");
 		            var date=new Date();
-
-		            var inicio={"input":"input[name='fim']","whatDate":"minDate"};
 		            var fim = {"input":"input[name='inicio']","whatDate":"maxDate"};
-					this.setDatePicker($("input[name='nascimento']"),new Date(),!1,true);
-					this.setDatePicker($("input[name='inicio']"),date,inicio,null);
-					this.setDatePicker($("input[name='fim']"),null,fim,null);
+					this.setDatePicker($("input[name='data_nasc']"),null,!1,true,new Date());
+					this.setDatePicker($("input[name='val_cartao']"),new Date(),fim,null,null);
 
 					$("#webcamera").webcam({
 
-					    width: 376,
-					    height: 276,
+					    width: 378,
+					    height: 278,
 					    mode: "callback",
 					    swffile: "js/lib/jscam.swf", 
 						// canvas only doesn't implement a jpeg encoder, so the file is much smaller
@@ -461,24 +473,28 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 					});
 
 					//Combobox
+					//TABELA DO BANCO >>  Classe do combo || Nome esperado pela tabela || Nome esperado pela FK, valor vai no combo
 					this.getComboValues({"table":"Empresas"},{"pk":"empresa","collum":"nome_fantasia","foreign":"cod_emp"});
 					this.getComboValues({"table":"Tipo_Usuario"},{"pk":"tipusuario","collum":"desc_usuario","foreign":"cod_tip"});
-					this.getComboValues({"table":"Tipo_Usuario"},{"pk":"estado","collum":"desc_usuario","foreign":"estado_col"});
 
-					$(".bprompt").click(function(e){
-						//Ao clicar na seta para baixo do combobox
-			            e.preventDefault();
-			            context.formulario.toggleSelect($(this),$(this).attr("href").replace("#","."));
-			        });
+					//Fazer
+					this.getComboValues({"table":"Estados"},{"pk":"estado","collum":"uf","foreign":"cod_estado"});
+					this.getComboValues({"table":"Cidades"},{"pk":"cidade","collum":"cidade","foreign":"cod_cidade"},1);
+
+					this.getComboValues({"table":"Departamentos"},{"pk":"departamento","collum":"desc_dpto","foreign":"cod_depto"});
+					this.getComboValues({"table":"Zonas_Tempo"},{"pk":"zonatempo","collum":"desc_zona","foreign":"cod_zona_tempo"}); //Zonas_Tempo || desc_zona
+
 					break;
 				case 'Feriados':
-					this.setDatePicker($("input[name='data_feriado']"),new Date(),!1,null);
+					this.setDatePicker($("input[name='data_feriado']"),new Date(),!1,null,null);
 					break;
 				case 'Departamentos':
 					
 					break;
 				case 'Operadores':
-					
+					this.getComboValues({"table":"Usuarios"},{"pk":"login","collum":"nome","foreign":"login"});
+					this.getComboValues({"table":"Perfis"},{"pk":"perfil","collum":"nome","foreign":"cod_perf"});
+
 					break;
 				case 'Empresas':
 					$("input[name='telefone']").mask("(99) 9999-9999");
@@ -487,12 +503,64 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 					$("input[name='hora_ini']").mask("99:99:99");
 					$("input[name='hora_fim']").mask("99:99:99");
 					break;
-				case 'Zonas':
+				case 'Zonas_Tempo':
 				//Falta fazer
-					
+					this.getComboValues({"table":"Faixas_Acesso"},{"pk":"faixastempo","collum":"desc_faixa","foreign":"faixas_col"});
 					break;
 				case 'Visitantes':
+					$("#webcamera2").webcam({
+
+					    width: 378,
+					    height: 278,
+					    mode: "callback",
+					    swffile: "js/lib/jscam.swf", 
+						// canvas only doesn't implement a jpeg encoder, so the file is much smaller
+
+					    onTick: function(remain) {
+
+					        if (0 == remain) {
+					            //jQuery("#status").text("Cheese!");
+					        } else {
+					            //jQuery("#status").text(remain + " seconds remaining...");
+					        }
+					    },
+
+					    onSave: function(data) {
+					        var col = data.split(";");
+					    	// Work with the picture. Picture-data is encoded as an array of arrays... Not really nice, though =/
+					    },
+
+					    onCapture: function () {
+					        webcam.save();
+					        console.log("Tirou a foto");
+					      // Show a flash for example
+					    },
+
+					    debug: function (type, string) {
+					        // Write debug information to console.log() or a div, ...
+					        console.log("Ok camera");
+					    },
+
+					    onLoad: function () {
+					    // Page load
+					        var cams = webcam.getCameraList();
+					        for(var i in cams) {
+					            //$("#cams").append("<li>" + cams[i] + "</li>");
+					        }
+					    }
+					});
+	
 					$("input[name='telefone']").mask("(99) 9999-9999");
+
+					$(".camera").bind("click",function(a){
+						//Ao clicar no botão para tirar foto
+						console.log("tirou foto");
+						a.preventDefault();
+						webcam.capture();
+					});
+
+					this.getComboValues({"table":"Empresas"},{"pk":"empresa","collum":"nome_fantasia","foreign":"cod_emp"});
+					this.getComboValues({"table":"Departamentos"},{"pk":"departamento","collum":"desc_dpto","foreign":"cod_depto"});
 					break;
 				default:
 					html+="Operação não encontrada! Contate o administrador do sistema";
@@ -500,7 +568,7 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 			this.setloading(!1,!0);
 		},
 		
-		setDatePicker:function(input,mindate,closeopt,year){
+		setDatePicker:function(input,mindate,closeopt,year,maxDate){
 			console.dir(closeopt);
 			console.log(closeopt.input);
 			input.datepicker({
@@ -512,6 +580,7 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 			    dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
 			    dateFormat:"yy/mm/dd",
 			    minDate:mindate,
+			    maxDate:maxDate,
 			    onClose: function( selectedDate ) {
 			    	//{"input":"input[name='fim']","whatDate":"minDate"}
 			    	if(closeopt){
@@ -626,11 +695,11 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 			return this.loading;
 		},
 
-		logout:function(a) {
+		/*logout:function(a) {
 	    	a && a.preventDefault();
 	    	//$.removeCookie("app", {path:"/"});
 	    	window.location = "login.jsp";
-	  	},
+	  	},*/
 
 		/**
 		*	Reseting the application

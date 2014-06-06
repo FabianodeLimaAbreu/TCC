@@ -87,7 +87,6 @@
                         <th>Matrícula</th>
                         <th>Nome completo</th>
                         <th>Empresa</th>
-                        <th>Data de admissão</th>
                         <th>Departamento</th>
                         <th></th>
                       </tr>
@@ -126,7 +125,7 @@
                     <ul class="nav nav-tabs" id="cad-user">
                         <li><a href="#maintab" data-toggle="tab" id="initial">Principal</a></li>
                         <li><a href="#personal" data-toggle="tab">Pessoal</a></li>
-                        <li><a href="#professional" data-toggle="tab">Profissional</a></li>
+                        <li><a href="#professional" data-toggle="tab" class="getover">Profissional</a></li>
                     </ul>
                     <div class="tab-content" id="user">
                         <div class="tab-pane fade" id="maintab">
@@ -138,15 +137,16 @@
                                 </div>
                             </div>
                             <form action="" role="form">
+                                <input type="hidden" name="cracha" value="111"/>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Nome completo" name="name" required>
+                                    <input type="text" class="form-control" placeholder="Nome completo" name="nome" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Nome abreviado" name="abrname" required>
+                                    <input type="text" class="form-control" placeholder="Nome abreviado" name="nome_abrev" required>
                                 </div>
 
                                 <div class="form-group floatLeft s-twosix combobox empresa"> <!--Estado-->
-                                    <label for="empresa"><!--valor de estados selecionado-->Empresa</label>
+                                    <label for="cod_emp"><!--valor de estados selecionado-->Empresa</label>
                                     <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
                                     <input name="cod_emp" class="fake-input form-control" type="hidden" value="Empresa"/><!--value com valor selecionado-->
                                     <a href="#empresa" class="button bprompt empresa"></a>
@@ -161,7 +161,7 @@
                                 </div>
 
                                 <div class="form-group floatRight s-twofour combobox tipusuario">
-                                    <label for="tipusuario">Tipo</label>
+                                    <label for="cod_tip">Tipo</label>
                                     <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
                                     <input name="cod_tip" class="fake-input form-control" type="hidden" value="Tipo"/><!--value com valor selecionado-->
                                     <a href="#tipusuario" class="button bprompt tipusuario"></a>
@@ -175,45 +175,67 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group floatLeft s-twosix combobox departamento">
+	                                <label for="cod_depto">Departamento</label>
+	                                <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
+	                                <input name="cod_depto" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+	                                <a href="#departamento" class="button bprompt departamento"></a>
+	                                <div class="departamento combo">
+	                                    <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+	                                    <div class="viewport combo-content">
+	                                        <ul class="combo-list departamento">
+	                                            <!--Cria a lista de itens para selecionar-->
+	                                        </ul>
+	                                    </div>
+	                                </div>
+	                            </div>
+                                <div class="form-group floatRight s-twofour combobox zonatempo">
+                                    <label for="cod_zona_tempo">Zona de tempo</label>
+                                    <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
+                                    <input name="cod_zona_tempo" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+                                    <a href="#zonatempo" class="button bprompt zonatempo"></a>
+                                    <div class="zonatempo combo">
+                                        <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                                        <div class="viewport combo-content">
+                                            <ul class="combo-list zonatempo">
+                                                <!--Cria a lista de itens para selecionar-->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group bottomten">
-                                    <label for="datecard" class="col-sm-2 control-label floatLeft">Data de validade do cartão:</label>
-                                    <div class="col-sm-10 floatLeft s-twosix ">
-                                      <input type="text" class="form-control floatLeft" name="inicio" placeholder="Inicio do cartão">
-                                    </div>
                                     <div class="col-sm-10 floatRight s-twofour bottomten">
-                                      <input type="text" class="form-control" name="fim" placeholder="Final do cartão" autocomplete="off">
+                                      <input type="text" class="form-control" name="val_cartao" placeholder="Data de validade do cartão" autocomplete="off" value=""> <!--fim-->
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" name="password" placeholder="Senha" autocomplete="off">
+                                <div class="form-group floatLeft s-twosix">
+                                    <input type="password" class="form-control" name="senha" placeholder="Senha" autocomplete="off" value="">
                                 </div>
+                                
                         </div>
                         <div class="tab-pane fade" id="personal">
                             <div class="form-group">
                                 <div class="col-sm-10 floatLeft s-twofour rightten">
-                                  <input type="text" class="form-control" name="nascimento" placeholder="Data de nascimento"/>
+                                  <input type="text" class="form-control" name="data_nasc" placeholder="Data de nascimento"/>
                                 </div>
                             </div>
                             <div class="form-group floatLeft s-fivesix">
-                                <input type="text" class="form-control" placeholder="Endereço" name="rua" required/>
+                                <input type="text" class="form-control" placeholder="Endereço" name="rua_lgdro" required/>
                             </div>
                             <div class="form-group floatLeft s-ten leftten">
-                                <input type="number" class="form-control" placeholder="Número" name="numero" required/>
+                                <input type="number" class="form-control" placeholder="Número" name="num_lgdro" required/>
                             </div>
                             <div class="form-group floatLeft s-fourfive">
                                 <input type="text" class="form-control" placeholder="Bairro" name="bairro" required/>
                             </div>
                             <div class="form-group floatLeft s-fourfive leftten">
-                                <input type="text" class="form-control" placeholder="Complemento" name="complemento" />
-                            </div>
-                            <div class="form-group floatLeft s-threefive">
-                                <input type="text" class="form-control" placeholder="Cidade" name="cidade" />
+                                <input type="text" class="form-control" placeholder="Complemento" name="compl_lgdro" />
                             </div>
 
-                            <div class="form-group floatLeft s-twosix leftten combobox estado">
-                                <label for="estado">Estado</label>
+                            <div class="form-group floatLeft s-twosix combobox estado">
+                                <label for="cod_estado">Estado</label>
                                 <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                                <input name="estado_col" class="fake-input form-control" type="hidden" value="Estado"/><!--value com valor selecionado-->
+                                <input name="cod_estado" class="fake-input form-control" type="hidden" value="1"/><!--value com valor selecionado-->
                                 <a href="#estado" class="button bprompt estado"></a>
                                 <div class="estado combo">
                                     <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -224,20 +246,37 @@
                                     </div>
                                 </div>
                             </div>
-
+                            
+                            <div class="form-group floatLeft leftten s-threefive combobox cidade">
+                                <label for="cod_cidade">Cidade</label>
+                                <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
+                                <input name="cod_cidade" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+                                <a href="#cidade" class="button bprompt cidade"></a>
+                                <div class="cidade combo">
+                                    <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                                    <div class="viewport combo-content">
+                                        <ul class="combo-list cidade">
+                                            <!--Cria a lista de itens para selecionar-->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="form-group floatLeft s-twonine leftten">
-                                <input type="text" class="form-control" placeholder="Telefone" name="telefone" />
+                                <input type="text" class="form-control" placeholder="Telefone" name="tel" />
                             </div>
                             <div class="form-group floatLeft s-four">
                                 <input type="text" class="form-control" placeholder="RG" name="rg" />
                             </div>
                         </div>
                         <div class="tab-pane fade" id="professional">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Observação" name="observacao" required>
-                                </div>
-                            </form>
+                            <input type="hidden" class="form-control" placeholder="versao" name="versao" value="1"/>
+                            <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Email" name="email" required>
+                            </div>
+                                <input type="hidden" name="cod_zona_tempo" value="1"/>
+                                <input type="hidden" name="cod_depto" value="1"/>
+                    </form>
                             <div class="finishform">
                                 <a href="#submit" class="submit s-quad"></a>
                                 <a href="#cancel" class="cancel s-quad"></a>
@@ -413,7 +452,42 @@
         </list>
         <cadastro>
             <![CDATA[
-                
+                <h1>Cadastro de Operadores do sistema</h1>
+                <form role="form" action="">
+                    <div class="form-group floatLeft s-threefive combobox login">
+                        <label for="login">Login</label>
+                        <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
+                        <input name="login" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+                        <a href="#login" class="button bprompt login"></a>
+                        <div class="login combo">
+                            <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                            <div class="viewport combo-content">
+                                <ul class="combo-list login">
+                                    <!--Cria a lista de itens para selecionar-->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group floatLeft s-threefive leftten combobox perfil">
+                        <label for="cod_perf">Perfil</label>
+                        <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
+                        <input name="cod_perf" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+                        <a href="#perfil" class="button bprompt perfil"></a>
+                        <div class="perfil combo">
+                            <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                            <div class="viewport combo-content">
+                                <ul class="combo-list perfil">
+                                    <!--Cria a lista de itens para selecionar-->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="finishform">
+                    <a href="#submit" class="submit s-quad"></a>
+                    <a href="#cancel" class="cancel s-quad"></a>
+                </div>
             ]]>
         </cadastro>
     </entry>
@@ -503,6 +577,7 @@
                         <th>Código</th>
                         <th>Horário de Inicio</th>
                         <th>Horário de Fim</th>
+                        <th>Descrição</th>
                         <th></th>
                       </tr>
                     </thead>
@@ -534,10 +609,13 @@
                 <h1>Cadastro de Faixas de horário</h1>
                 <form class="form-inline " role="form" action="">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="hora_ini" placeholder="hh:mm:ss" maxlength="6">
+                        <input type="text" class="form-control" name="hora_ini" placeholder="Hora Inicial" maxlength="6">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="hora_fim" placeholder="hh:mm:ss" maxlength="6">
+                        <input type="text" class="form-control" name="hora_fim" placeholder="Hora final" maxlength="6">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="desc_faixa" placeholder="Descrição" maxlength="80">
                     </div>
                 <div class="finishform">
                     <a href="#submit" class="submit s-quad"></a>
@@ -546,7 +624,7 @@
             ]]>
         </cadastro>
     </entry>
-    <entry name="Zonas">
+    <entry name="Zonas_Tempo">
         <list>
             <![CDATA[
                 <h1>Zonas de Tempo</h1>
@@ -555,7 +633,7 @@
                         Total:<span>00</span>
                     </p>
                     <a href="#print" class="print s-third"></a>
-                    <a href="#Zonas/cadastro" class="create s-third"></a>
+                    <a href="#Zonas_Tempo/cadastro" class="create s-third"></a>
                 </div>
                 <table class="table table-striped imprimir">
                     <thead class="adminHeader tnine">
@@ -590,9 +668,50 @@
             <![CDATA[
                 <h1>Cadastro de Zonas de tempo</h1>
                 <form role="form" action="">
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="zona" placeholder="" maxlength="80">
-                  </div>
+                  <div class="form-group floatLeft s-twonine combobox faixastempo">
+                        <label for="faixas_col">Faixa de tempo 1</label>
+                        <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
+                        <input name="faixas_col" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+                        <a href="#faixastempo" class="button bprompt faixastempo"></a>
+                        <div class="faixastempo combo">
+                            <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                            <div class="viewport combo-content">
+                                <ul class="combo-list faixastempo">
+                                    <!--Cria a lista de itens para selecionar-->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group twofive floatLeft s-twonine combobox faixastempo">
+                        <label for="faixas_col">Faixa de tempo 1</label>
+                        <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
+                        <input name="faixas_col" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+                        <a href="#faixastempo" class="button bprompt faixastempo"></a>
+                        <div class="faixastempo combo">
+                            <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                            <div class="viewport combo-content">
+                                <ul class="combo-list faixastempo">
+                                    <!--Cria a lista de itens para selecionar-->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group floatRight s-twonine combobox faixastempo">
+                        <label for="faixas_col">Faixa de tempo 1</label>
+                        <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
+                        <input name="faixas_col" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+                        <a href="#faixastempo" class="button bprompt faixastempo"></a>
+                        <div class="faixastempo combo">
+                            <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                            <div class="viewport combo-content">
+                                <ul class="combo-list faixastempo">
+                                    <!--Cria a lista de itens para selecionar-->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </form>
                 <div class="finishform">
                     <a href="#submit" class="submit s-quad"></a>
@@ -620,7 +739,7 @@
                         <th>Código</th>
                         <th>Nome</th>
                         <th>Empresa</th>
-                        <th>Assunto</th>
+                        <th>Telefone</th>
                         <th>Observação</th>
                         <th>Departamento</th>
                         <th></th>
@@ -657,7 +776,68 @@
         </list>
         <cadastro>
             <![CDATA[
-                
+                <h1>Cadastro de Visitantes</h1>
+                <div class="visit">
+                    <div class="takepicture">
+                        <div id="webcamera2"></div>
+                        <canvas></canvas>
+                        <div class="topten">
+                            <a href="#takepicture" class="camera"></a>
+                        </div>
+                    </div>
+                    <form action="" role="form">
+                        <input type="hidden" name="cracha" value="111"/>
+                        <div class="form-group floatLeft s-twosix">
+                            <input type="text" class="form-control" placeholder="RG" name="rg" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Nome completo" name="nome" required>
+                        </div>
+                        <div class="form-group floatLeft s-twosix">
+                            <input type="text" class="form-control" placeholder="Telefone" name="telefone" required>
+                        </div>
+                        <div class="form-group floatRight s-twofour">
+                            <input type="text" class="form-control" placeholder="CPF" name="cpf" required>
+                        </div>
+                        <div class="form-group floatLeft s-twosix combobox empresa"> <!--Estado-->
+                            <label for="cod_emp"><!--valor de estados selecionado-->Empresa</label>
+                            <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
+                            <input name="cod_emp" class="fake-input form-control" type="hidden" value="Empresa"/><!--value com valor selecionado-->
+                            <a href="#empresa" class="button bprompt empresa"></a>
+                            <div class="empresa combo">
+                                <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                                <div class="viewport combo-content">
+                                    <ul class="combo-list empresa">
+                                        <!--Cria a lista de itens para selecionar-->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group floatRight s-twofour combobox departamento">
+                            <label for="cod_depto">Departamento</label>
+                            <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
+                            <input name="cod_depto" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+                            <a href="#departamento" class="button bprompt departamento"></a>
+                            <div class="departamento combo">
+                                <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                                <div class="viewport combo-content">
+                                    <ul class="combo-list departamento">
+                                        <!--Cria a lista de itens para selecionar-->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="obs" placeholder="Observação" autocomplete="off" value="">
+                        </div>
+                    </form>
+                    <div class="finishform">
+                        <a href="#submit" class="submit s-quad"></a>
+                        <a href="#cancel" class="cancel s-quad"></a>
+                    </div>
+                </div>
             ]]>
         </cadastro>
     </entry>

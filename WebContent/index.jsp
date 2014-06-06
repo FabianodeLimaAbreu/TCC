@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type"  content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
     <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
     Remove this if you use the .htaccess -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>SFOC - Controle de acesso empresárial</title>
+    <title>SFOC - Controle de acesso empres�rial</title>
 
-    <meta name="description" content="Sistema de controle de acesso empresarial, utilizando da web como ambiente para a aplicaÃ§Ã£o" />
+    <meta name="description" content="Sistema de controle de acesso empresarial, utilizando da web como ambiente para a aplicação" />
     <meta name="author" content="Fabiano de Lima" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
@@ -47,10 +47,10 @@
             <div class="holder">
                 <a href="" class="logo"></a>
                 <p id="current-date">
-                    SÃ£o Paulo, 24 de Outubro de 2014.
+                    S�o Paulo, 24 de Outubro de 2014.
                 </p>
                 <div class="user-box">
-                    <span class="user-icon s-quart"></span><span class="user-name">Nome do UsuÃ¡rio</span>
+                    <span class="user-icon s-quart"></span><span class="user-name">Nome do Usu�rio</span>
                     <br/>
                     <a href="#logout" class="logout s-quart"></a>
                 </div>
@@ -64,7 +64,7 @@
                       <li role="presentation" class="perfis"><a role="menuitem" tabindex="-1" href="#Perfis/list">Perfil</a></li>
                       <li role="presentation" class="departamentos"><a role="menuitem" tabindex="-1" href="#Departamentos/list">Departamento</a></li>
                       <li role="presentation" class="feriados"><a role="menuitem" tabindex="-1" href="#Feriados/list">Feriados</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Usuarios/list">UsuÃ¡rios</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Usuarios/list">Usu�rios</a></li>
                       <li role="presentation" class="operadores"><a role="menuitem" tabindex="-1" href="#Operadores/list">Operadores</a></li>
                       <li role="presentation" class="empresas"><a role="menuitem" tabindex="-1" href="#Empresas/list">Empresas</a></li>
                     </ul>
@@ -73,7 +73,7 @@
                     <a id="acesso" role="button" data-toggle="dropdown" href="#">Acesso <b class="caret"></b></a>
                     <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
                       <li role="presentation"><a role="menuitem" tabindex="-1" href="#Faixas_Acesso/list">Faixas de Acesso</a></li>
-                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Zonas/list">Zonas de Acesso</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#Zonas_Tempo/list">Zonas de Acesso</a></li>
                     </ul>
                   </li>
                   <li class="dropdown">
@@ -93,7 +93,7 @@
         </div>
         
         <footer class="notprint">
-            <p>Copyright Â© 2014 - Software of control - Todos os direitos reservados</p>
+            <p>Copyright 2014 - Software of control - Todos os direitos reservados</p>
         </footer>  
          <div id="modal">
             <div class="modal-content">
@@ -106,7 +106,7 @@
                     </div>
                     <div class="dialog hide">
                         <a href="#yes" class="yes">Sim</a>
-                        <a href="#no" class="no">NÃ£o</a>
+                        <a href="#no" class="no">N�o</a>
                     </div>
                 </div>
             </div>
@@ -121,13 +121,6 @@
         <script data-main="js/app" src="js/lib/require-jquery.js"></script>
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script type="text/javascript" src="js/bootstrap.js"></script>
-        <script type="text/javascript">
-            //Tabshow
-            $('#user a').click(function (e) {
-              e.preventDefault()
-              $(this).tab('show')
-            });
-        </script>
     <!--<![endif]-->
 </body>
 </html>
