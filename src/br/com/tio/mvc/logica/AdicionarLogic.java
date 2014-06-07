@@ -165,6 +165,7 @@ public class AdicionarLogic implements Logica{
 				usuarios.setData_nasc(request.getParameter("data_nasc"));
 				usuarios.setRua_lgdro(request.getParameter("rua_lgdro"));
 				usuarios.setNum_lgdro(Integer.parseInt(request.getParameter("num_lgdro")));
+				usuarios.setBairro(request.getParameter("bairro"));
 				usuarios.setCompl_lgdro(request.getParameter("compl_lgdro"));
 				usuarios.setCidade_lgdro(cod_cidade);
 				usuarios.setEstado_lgdro(cod_estado);
@@ -184,33 +185,35 @@ public class AdicionarLogic implements Logica{
 				
 				visitantes.setId(id);
 				visitantes.setRg(request.getParameter("rg"));
-				visitantes.setCpf(request.getParameter("cpf"));
 				visitantes.setNome(request.getParameter("nome"));
 				visitantes.setCod_emp(cod_emp_visit);
-				visitantes.setVeiculo(request.getParameter("veiculo"));
-				visitantes.setPlaca(request.getParameter("placa"));
-				visitantes.setCracha(request.getParameter("cracha"));
-				visitantes.setLocal_acesso(request.getParameter("local_acesso"));
-				visitantes.setObs(request.getParameter("obs"));
-				visitantes.setAssunto(request.getParameter("assunto"));
+				visitantes.setNum_tel(request.getParameter("num_tel"));
 				visitantes.setData_cadastro(request.getParameter("data_cadastro"));
-				visitantes.setData_entrada(request.getParameter("data_entrada"));
-				visitantes.setData_entrada(request.getParameter("data_saida"));
+				visitantes.setData_ultima_ed(request.getParameter("data_ultima_ed"));
+				visitantes.setCod_foto(request.getParameter("cod_foto"));
+				visitantes.setObs(request.getParameter("obs"));
 				
 				dao.query(visitantes, acao);
 				break;
 			case "Zonas_Tempo":
 				Zonas_Tempo zonas_tempos = new Zonas_Tempo();
+				Faixas_Acesso faixa_acesso_1 = new Faixas_Acesso();
+				Faixas_Acesso faixa_acesso_2 = new Faixas_Acesso();
+				Faixas_Acesso faixa_acesso_3 = new Faixas_Acesso();
+
 				
 				zonas_tempos.setId(id);
-				zonas_tempos.setDesc_zona(request.getParameter("desc_zona"));
-				zonas_tempos.setSegunda(request.getParameter("segunda"));
-				zonas_tempos.setTerca(request.getParameter("terca"));
-				zonas_tempos.setQuarta(request.getParameter("quarta"));
-				zonas_tempos.setQuinta(request.getParameter("quinta"));
-				zonas_tempos.setSexta(request.getParameter("sexta"));
-				zonas_tempos.setSabado(request.getParameter("sabado"));
-				zonas_tempos.setDomingo(request.getParameter("domingo"));
+				
+				faixa_acesso_1.setId(Long.parseLong(request.getParameter("cod_faixa_1")));
+				zonas_tempos.setCod_faixa_1(faixa_acesso_1);
+
+				faixa_acesso_2.setId(Long.parseLong(request.getParameter("cod_faixa_2")));
+				zonas_tempos.setCod_faixa_2(faixa_acesso_2);
+				
+				faixa_acesso_3.setId(Long.parseLong(request.getParameter("cod_faixa_3")));
+				zonas_tempos.setCod_faixa_3(faixa_acesso_3);
+
+				zonas_tempos.setDesc_zona_tempo(request.getParameter("desc_zona"));
 				
 				dao.query(zonas_tempos, acao);
 				break;

@@ -52,6 +52,9 @@ public class Usuarios {
 	@Column(name = "NUMERO_LGDRO_USUARIO", length = 11, nullable = false)
 	private int num_lgdro;
 	
+	@Column(name = "BAIRRO_LGDRO_USUARIO", length = 256, nullable = false)
+	private String bairro;
+	
 	@Column(name = "COMPLEMENTO_LGDRO_USUARIO", length = 256, nullable = true)
 	private String compl_lgdro;
 	
@@ -174,6 +177,14 @@ public class Usuarios {
 
 	public void setNum_lgdro(int num_lgdro) {
 		this.num_lgdro = num_lgdro;
+	}
+	
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
 	}
 
 	public String getCompl_lgdro() {

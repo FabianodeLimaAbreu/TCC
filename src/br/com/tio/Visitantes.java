@@ -1,10 +1,14 @@
 package br.com.tio;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -20,9 +24,6 @@ public class Visitantes {
 	@Column(name="RG_VISITANTE", length=20, nullable=false)
 	private String rg;
 	
-	@Column(name="CPF_VISITANTE", length=11, nullable=true)
-	private String cpf;
-	
 	@Column(name="NOME_VISITANTE", length=256, nullable=false)
 	private String nome;
 	
@@ -30,47 +31,46 @@ public class Visitantes {
 	@JoinColumn(name = "COD_EMP_VISITANTE")
 	private Empresas cod_emp;
 	
-	@Column(name="VEICULO_VISITANTE", length=50, nullable=true)
-	private String veiculo;
+	@Column(name = "TELEFONE_VISITANTE", length = 20, nullable = false)
+	private String num_tel;
 	
-	@Column(name="PLACA_VISITANTE", length=20, nullable=true)
-	private String placa;
+	@Column(name="DATA_CADASTRO_VISITANTE", nullable=false)
+	private String data_cadastro;
+
+	@Column(name = "DATA_ULTIMA_ED", nullable = false)
+	private String data_ultima_ed;
 	
-	@Column(name="CRACHA_VISITANTE", length=30, nullable=false)
-	private String cracha;
-	
-	@Column(name="LOCAL_ACESSO_VISITANTE", length=256, nullable=true)
-	private String local_acesso;
+	@Column(name = "COD_FOTO_VISITANTE", length = 256, nullable = true)
+	private String cod_foto;
 	
 	@Column(name="OBS_VISITANTE", length=256, nullable=true)
 	private String obs;
 	
-	@Column(name="ASSUNTO_VISITANTE", length=256, nullable=true)
-	private String assunto;
-	
-	@Column(name="DATA_CADASTRO_VISITANTE", nullable=false)
-	private String data_cadastro;
-	
-	@Column(name="ENTRADA_VISITANTE", nullable=false)
-	private String data_entrada;
-	
-	@Column(name="SAIDA_VISITANTE", nullable=false)
-	private String data_saida;
-	
+/*	@OneToMany(mappedBy = "cod_dpto", cascade = CascadeType.ALL)
+	private List<Visitantes_Departamentos> vist_dpto;	
+
+	public List<Visitantes_Departamentos> getVist_dpto() {
+		return vist_dpto;
+	}
+
+	public void setVist_dpto(List<Visitantes_Departamentos> vist_dpto) {
+		this.vist_dpto = vist_dpto;
+	}
+*/
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getRg() {
 		return rg;
 	}
 
 	public void setRg(String rg) {
 		this.rg = rg;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 
 	public String getNome() {
@@ -89,52 +89,12 @@ public class Visitantes {
 		this.cod_emp = cod_emp;
 	}
 
-	public String getVeiculo() {
-		return veiculo;
+	public String getNum_tel() {
+		return num_tel;
 	}
 
-	public void setVeiculo(String veiculo) {
-		this.veiculo = veiculo;
-	}
-
-	public String getPlaca() {
-		return placa;
-	}
-
-	public void setPlaca(String placa) {
-		this.placa = placa;
-	}
-
-	public String getCracha() {
-		return cracha;
-	}
-
-	public void setCracha(String cracha) {
-		this.cracha = cracha;
-	}
-
-	public String getLocal_acesso() {
-		return local_acesso;
-	}
-
-	public void setLocal_acesso(String local_acesso) {
-		this.local_acesso = local_acesso;
-	}
-
-	public String getObs() {
-		return obs;
-	}
-
-	public void setObs(String obs) {
-		this.obs = obs;
-	}
-
-	public String getAssunto() {
-		return assunto;
-	}
-
-	public void setAssunto(String assunto) {
-		this.assunto = assunto;
+	public void setNum_tel(String num_tel) {
+		this.num_tel = num_tel;
 	}
 
 	public String getData_cadastro() {
@@ -145,27 +105,27 @@ public class Visitantes {
 		this.data_cadastro = data_cadastro;
 	}
 
-	public String getData_entrada() {
-		return data_entrada;
+	public String getData_ultima_ed() {
+		return data_ultima_ed;
 	}
 
-	public void setData_entrada(String data_entrada) {
-		this.data_entrada = data_entrada;
+	public void setData_ultima_ed(String data_ultima_ed) {
+		this.data_ultima_ed = data_ultima_ed;
 	}
 
-	public String getData_saida() {
-		return data_saida;
+	public String getCod_foto() {
+		return cod_foto;
 	}
 
-	public void setData_saida(String data_saida) {
-		this.data_saida = data_saida;
+	public void setCod_foto(String cod_foto) {
+		this.cod_foto = cod_foto;
 	}
 
-	public Long getId() {
-		return id;
+	public String getObs() {
+		return obs;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setObs(String obs) {
+		this.obs = obs;
 	}
 }
