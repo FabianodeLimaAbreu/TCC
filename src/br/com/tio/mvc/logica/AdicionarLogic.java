@@ -84,6 +84,7 @@ public class AdicionarLogic implements Logica{
 				faixas_acesso.setId(id);
 				faixas_acesso.setHora_ini(request.getParameter("hora_ini"));
 				faixas_acesso.setHora_fim(request.getParameter("hora_fim"));
+				faixas_acesso.setDesc_faixa(request.getParameter("desc_faixa"));
 				
 				dao.query(faixas_acesso, acao);
 				break;
