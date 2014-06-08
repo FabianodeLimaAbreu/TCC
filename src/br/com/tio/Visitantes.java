@@ -46,7 +46,19 @@ public class Visitantes {
 	@Column(name="OBS_VISITANTE", length=256, nullable=true)
 	private String obs;
 	
-/*	@OneToMany(mappedBy = "cod_dpto", cascade = CascadeType.ALL)
+	@OneToOne
+	@JoinColumn(name = "COD_DPTO")
+	private Departamentos cod_dpto;
+	
+	public Departamentos getCod_dpto() {
+		return cod_dpto;
+	}
+
+	public void setCod_dpto(Departamentos cod_dpto) {
+		this.cod_dpto = cod_dpto;
+	}
+
+	/*	@OneToMany(mappedBy = "cod_dpto", cascade = CascadeType.ALL)
 	private List<Visitantes_Departamentos> vist_dpto;	
 
 	public List<Visitantes_Departamentos> getVist_dpto() {

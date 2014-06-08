@@ -184,6 +184,9 @@ public class AdicionarLogic implements Logica{
 				Empresas cod_emp_visit = new Empresas();
 				cod_emp_visit.setId(Long.parseLong(request.getParameter("cod_emp")));
 				
+				Departamentos cod_dpto = new Departamentos();
+				cod_dpto.setId(Long.parseLong(request.getParameter("cod_dpto")));
+				
 				visitantes.setId(id);
 				visitantes.setRg(request.getParameter("rg"));
 				visitantes.setNome(request.getParameter("nome"));
@@ -193,6 +196,7 @@ public class AdicionarLogic implements Logica{
 				visitantes.setData_ultima_ed(request.getParameter("data_ultima_ed"));
 				visitantes.setCod_foto(request.getParameter("cod_foto"));
 				visitantes.setObs(request.getParameter("obs"));
+				visitantes.setCod_dpto(cod_dpto);
 				
 				dao.query(visitantes, acao);
 				break;
