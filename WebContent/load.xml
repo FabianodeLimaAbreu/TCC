@@ -229,7 +229,7 @@
                                 <input type="text" class="form-control" placeholder="Bairro" name="bairro" required/>
                             </div>
                             <div class="form-group floatLeft s-fourfive leftten">
-                                <input type="text" class="form-control" placeholder="Complemento" name="compl_lgdro" required/>
+                                <input type="text" class="form-control" placeholder="Complemento" name="compl_lgdro"/>
                             </div>
 
                             <div class="form-group floatLeft s-twosix combobox estado">
@@ -667,49 +667,52 @@
             <![CDATA[
                 <h1>Cadastro de Zonas de tempo</h1>
                 <form role="form" action="">
-                  <div class="form-group floatLeft s-twonine combobox faixastempo">
-                        <label for="faixas_col">Faixa de tempo 1</label>
+                  <div class="form-group floatLeft s-twonine combobox faixastempo1">
+                        <label for="cod_faixa_1">Faixa de tempo 1</label>
                         <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                        <input name="faixas_col" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
-                        <a href="#faixastempo" class="button bprompt faixastempo"></a>
-                        <div class="faixastempo combo">
+                        <input name="cod_faixa_1" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
+                        <a href="#faixastempo1" class="button bprompt faixastempo1"></a>
+                        <div class="faixastempo1 combo">
                             <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
                             <div class="viewport combo-content">
-                                <ul class="combo-list faixastempo">
+                                <ul class="combo-list faixastempo1">
                                     <!--Cria a lista de itens para selecionar-->
                                 </ul>
                             </div>
                         </div>
                     </div>
 
-                    <div class="form-group twofive floatLeft s-twonine combobox faixastempo">
-                        <label for="faixas_col">Faixa de tempo 1</label>
+                    <div class="form-group twofive floatLeft s-twonine combobox faixastempo2">
+                        <label for="cod_faixa_2">Faixa de tempo 1</label>
                         <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                        <input name="faixas_col" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
-                        <a href="#faixastempo" class="button bprompt faixastempo"></a>
-                        <div class="faixastempo combo">
+                        <input name="cod_faixa_2" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
+                        <a href="#faixastempo2" class="button bprompt faixastempo2"></a>
+                        <div class="faixastempo2 combo">
                             <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
                             <div class="viewport combo-content">
-                                <ul class="combo-list faixastempo">
+                                <ul class="combo-list faixastempo2">
                                     <!--Cria a lista de itens para selecionar-->
                                 </ul>
                             </div>
                         </div>
                     </div>
 
-                    <div class="form-group floatRight s-twonine combobox faixastempo">
-                        <label for="faixas_col">Faixa de tempo 1</label>
+                    <div class="form-group floatRight s-twonine combobox faixastempo3">
+                        <label for="cod_faixa_3">Faixa de tempo 1</label>
                         <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                        <input name="faixas_col" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
-                        <a href="#faixastempo" class="button bprompt faixastempo"></a>
-                        <div class="faixastempo combo">
+                        <input name="cod_faixa_3" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
+                        <a href="#faixastempo3" class="button bprompt faixastempo3"></a>
+                        <div class="faixastempo3 combo">
                             <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
                             <div class="viewport combo-content">
-                                <ul class="combo-list faixastempo">
+                                <ul class="combo-list faixastempo3">
                                     <!--Cria a lista de itens para selecionar-->
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Descrição" name="desc_zona" required>
                     </div>
                 </form>
                 <div class="finishform">

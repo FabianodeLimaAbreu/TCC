@@ -313,7 +313,7 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 				case 'Zonas_Tempo':
 				//Falta fazer
 					for(i=0;i<list.length;i++){
-						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].inicio+"</td><td>"+list[i].fim+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+						html+="<tr><td>"+list[i].id+"</td><td>"+list[i].desc_zona_tempo+"</td><td class='actions'><a href='#"+list[i].id+"' class='delete'></a><a href='#"+list[i].id+"' class='edit'></a></td></tr>";
 					}
 					break;
 				case 'Visitantes':
@@ -364,11 +364,17 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 		/*Quando clicado no botão deletar*/
 		del:function(a){
 			a.preventDefault();
-			var cod=parseInt($(a.target).attr("href").replace("#",""));
+			var msg,cod=parseInt($(a.target).attr("href").replace("#",""));
 			this.whatsave="DeletarLogic";
 			this.setRefreshStatus("Deletar");
 			this.modal.codToDelete=cod;
-			this.modal.question("Realmente Deletar?","Caso deseje realmente deletar, clique em Sim.",!0,!0);
+			if(this.page === "Usuarios"){
+				msg="Caso deseje realmente deletar, clique em Sim. Se este usuário tiver um login e operador associado, ele também será deletado!"
+			}
+			else{
+				msg="Caso deseje realmente deletar, clique em Sim.";
+			}
+			this.modal.question("Realmente Deletar?",msg,!0,!0);
 			//this.callservice({"id":cod},"DeletarLogic");
 		},
 
@@ -482,7 +488,7 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 					this.getComboValues({"table":"Cidades"},{"pk":"cidade","collum":"cidade","foreign":"cod_cidade"},1);
 
 					this.getComboValues({"table":"Departamentos"},{"pk":"departamento","collum":"desc_dpto","foreign":"cod_depto"});
-					this.getComboValues({"table":"Zonas_Tempo"},{"pk":"zonatempo","collum":"desc_zona","foreign":"cod_zona_tempo"}); //Zonas_Tempo || desc_zona
+					this.getComboValues({"table":"Zonas_Tempo"},{"pk":"zonatempo","collum":"desc_zona_tempo","foreign":"cod_zona_tempo"}); //Zonas_Tempo || desc_zona
 
 					break;
 				case 'Feriados':
@@ -505,7 +511,9 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 					break;
 				case 'Zonas_Tempo':
 				//Falta fazer
-					this.getComboValues({"table":"Faixas_Acesso"},{"pk":"faixastempo","collum":"desc_faixa","foreign":"faixas_col"});
+					this.getComboValues({"table":"Faixas_Acesso"},{"pk":"faixastempo1","collum":"desc_faixa","foreign":"cod_faixa_1"});
+					this.getComboValues({"table":"Faixas_Acesso"},{"pk":"faixastempo2","collum":"desc_faixa","foreign":"cod_faixa_2"});
+					this.getComboValues({"table":"Faixas_Acesso"},{"pk":"faixastempo3","collum":"desc_faixa","foreign":"cod_faixa_3"});
 					break;
 				case 'Visitantes':
 					$("#webcamera2").webcam({
@@ -647,6 +655,7 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 
 		/*Inseri os valores nos inputs*/
 		insertValues:function(obj){
+			console.log("INSERI");
 			console.dir(obj);
 			var cinputs=$("input");
 			cinputs.each(function(){

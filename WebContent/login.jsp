@@ -1,4 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="br.com.tio.mesindex.mes_index, java.text.SimpleDateFormat, java.util.Date, javax.swing.JOptionPane"%>
+
+<%    
+	Date data = new Date();
+	SimpleDateFormat diatual = new SimpleDateFormat("dd");
+	String mostra_data = diatual.format(data);
+
+	mes_index MesIndex = new mes_index ();  
+
+	Date ano = new Date();
+	SimpleDateFormat anoatual = new SimpleDateFormat("yyyy");
+	String ano_atual = anoatual.format(data);   
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,7 +53,7 @@
             <div class="holder">
                 <a href="" class="logo"></a>
                 <p id="current-date">
-                    São Paulo, 24 de Outubro de 2014.
+                    S�o Paulo, <%=mostra_data%> de <%=MesIndex.Mes_Index()%> de <%=ano_atual%>.
                 </p>
             </div>
         </header>
@@ -107,7 +120,7 @@
             </div>
         </div>
         <footer>
-            <p>Copyright © 2014 - Software of control - Todos os direitos reservados</p>
+            <p>Copyright 2014 - Software of control - Todos os direitos reservados</p>
         </footer>  
         <div id="modal" class="hide">
             <div class="modal-content">
