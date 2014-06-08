@@ -27,7 +27,6 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 			"click .print":"print",
 			"click .delete":"del",
 			"click .edit":"edit",
-			"click .logout":"logout",
 			"click .finishform .submit": "submitform",
 			"click .finishform .cancel": "cancel",
 			"click .logo":"preventClick",
@@ -448,6 +447,7 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 					    onCapture: function () {
 					        webcam.save();
 					        console.log("Tirou a foto");
+					        context.modal.open("Funcionalidade não disponível!","Esta funcionalidade não está disponível no momento! Será implementada em breve!.",!0,!0);
 					      // Show a flash for example
 					    },
 
@@ -533,6 +533,7 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 					    onCapture: function () {
 					        webcam.save();
 					        console.log("Tirou a foto");
+					        context.modal.open("Funcionalidade não disponível!","Esta funcionalidade não está disponível no momento! Será implementada em breve!.",!0,!0);
 					      // Show a flash for example
 					    },
 
@@ -557,6 +558,20 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 						console.log("tirou foto");
 						a.preventDefault();
 						webcam.capture();
+					});
+
+					$(".search").bind("click",function(e){
+						$.get("./mvc",{'logica':'BuscarLogic','table':'Visitantes','rg':$("input[name='rg']").val()})
+			            .error(function(){
+			            	context.setloading(!1,!0);
+			            	//context.modal.open("Não foi possivel retornar a lista cadastrada","Tente novamente mais tarde, ou contate o administrador do sistema.",!0,!0)
+			            })
+			            .success(function(a){
+			            	console.log("SUCESSO RG");
+			                context.list=JSON.parse(a);
+			                //console.log(context.list.replace("\"",""));
+			                console.dir(context.list);
+			            });
 					});
 
 					this.getComboValues({"table":"Empresas"},{"pk":"empresa","collum":"nome_fantasia","foreign":"cod_emp"});
@@ -599,14 +614,21 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 		/*Quando clicado no botão enviar do formulário*/
 		submitform:function(a){
 			a.preventDefault();
-			var complet,length,context=this,obj="[{";
+			var complet,i,length,context=this,obj="[{";
 			var cinputs=$("input");
 			length=cinputs.length;
 			
 			if(this.editactive){
 				obj+='"id":'+this.editactive+",";
 			}
+			cinputs.removeClass("error-border");
 			cinputs.each(function(index){
+				if($(this).attr("required")){
+					if(!$(this).val() || $(this).val() === $(this).attr("placeholder")){
+						$(this).addClass("error-border");
+						return !1;
+					}
+				}
 				obj=obj.concat('"'+$(this).attr("name")+'":"'+$(this).val()+'"');
 				if((index+1)<length){
 					obj+=",";

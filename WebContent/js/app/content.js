@@ -33,6 +33,9 @@ window.Modal = Spine.Controller.sub({
     //$("body").removeClass("prevent");
     window.location.reload();
   },
+  justClose:function(){
+    this.el.fadeOut();
+  },
 
   refreshBack:function(){
     window.history.go(-1);

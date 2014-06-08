@@ -57,10 +57,10 @@
                 <h1>Cadastro de Perfis</h1>
                 <form role="form" action="">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="nome" placeholder="Nome do perfil" maxlength="80">
+                    <input type="text" class="form-control" name="nome" placeholder="Nome do perfil" maxlength="80" required>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" name="desc_perfil" placeholder="Descrição do perfil" maxlength="80">
+                    <input type="text" class="form-control" name="desc_perfil" placeholder="Descrição do perfil" maxlength="80" required>
                   </div>
                 </form>
                 <div class="finishform">
@@ -148,7 +148,7 @@
                                 <div class="form-group floatLeft s-twosix combobox empresa"> <!--Estado-->
                                     <label for="cod_emp"><!--valor de estados selecionado-->Empresa</label>
                                     <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                                    <input name="cod_emp" class="fake-input form-control" type="hidden" value="Empresa"/><!--value com valor selecionado-->
+                                    <input name="cod_emp" class="fake-input form-control" type="hidden" value="Empresa" required/><!--value com valor selecionado-->
                                     <a href="#empresa" class="button bprompt empresa"></a>
                                     <div class="empresa combo">
                                         <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -163,7 +163,7 @@
                                 <div class="form-group floatRight s-twofour combobox tipusuario">
                                     <label for="cod_tip">Tipo</label>
                                     <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                                    <input name="cod_tip" class="fake-input form-control" type="hidden" value="Tipo"/><!--value com valor selecionado-->
+                                    <input name="cod_tip" class="fake-input form-control" type="hidden" value="Tipo" required/><!--value com valor selecionado-->
                                     <a href="#tipusuario" class="button bprompt tipusuario"></a>
                                     <div class="tipusuario combo">
                                         <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -178,7 +178,7 @@
                                 <div class="form-group floatLeft s-twosix combobox departamento">
 	                                <label for="cod_depto">Departamento</label>
 	                                <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-	                                <input name="cod_depto" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+	                                <input name="cod_depto" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
 	                                <a href="#departamento" class="button bprompt departamento"></a>
 	                                <div class="departamento combo">
 	                                    <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -192,7 +192,7 @@
                                 <div class="form-group floatRight s-twofour combobox zonatempo">
                                     <label for="cod_zona_tempo">Zona de tempo</label>
                                     <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                                    <input name="cod_zona_tempo" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+                                    <input name="cod_zona_tempo" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
                                     <a href="#zonatempo" class="button bprompt zonatempo"></a>
                                     <div class="zonatempo combo">
                                         <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -205,18 +205,18 @@
                                 </div>
                                 <div class="form-group bottomten">
                                     <div class="col-sm-10 floatRight s-twofour bottomten">
-                                      <input type="text" class="form-control" name="val_cartao" placeholder="Data de validade do cartão" autocomplete="off" value=""> <!--fim-->
+                                      <input type="text" class="form-control" name="val_cartao" placeholder="Data de validade do cartão" autocomplete="off" value="" required> <!--fim-->
                                     </div>
                                 </div>
                                 <div class="form-group floatLeft s-twosix">
-                                    <input type="password" class="form-control" name="senha" placeholder="Senha" autocomplete="off" value="">
+                                    <input type="password" class="form-control" name="senha" placeholder="Senha" autocomplete="off" value="" required>
                                 </div>
                                 
                         </div>
                         <div class="tab-pane fade" id="personal">
                             <div class="form-group">
                                 <div class="col-sm-10 floatLeft s-twofour rightten">
-                                  <input type="text" class="form-control" name="data_nasc" placeholder="Data de nascimento"/>
+                                  <input type="text" class="form-control" name="data_nasc" placeholder="Data de nascimento" required/>
                                 </div>
                             </div>
                             <div class="form-group floatLeft s-fivesix">
@@ -229,13 +229,13 @@
                                 <input type="text" class="form-control" placeholder="Bairro" name="bairro" required/>
                             </div>
                             <div class="form-group floatLeft s-fourfive leftten">
-                                <input type="text" class="form-control" placeholder="Complemento" name="compl_lgdro" />
+                                <input type="text" class="form-control" placeholder="Complemento" name="compl_lgdro" required/>
                             </div>
 
                             <div class="form-group floatLeft s-twosix combobox estado">
                                 <label for="cod_estado">Estado</label>
                                 <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                                <input name="cod_estado" class="fake-input form-control" type="hidden" value="1"/><!--value com valor selecionado-->
+                                <input name="cod_estado" class="fake-input form-control" type="hidden" value="1" required/><!--value com valor selecionado-->
                                 <a href="#estado" class="button bprompt estado"></a>
                                 <div class="estado combo">
                                     <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -250,7 +250,7 @@
                             <div class="form-group floatLeft leftten s-threefive combobox cidade">
                                 <label for="cod_cidade">Cidade</label>
                                 <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                                <input name="cod_cidade" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+                                <input name="cod_cidade" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
                                 <a href="#cidade" class="button bprompt cidade"></a>
                                 <div class="cidade combo">
                                     <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -263,19 +263,18 @@
                             </div>
 
                             <div class="form-group floatLeft s-twonine leftten">
-                                <input type="text" class="form-control" placeholder="Telefone" name="tel" />
+                                <input type="text" class="form-control" placeholder="Telefone" name="tel" required/>
                             </div>
                             <div class="form-group floatLeft s-four">
-                                <input type="text" class="form-control" placeholder="RG" name="rg" />
+                                <input type="text" class="form-control" placeholder="RG" name="rg" required/>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="professional">
                             <input type="hidden" class="form-control" placeholder="versao" name="versao" value="1"/>
                             <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email" name="email" required>
+                                <input type="email" class="form-control" placeholder="Email" name="email" required>
                             </div>
                                 <input type="hidden" name="cod_zona_tempo" value="1"/>
-                                <input type="hidden" name="cod_depto" value="1"/>
                     </form>
                             <div class="finishform">
                                 <a href="#submit" class="submit s-quad"></a>
@@ -335,11 +334,11 @@
                 <form role="form" action="">
                   <div class="form-group">
                     <label for="date">Data</label>
-                    <input type="text" class="form-control date" name="data_feriado" maxlength="10">
+                    <input type="text" class="form-control date" name="data_feriado" maxlength="10" required>
                   </div>
                   <div class="form-group">
                     <label for="descr">Descrição</label>
-                    <input type="text" class="form-control" name="desc_feriado" maxlength="80">
+                    <input type="text" class="form-control" name="desc_feriado" maxlength="80" required>
                   </div>
                 <form>
                 <div class="finishform">
@@ -394,7 +393,7 @@
                 <h1>Cadastro de Departamentos</h1>
                 <form role="form" action="">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="desc_dpto" placeholder="Departamento" maxlength="80">
+                    <input type="text" class="form-control" name="desc_dpto" placeholder="Departamento" maxlength="80" required>
                   </div>
                 </form>
                 <div class="finishform">
@@ -457,7 +456,7 @@
                     <div class="form-group floatLeft s-threefive combobox login">
                         <label for="login">Login</label>
                         <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                        <input name="login" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+                        <input name="login" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
                         <a href="#login" class="button bprompt login"></a>
                         <div class="login combo">
                             <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -472,7 +471,7 @@
                     <div class="form-group floatLeft s-threefive leftten combobox perfil">
                         <label for="cod_perf">Perfil</label>
                         <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                        <input name="cod_perf" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+                        <input name="cod_perf" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
                         <a href="#perfil" class="button bprompt perfil"></a>
                         <div class="perfil combo">
                             <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -542,13 +541,13 @@
                 <h1>Cadastro de Empresas</h1>
                 <form role="form" action="">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="razao_social" placeholder="Razão Social" maxlength="80">
+                    <input type="text" class="form-control" name="razao_social" placeholder="Razão Social" maxlength="80" required>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control s-mini floatLeft" name="nome_fantasia" placeholder="Nome Fantasia" maxlength="80">
+                    <input type="text" class="form-control s-mini floatLeft" name="nome_fantasia" placeholder="Nome Fantasia" maxlength="80" required>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control s-mini floatRight" name="telefone" placeholder="Telefone:" maxlength="12">
+                    <input type="text" class="form-control s-mini floatRight" name="telefone" placeholder="Telefone:" maxlength="12" required>
                   </div>
                 </form>
                 <div class="finishform">
@@ -609,13 +608,13 @@
                 <h1>Cadastro de Faixas de horário</h1>
                 <form class="form-inline " role="form" action="">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="hora_ini" placeholder="Hora Inicial" maxlength="6">
+                        <input type="text" class="form-control" name="hora_ini" placeholder="Hora Inicial" maxlength="6" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="hora_fim" placeholder="Hora final" maxlength="6">
+                        <input type="text" class="form-control" name="hora_fim" placeholder="Hora Final" maxlength="6" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="desc_faixa" placeholder="Descrição" maxlength="80">
+                        <input type="text" class="form-control" name="desc_faixa" placeholder="Descrição" maxlength="80" required>
                     </div>
                 <div class="finishform">
                     <a href="#submit" class="submit s-quad"></a>
@@ -671,7 +670,7 @@
                   <div class="form-group floatLeft s-twonine combobox faixastempo">
                         <label for="faixas_col">Faixa de tempo 1</label>
                         <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                        <input name="faixas_col" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+                        <input name="faixas_col" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
                         <a href="#faixastempo" class="button bprompt faixastempo"></a>
                         <div class="faixastempo combo">
                             <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -686,7 +685,7 @@
                     <div class="form-group twofive floatLeft s-twonine combobox faixastempo">
                         <label for="faixas_col">Faixa de tempo 1</label>
                         <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                        <input name="faixas_col" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+                        <input name="faixas_col" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
                         <a href="#faixastempo" class="button bprompt faixastempo"></a>
                         <div class="faixastempo combo">
                             <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -701,7 +700,7 @@
                     <div class="form-group floatRight s-twonine combobox faixastempo">
                         <label for="faixas_col">Faixa de tempo 1</label>
                         <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                        <input name="faixas_col" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+                        <input name="faixas_col" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
                         <a href="#faixastempo" class="button bprompt faixastempo"></a>
                         <div class="faixastempo combo">
                             <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -787,9 +786,10 @@
                     </div>
                     <form action="" role="form">
                         <input type="hidden" name="cracha" value="111"/>
-                        <div class="form-group floatLeft s-twosix">
+                        <div class="form-group floatLeft s-threethird">
                             <input type="text" class="form-control" placeholder="RG" name="rg" required>
                         </div>
+                        <input type="button" class="floatLeft twofive search" value="Buscar dados"/>
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Nome completo" name="nome" required>
                         </div>
@@ -802,7 +802,7 @@
                         <div class="form-group floatLeft s-twosix combobox empresa"> <!--Estado-->
                             <label for="cod_emp"><!--valor de estados selecionado-->Empresa</label>
                             <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                            <input name="cod_emp" class="fake-input form-control" type="hidden" value="Empresa"/><!--value com valor selecionado-->
+                            <input name="cod_emp" class="fake-input form-control" type="hidden" value="Empresa" required/><!--value com valor selecionado-->
                             <a href="#empresa" class="button bprompt empresa"></a>
                             <div class="empresa combo">
                                 <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -817,7 +817,7 @@
                         <div class="form-group floatRight s-twofour combobox departamento">
                             <label for="cod_depto">Departamento</label>
                             <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                            <input name="cod_depto" class="fake-input form-control" type="hidden"/><!--value com valor selecionado-->
+                            <input name="cod_depto" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
                             <a href="#departamento" class="button bprompt departamento"></a>
                             <div class="departamento combo">
                                 <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -830,7 +830,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <input type="text" class="form-control" name="obs" placeholder="Observação" autocomplete="off" value="">
+                            <input type="text" class="form-control" name="obs" placeholder="Observação" autocomplete="off" value="" required>
                         </div>
                     </form>
                     <div class="finishform">

@@ -31,6 +31,9 @@
 .s-threefive {
   width: 350px;
 }
+.s-threethird {
+  width: 330px;
+}
 .s-fourfive {
   width: 455px;
 }
@@ -273,6 +276,18 @@ nav ul.holder .dropdown > a#visitantes:focus::after {
 }
 #container .content form.form-inline input[name="desc_faixa"] {
   width: 940px;
+}
+#container .content form .search {
+  border: 1px solid #6792c4;
+  color: #fff;
+  background-color: #6792c4;
+  width: 165px;
+  height: 40px;
+  font-size: 0.9em;
+}
+#container .content form .search:hover {
+  border: 1px solid #062c5a;
+  background-color: #062c5a;
 }
 #container .content .form-group {
   margin-bottom: 20px;
@@ -726,6 +741,9 @@ span.bold {
 }
 .error {
   color: #b21e1e;
+}
+.error-border {
+  border-color: #b21e1e;
 }
 /*MODAL*/
 #modal {
