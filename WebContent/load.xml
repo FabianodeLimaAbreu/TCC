@@ -797,7 +797,7 @@
                             <input type="text" class="form-control" placeholder="Nome completo" name="nome" required>
                         </div>
                         <div class="form-group floatLeft s-twosix">
-                            <input type="text" class="form-control" placeholder="Telefone" name="telefone" required>
+                            <input type="text" class="form-control" placeholder="Telefone" name="num_tel" required>
                         </div>
                         <div class="form-group floatRight s-twofour">
                             <input type="text" class="form-control" placeholder="CPF" name="cpf" required>
@@ -818,9 +818,9 @@
                         </div>
 
                         <div class="form-group floatRight s-twofour combobox departamento">
-                            <label for="cod_depto">Departamento</label>
+                            <label for="cod_dpto">Departamento</label>
                             <input name="none" type="text" class="text combo-input state" disabled/><!--Estado-->
-                            <input name="cod_depto" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
+                            <input name="cod_dpto" class="fake-input form-control" type="hidden" required/><!--value com valor selecionado-->
                             <a href="#departamento" class="button bprompt departamento"></a>
                             <div class="departamento combo">
                                 <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>

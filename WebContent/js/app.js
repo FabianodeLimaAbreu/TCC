@@ -21,7 +21,8 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 			".mask": "maskEl",
 			".mask img": "loader",
 			".finishform .submit":"bconfirm",
-			".finishform .cancel":"bcancel"
+			".finishform .cancel":"bcancel",
+			"#tperfil":"tperfil"
 		},
 		events: {
 			"click .print":"print",
@@ -29,10 +30,11 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 			"click .edit":"edit",
 			"click .finishform .submit": "submitform",
 			"click .finishform .cancel": "cancel",
+			"click .logout":"logout",
 			"click .logo":"preventClick",
 			"click nav .dropdown-menu a":"preventClick"
 		},
-		init: function() {
+		init: function() {			
 			this.xml="";
 			this.loading = !1;
 			this.whatsave=""; //Este atributo diz se o operador equal a logica utilizada para java
@@ -41,6 +43,7 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 			this.editactive=0;
 			this.refreshStatus;
 			this.prevent;
+			this.setPerfil(this.tperfil.val().toLowerCase());
 			/*this.usr = jQuery.parseJSON($.cookie("portal"));
 			if (!this.usr) {
 				return this.logout(), !1;
@@ -165,6 +168,20 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 			});
 		},
 
+		setPerfil:function(cont){
+			if(cont.indexOf("administrador")+1){
+				this.el.addClass("admin");
+				return !0;
+			}
+			else if(cont.indexOf("rh")+1){
+				this.el.addClass("rh");
+				return !0;
+			}
+			else{
+				this.el.addClass("operador");
+				return !0;
+			}
+		},
 		/*Chama metodos java para executar funções no banco de dados*/
 		callservice:function(obj,logic){
 			console.dir(this.whatsave);
@@ -583,7 +600,7 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 					});
 
 					this.getComboValues({"table":"Empresas"},{"pk":"empresa","collum":"nome_fantasia","foreign":"cod_emp"});
-					this.getComboValues({"table":"Departamentos"},{"pk":"departamento","collum":"desc_dpto","foreign":"cod_depto"});
+					this.getComboValues({"table":"Departamentos"},{"pk":"departamento","collum":"desc_dpto","foreign":"cod_dpto"});
 					break;
 				default:
 					html+="Operação não encontrada! Contate o administrador do sistema";
@@ -726,11 +743,11 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 			return this.loading;
 		},
 
-		/*logout:function(a) {
+		logout:function(a) {
 	    	a && a.preventDefault();
 	    	//$.removeCookie("app", {path:"/"});
-	    	window.location = "login.jsp";
-	  	},*/
+	    	window.location = "sair.jsp";
+	  	},
 
 		/**
 		*	Reseting the application

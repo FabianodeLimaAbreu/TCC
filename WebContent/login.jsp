@@ -1,4 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="br.com.tio.mesindex.mes_index, java.text.SimpleDateFormat, java.util.Date, javax.swing.JOptionPane"%>
+<%@include file="conexao.jsp" %>
+<%@include file="httpservletrequest.jsp" %>
+
+<%
+	int cod_perf;
+	//Try Catch de Validação de Senha e Login.
+	if (requisita("valida")!=null)
+	{
+		try {
+			String sqlacesso = "select LOGIN_OPERADOR, SENHA_OPERADOR, COD_PERF_OPERADOR from operadores where LOGIN_OPERADOR = '"+requisita("numbermat")+
+			"' and SENHA_OPERADOR  = '"+requisita("password")+"'";
+			resultset =  statement.executeQuery(sqlacesso);
+											
+			if (resultset.next()) {
+				cod_perf=Integer.parseInt(resultset.getString("COD_PERF_OPERADOR"));
+				session.setAttribute("cod_perf",cod_perf);
+				session.setAttribute("login",resultset.getString("COD_PERF_OPERADOR"));
+%>
+				<jsp:forward page="index.jsp" />
+<%
+			     }
+		    } 
+		
+	    catch(Exception e) {
+							System.out.println("Erro : "+ e);
+						   }
+	 }
+
+%>
+
+<%
+			try {
+				 	String sqlnome = "select EMAIL_USUARIO, SENHA_USUARIO from usuarios where COD_USUARIO = '"+requisita("numbermat")+"'";
+					resultset =  statement.executeQuery(sqlnome);					
+					
+				} 
+		
+		    catch(Exception e) {
+			System.out.println("Erro : "+ e);
+			}
+%>
 
 <%    
 	Date data = new Date();
@@ -71,7 +112,8 @@
                         <div class="input-group">
                           <span class="input-group-addon ico key"></span>
                           <input type="password" class="form-control" name="password" placeholder="Senha" required>
-                          <span class="input-group-addon submit"><a href="#submit" class="signin"></a></span>
+                          <!--        <span class="input-group-addon submit"><a href="#submit" name="valida" class="signin"></a></span> -->
+                                      <input type="submit" value="Acessar" name="valida">
                         </div>
                     </form>
                     <form action="" role="form" class="forgotform">

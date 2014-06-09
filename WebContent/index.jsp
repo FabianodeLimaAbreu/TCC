@@ -1,4 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="br.com.tio.mesindex.mes_index, java.text.SimpleDateFormat, java.util.Date"%>
+<%@include file ="valida.jsp" %>
+<%@include file="httpservletrequest.jsp"%>
+
+<%
+			String tperf="";
+			String sqlperfil="select * from perfis where COD_PERFIL = '"+session.getAttribute("cod_perf")+"'";
+			try{
+				resultset =  statement.executeQuery(sqlperfil);
+				while (resultset.next()){
+					tperf= resultset.getString("NOME_PERF");
+				}
+			}
+			catch(Exception e){
+				System.out.println("Erro : "+ e);
+			}
+			try {
+				 	String sqlnome = "select NOME_ABREV_USUARIO, COD_USUARIO, SENHA_USUARIO from usuarios where COD_USUARIO = '"+requisita("numbermat")+
+						  		 	 "' and SENHA_USUARIO  = '"+requisita("password")+"'";
+					resultset =  statement.executeQuery(sqlnome);					
+					
+				} 
+		
+		    catch(Exception e) {
+				System.out.println("Erro : "+ e);
+			}
+%>
+
+<%
+	//Try Catch de Validação de Senha e Login.
+	if (requisita("index.jsp")!=null)
+	{
+		try {
+			session.removeAttribute("login");
+			session.removeAttribute("cod_perf");
+		    } 
+		
+	    catch(Exception e) {
+							System.out.println("Erro : "+ e);
+						   }
+	 }
+
+%>  
 
 <%
 	Date data = new Date();
@@ -54,7 +96,7 @@
         }
     </style>
 </head>
-<body class="admin">
+<body>
 	<div id="wrap" class="hide">
         <header class="notprint">
             <div class="holder">
@@ -63,9 +105,9 @@
                     São Paulo, <%=mostra_data%> de <%=MesIndex.Mes_Index()%> de <%=ano_atual%>.<br>
                 </p>
                 <div class="user-box">
-                    <span class="user-icon s-quart"></span><span class="user-name">Nome do Usuário</span>
+                    <span class="user-icon s-quart"></span><span class="user-name"><%while (resultset.next()){%><%=resultset.getString("NOME_ABREV_USUARIO")%><%}%></span>
                     <br/>
-                    <a href="#logout" class="logout s-quart"></a>
+                    <a href="#logout" class="s-quart logout"></a>
                 </div>
             </div>
         </header>
@@ -128,7 +170,7 @@
     <div class="mask">
         <img src="images/loader.gif" class="loader">
     </div>
-    <!--[if !IE]>-->
+    <input type="hidden" name="tperfil" value="<%=tperf%>" id="tperfil"/>
         <script src="js/lib/jquery.min.js"></script>
         <script src="js/lib/spine/min.js"></script>
         <script data-main="js/app" src="js/lib/require-jquery.js"></script>
