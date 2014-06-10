@@ -556,6 +556,9 @@ footer{
 			font-size: 10pt;
 			color: #d1d1d1;	
 			height: 34pt;
+			&.passinput{
+				width: 150px;
+			}
 		}
 		.input-group.first{
 			margin-bottom: 10px;
@@ -570,24 +573,18 @@ footer{
 			right: 15px;
 			top: 18px;
 		}
-		a.signin{
+		input[type='submit']{
 			z-index: 9;
-			width: 44px;
+			min-width: 44px;
 			display: table-cell;
 			height: 43px;
 			background: #13498a;
+			position: absolute;
+			right: 0;
+			padding: 0 10px;
+			top: 1px;
 			&:hover{
 				background: #062c5a;
-			}
-			&::after{
-				content: "";
-				background: url(../images/gui.png) no-repeat;
-				background-position:-135px -70px;
-				width: @ten;
-				height: @ten;
-				display: block;
-				margin-left: 15px;
-				margin-top: 17px;
 			}
 		}
 		span{

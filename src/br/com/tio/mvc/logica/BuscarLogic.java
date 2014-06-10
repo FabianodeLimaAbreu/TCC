@@ -17,9 +17,8 @@ public class BuscarLogic implements Logica {
 		try{
 			String table = request.getParameter("table");
 			
-			if (table.equals("Visitantes")) {		
-				cod = request.getParameter("rg");	
-
+			if (table.equals("Visitantes")) {
+				cod = request.getParameter("rg");
 			} else if (table.equals("Cidades")) {
 				cod = request.getParameter("cod_estado");				
 			

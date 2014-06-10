@@ -789,18 +789,16 @@
                     </div>
                     <form action="" role="form">
                         <input type="hidden" name="cracha" value="111"/>
+                        <input type="hidden" name="cod_foto" value="111"/>
                         <div class="form-group floatLeft s-threethird">
                             <input type="text" class="form-control" placeholder="RG" name="rg" required>
                         </div>
-                        <input type="button" class="floatLeft twofive search" value="Buscar dados"/>
+                        <input type="button" class="floatLeft twofive search" value="Buscar dados" />
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Nome completo" name="nome" required>
                         </div>
-                        <div class="form-group floatLeft s-twosix">
+                        <div class="form-group floatLeft s-threethird">
                             <input type="text" class="form-control" placeholder="Telefone" name="num_tel" required>
-                        </div>
-                        <div class="form-group floatRight s-twofour">
-                            <input type="text" class="form-control" placeholder="CPF" name="cpf" required>
                         </div>
                         <div class="form-group floatLeft s-twosix combobox empresa"> <!--Estado-->
                             <label for="cod_emp"><!--valor de estados selecionado-->Empresa</label>

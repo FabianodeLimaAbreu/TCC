@@ -624,6 +624,9 @@ footer p {
   color: #d1d1d1;
   height: 34pt;
 }
+.box form input.passinput {
+  width: 150px;
+}
 .box form .input-group.first {
   margin-bottom: 10px;
 }
@@ -637,25 +640,19 @@ footer p {
   right: 15px;
   top: 18px;
 }
-.box form a.signin {
+.box form input[type='submit'] {
   z-index: 9;
-  width: 44px;
+  min-width: 44px;
   display: table-cell;
   height: 43px;
   background: #13498a;
+  position: absolute;
+  right: 0;
+  padding: 0 10px;
+  top: 1px;
 }
-.box form a.signin:hover {
+.box form input[type='submit']:hover {
   background: #062c5a;
-}
-.box form a.signin::after {
-  content: "";
-  background: url(../images/gui.png) no-repeat;
-  background-position: -135px -70px;
-  width: 10px;
-  height: 10px;
-  display: block;
-  margin-left: 15px;
-  margin-top: 17px;
 }
 .box form span.submit {
   padding: 0;

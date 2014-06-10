@@ -105,13 +105,14 @@
                 <div class="box">
                     <form action="" role="form" class="loginform">
                         <!--Login-->
+                        <tr><td colspan="2"><%= httpServletRequest.getParameter("valida") == null?"Informe seu Usuário e Senha":"Seus Dados São Invalidos"%></td></tr>
                         <div class="input-group first">
                           <span class="input-group-addon  ico numbermat"></span>
-                          <input type="number" class="form-control" placeholder="NÃºmero da matricula" name="numbermat" required>
+                          <input type="number" class="form-control" placeholder="Número da matricula" name="numbermat" required>
                         </div>
                         <div class="input-group">
                           <span class="input-group-addon ico key"></span>
-                          <input type="password" class="form-control" name="password" placeholder="Senha" required>
+                          <input type="password" class="form-control passinput" name="password" placeholder="Senha" required>
                           <!--        <span class="input-group-addon submit"><a href="#submit" name="valida" class="signin"></a></span> -->
                                       <input type="submit" value="Acessar" name="valida">
                         </div>
@@ -174,7 +175,7 @@
                         <p></p>
                         <div class="dialog">
                             <a href="#yes" class="yes">Sim</a>
-                            <a href="#no" class="no">NÃ£o</a>
+                            <a href="#no" class="no">Não</a>
                         </div>
                     </div>
                 </div>

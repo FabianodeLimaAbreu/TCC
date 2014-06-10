@@ -270,8 +270,14 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 
 		/*Chamada de metodo java para listar as tabelas na tela*/
 		getTableValues:function(){
-			var context=this;
-			$.get("./mvc",{'logica':'BuscarLogic','table':this.page})
+			var obj,context=this;
+			if(this.page === "Visitantes"){
+				obj={'logica':'BuscarLogic','table':this.page,'rg':''};
+			}
+			else{
+				obj={'logica':'BuscarLogic','table':this.page};
+			}
+			$.get("./mvc",obj)
             .error(function(){
             	context.setloading(!1,!0);
             	context.modal.open("Não foi possivel retornar a lista cadastrada","Tente novamente mais tarde, ou contate o administrador do sistema.",!0,!0)
@@ -335,7 +341,7 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 					break;
 				case 'Visitantes':
 					for(i=0;i<list.length;i++){
-						html+="<tr><td>"+list[i].cod+"</td><td>"+list[i].nome+"</td><td>"+list[i].empresa+"</td><td>"+list[i].assunto+"</td><td>"+list[i].observacao+"</td><td>"+list[i].departamento+"</td><td class='actions'><a href='#"+list[i].cod+"' class='delete'></a><a href='#"+list[i].cod+"' class='edit'></a></td></tr>";
+						html+="<tr><td>"+list[i].id+"</td><td>"+list[i].nome+"</td><td>"+list[i].cod_emp.nome_fantasia+"</td><td>"+list[i].num_tel+"</td><td>"+list[i].obs+"</td><td>"+list[i].cod_dpto.desc_dpto+"</td><td class='actions'><a href='#"+list[i].id+"' class='delete'></a><a href='#"+list[i].id+"' class='edit'></a></td></tr>";
 					}
 					break;
 				default:
@@ -576,7 +582,7 @@ require(["methods","jquery.webcam","jquery.maskedinput", "sp/min", "app/content"
 					    }
 					});
 	
-					$("input[name='telefone']").mask("(99) 9999-9999");
+					$("input[name='num_tel']").mask("(99) 9999-9999");
 
 					$(".camera").bind("click",function(a){
 						//Ao clicar no botão para tirar foto

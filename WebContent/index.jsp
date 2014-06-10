@@ -100,7 +100,7 @@
 	<div id="wrap" class="hide">
         <header class="notprint">
             <div class="holder">
-                <a href="" class="logo"></a>
+                <a href="#" class="logo"></a>
                 <p id="current-date">
                     São Paulo, <%=mostra_data%> de <%=MesIndex.Mes_Index()%> de <%=ano_atual%>.<br>
                 </p>

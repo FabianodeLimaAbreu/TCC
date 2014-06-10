@@ -1,6 +1,9 @@
 package br.com.tio.mvc.logica;
 
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -192,8 +195,20 @@ public class AdicionarLogic implements Logica{
 				visitantes.setNome(request.getParameter("nome"));
 				visitantes.setCod_emp(cod_emp_visit);
 				visitantes.setNum_tel(request.getParameter("num_tel"));
-				visitantes.setData_cadastro(request.getParameter("data_cadastro"));
-				visitantes.setData_ultima_ed(request.getParameter("data_ultima_ed"));
+				if (id == null)
+					visitantes.setData_cadastro(getDateTime());
+				else {
+					EntityManagerFactory factoryVisit = Persistence.createEntityManagerFactory("sfoc");
+					EntityManager managerVisit = factoryVisit.createEntityManager();
+					
+					List<?> data_cadastro = managerVisit.createQuery("SELECT data_cadastro FROM Visitantes WHERE COD_VISITANTE = "+ id + "").getResultList();
+					
+					managerVisit.close();
+					factoryVisit.close();
+					visitantes.setData_cadastro(data_cadastro.get(0).toString());
+				}	
+
+				visitantes.setData_ultima_ed(getDateTime());
 				visitantes.setCod_foto(request.getParameter("cod_foto"));
 				visitantes.setObs(request.getParameter("obs"));
 				visitantes.setCod_dpto(cod_dpto);
@@ -229,5 +244,10 @@ public class AdicionarLogic implements Logica{
 		}catch (Exception e) {
 			throw new RuntimeException(e);	
 		}
+	}
+	private String getDateTime() { 
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		Date date = new Date(); 
+		return dateFormat.format(date); 
 	}
 }

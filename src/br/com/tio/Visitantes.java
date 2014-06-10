@@ -1,14 +1,14 @@
 package br.com.tio;
 
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -34,9 +34,9 @@ public class Visitantes {
 	@Column(name = "TELEFONE_VISITANTE", length = 20, nullable = false)
 	private String num_tel;
 	
-	@Column(name="DATA_CADASTRO_VISITANTE", nullable=false)
+	@Column(name="DATA_CADASTRO_VISITANTE", nullable=true)
 	private String data_cadastro;
-
+	
 	@Column(name = "DATA_ULTIMA_ED", nullable = false)
 	private String data_ultima_ed;
 	
