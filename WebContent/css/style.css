@@ -611,9 +611,27 @@ footer p {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -95px;
+  margin-top: -115px;
   margin-left: -148px;
   font-size: 12pt;
+}
+.box .status {
+  position: relative;
+  background: #13498a;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  border-radius: 3px 3px;
+  text-align: center;
+  padding: 10px;
+}
+.box .status p {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+.box .status.erro {
+  background: #b21e1e;
 }
 .box form {
   padding: 20px;

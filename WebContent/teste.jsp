@@ -10,17 +10,9 @@
 
 <form action="">
 
-	Validade: <input type="text" name="val_cartao" ><br/>
-	Versao: <input type="text" name="versao"><br/>
-	Cracha: <input type="text" name="cracha"><br/>
-	Cod Emp: <input type="text" name="cod_emp"><br/>
-	Nome Usuario: <input type="text" name="nome"><br/>
-	Nome Abrev: <input type="text" name="nome_abrev"><br/>
-	Cod tip: <input type="text" name="cod_tip"><br/>
-	Senha: <input type="text" name="senha" ><br/>
-		
+	<input type="text" name="rg" id="rg" value="43.616.004-2">
 	<input type="hidden" name="logica" id="logica" value="BuscarLogic">
-	<input type="hidden" name="table" id="table" value="Contatos">
+	<input type="hidden" name="table" id="table" value="Visitantes">
 	<input type="submit" value="Enviar" class="bsubmit">
 </form>
 <script src="js/lib/jquery.min.js"></script>
@@ -49,14 +41,15 @@
         (function(){
         	logica=$("#logica").val();
             table=$("#table").val();
+            rg=$("#rg").val();
         	//Chamando o serviÃ§o para cadastro do usuario
-            $.get("./mvc",{'logica':logica,'table':table})
+            $.get("./mvc",{'logica':logica,'table':table,'rg':rg})
             .error(function(){
             	alert("Não foi possivel cadastrar o usuario");
             })
             .success(function(a){
             	alert("Hum");
-            	//console.dir([{'nome':'Fabiano','idade':18},{'nome':'Gabriel','idade':30}]);
+            	console.dir(a);
                 /*var objeto={
                     'nome':'Fabiano',
                     'idade':18

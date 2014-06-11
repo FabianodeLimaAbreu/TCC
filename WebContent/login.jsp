@@ -103,9 +103,9 @@
                 <!--Logar-->
 
                 <div class="box">
+                	<div <%= httpServletRequest.getParameter("valida") != null?"class='status erro'":"class='status'"%> ><p><%= httpServletRequest.getParameter("valida") == null?"Informe seu Usuário e Senha":"Seus Dados São Invalidos"%></p></div>
                     <form action="" role="form" class="loginform">
                         <!--Login-->
-                        <tr><td colspan="2"><%= httpServletRequest.getParameter("valida") == null?"Informe seu Usuário e Senha":"Seus Dados São Invalidos"%></td></tr>
                         <div class="input-group first">
                           <span class="input-group-addon  ico numbermat"></span>
                           <input type="number" class="form-control" placeholder="Número da matricula" name="numbermat" required>
@@ -132,10 +132,10 @@
                         <span></span>
                     </div>
                     <p class="loginform">
-                        <span>logar</span><a href="#forget" class="bforgot">esqueceu a senha?</a>
+                        <span>logar</span><a href="#forget" class="bforgot hide">esqueceu a senha?</a>
                     </p>
                     <p class="forgotform">
-                        <span>Esqueci a senha</span><a href="#login" class="blogin">Logar</a>
+                        <span>Esqueci a senha</span><a href="#login" class="blogin hide">Logar</a>
                     </p>
                 </div>
 
